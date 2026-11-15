@@ -6,12 +6,17 @@ import { describe, expect, it, vi } from "vitest";
 import App from "../App";
 import { ComparadorABC } from "../components/ComparadorABC";
 import { EstadoBadge } from "../components/EstadoBadge";
+import { ExplicacionIA } from "../components/ExplicacionIA";
 import { MercadoSection } from "../components/MercadoSection";
 import { formatValor, getImergMensual, markLocalFallback } from "../data/api";
 import { ParcelaSchema } from "../data/schemas";
 import { DICTIONARY } from "../i18n";
-import CooperativaView from "../views/CooperativaView";
+import CooperativaView, { construirResumenHelada } from "../views/CooperativaView";
 import FichaView from "../views/FichaView";
+import {
+  generarPlantillaFija,
+  validarRespuestaIA,
+} from "../../../supabase/functions/explicar-chacra/validator";
 
 describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
   it("rechaza datos en esquema zod cuando falta estado", () => {
@@ -316,5 +321,199 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     const { container } = render(<MercadoSection mercado={mercadoMock} fuentesMap={fuentesMock} />);
     expect(container.textContent?.toLowerCase()).not.toContain("precio va a caer");
     expect(screen.getByText(/no predice el precio/i)).toBeInTheDocument();
+  });
+
+  it("muestra Kultiva y nunca MUYU en las 4 pantallas (ES y EN) y en el title de index.html", async () => {
+    const indexHtml = fs.readFileSync(path.resolve(__dirname, "../../index.html"), "utf-8");
+    expect(indexHtml).toMatch(/<title>.*Kultiva.*<\/title>/);
+    expect(indexHtml.toLowerCase()).not.toContain("muyu");
+
+    const dictAll = [...Object.values(DICTIONARY.es), ...Object.values(DICTIONARY.en)].join(" ").toLowerCase();
+    expect(dictAll).not.toContain("muyu");
+
+    const parcelasJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/parcelas_demo.json"), "utf-8")
+    );
+    const planJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/plan_rotacion_demo.json"), "utf-8")
+    );
+    const climaJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/clima_mensual.json"), "utf-8")
+    );
+    const imergJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/imerg_mensual.json"), "utf-8")
+    );
+    const mercadoJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/mercado_resumen.json"), "utf-8")
+    );
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        if (String(url).includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("plan_rotacion_demo")) return { ok: true, json: async () => planJson };
+        if (String(url).includes("clima_mensual")) return { ok: true, json: async () => climaJson };
+        if (String(url).includes("imerg_mensual")) return { ok: true, json: async () => imergJson };
+        if (String(url).includes("mercado_resumen")) return { ok: true, json: async () => mercadoJson };
+        return { ok: true, json: async () => ({ parcelas: [], fuentes: [] }) };
+      })
+    );
+
+    window.localStorage.clear();
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    const { container } = render(
+      <QueryClientProvider client={qc}>
+        <App />
+      </QueryClientProvider>
+    );
+
+    const checkNoMuyuVisible = () => {
+      expect(container.textContent ?? "").toContain("Kultiva");
+      expect((container.textContent ?? "").toLowerCase()).not.toContain("muyu");
+      const ariaLabels = Array.from(container.querySelectorAll("[aria-label]"))
+        .map((el) => el.getAttribute("aria-label") ?? "")
+        .join(" ")
+        .toLowerCase();
+      expect(ariaLabels).not.toContain("muyu");
+    };
+
+    // 1. Entrada (ES)
+    checkNoMuyuVisible();
+    // 2. Cooperativa (ES)
+    fireEvent.click(screen.getByRole("button", { name: /Trabajo en una cooperativa/i }));
+    await waitFor(() => expect(screen.getByRole("heading", { name: /Esta campaña/i })).toBeInTheDocument());
+    checkNoMuyuVisible();
+    // 3. DRA (ES)
+    fireEvent.click(screen.getByRole("button", { name: /Cambiar de perfil/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Trabajo en la DRA/i }));
+    await waitFor(() => expect(screen.getByText(/Desde junio/i)).toBeInTheDocument(), { timeout: 4000 });
+    checkNoMuyuVisible();
+    // 4. Ficha (ES)
+    fireEvent.click(screen.getByRole("button", { name: /Cambiar de perfil/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Soy agricultor/i }));
+    await waitFor(() => expect(screen.getByRole("article", { name: "Ficha del agricultor" })).toBeInTheDocument());
+    checkNoMuyuVisible();
+
+    // Switch to EN and verify Ficha + Entrada
+    fireEvent.click(screen.getByRole("button", { name: /Cambiar idioma a inglés/i }));
+    checkNoMuyuVisible();
+    fireEvent.click(screen.getByRole("button", { name: /Switch profile/i }));
+    checkNoMuyuVisible();
+
+    vi.unstubAllGlobals();
+    window.localStorage.clear();
+  });
+
+  it("muestra la tarjeta de helada solo si alguna chacra tiene heladas", async () => {
+    const sinHelada = construirResumenHelada(
+      [
+        {
+          id: "P01",
+          distrito: "huanta",
+          elev_dem_m: 2667,
+          dato_hasta: "2026-11-12",
+          clima_campana_2025_2026: { dias_helada: 0 },
+        },
+      ],
+      "es"
+    );
+    expect(sinHelada).toBeNull();
+
+    const conHelada = construirResumenHelada(
+      [
+        {
+          id: "P05",
+          distrito: "chiara_alta_2",
+          elev_dem_m: 3682,
+          dato_hasta: "2026-11-12",
+          clima_campana_2025_2026: { dias_helada: 16 },
+        },
+      ],
+      "es"
+    );
+    expect(conHelada).not.toBeNull();
+    expect(conHelada?.resumenCorto).toContain("16");
+
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    render(
+      <QueryClientProvider client={qc}>
+        <CooperativaView />
+      </QueryClientProvider>
+    );
+
+    await waitFor(
+      () => {
+        expect(screen.getByLabelText("Alerta de helada")).toBeInTheDocument();
+      },
+      { timeout: 4000 }
+    );
+  });
+
+  it("el botón 'Explícamelo simple' muestra insignia IA, no tiene chat y usa plantilla si falla la red", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockRejectedValueOnce(new Error("Network fail"));
+    const parcelaMock = {
+      id: "P05",
+      distrito: "chiara_alta_2",
+      latitude: -13.3,
+      longitude: -74.2,
+      elev_dem_m: 3682,
+      power_cell_id: "c-27_-119",
+      clima_campana_2025_2026: {
+        t2m_media_ajustada_c: 9.2,
+        tmin_absoluta_ajustada_c: -2.9,
+        dias_helada: 16,
+        racha_seca_max_dias: 20,
+      },
+      suelo: { ph: 5.8, textura_clase: "franco", estado: "observado" as const, fuente: "SoilGrids" },
+      estado: "observado" as const,
+      dato_hasta: "2026-11-12",
+    };
+
+    const { container } = render(
+      <ExplicacionIA
+        parcela={parcelaMock}
+        planItem={{ estrategia_elegida: "B", cultivo_asignado: "Quinua" }}
+      />
+    );
+
+    expect(container.querySelector("input[type='text'], textarea")).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: /Explícamelo simple/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Redactado por IA con estos datos")).toBeInTheDocument();
+    });
+    expect(container.textContent).toContain("Siembra Quinua en tu chacra P05");
+    expect(container.textContent?.toLowerCase()).not.toContain("network fail");
+    fetchMock.mockRestore();
+  });
+
+  it("la validación de explicar-chacra rechaza números inventados y devuelve plantilla fija", () => {
+    const datos = {
+      parcela_id: "P05",
+      distrito: "chiara_alta_2",
+      elev_dem_m: 3682,
+      estrategia_elegida: "B" as const,
+      cultivo_asignado: "Quinua",
+      dias_helada: 16,
+      humedad_suelo_pct: 62,
+      ph_suelo: 5.8,
+      ndvi_ultimo: 0.34,
+      enis_papa_ayacucho_pct: 19.3,
+      lluvia_oct_anomalia_pct: -44.3,
+    };
+
+    const conNumeroInventado = "Siembra Quinua porque tu rendimiento subirá 85 por ciento en P05.";
+    const resNum = validarRespuestaIA(conNumeroInventado, datos);
+    expect(resNum.valida).toBe(false);
+    expect(resNum.motivo).toContain("numero_no_presente:85");
+
+    const conCultivoNoRec = "Mejor siembra maíz en lugar de Quinua en P05.";
+    const resCult = validarRespuestaIA(conCultivoNoRec, datos);
+    expect(resCult.valida).toBe(false);
+
+    const plantilla = generarPlantillaFija(datos, "es");
+    expect(plantilla).toContain("Quinua");
+    expect(plantilla).toContain("16");
   });
 });

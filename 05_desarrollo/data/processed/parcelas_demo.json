@@ -22,14 +22,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 4.03,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 13.17,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 13.45,
         "tmin_absoluta_ajustada_c": 1.49,
         "dias_helada": 0,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 57,
-        "dias_lluvia_ge_1mm": 121,
+        "racha_seca_max_dias": 96,
+        "dias_lluvia_ge_1mm": 172,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -46,7 +46,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P02",
@@ -62,14 +62,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 1.39,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 10.54,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 10.82,
         "tmin_absoluta_ajustada_c": -1.15,
         "dias_helada": 2,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 57,
-        "dias_lluvia_ge_1mm": 121,
+        "racha_seca_max_dias": 96,
+        "dias_lluvia_ge_1mm": 172,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -86,7 +86,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P03",
@@ -102,14 +102,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 3.24,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 12.39,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 12.67,
         "tmin_absoluta_ajustada_c": 0.7,
         "dias_helada": 0,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 57,
-        "dias_lluvia_ge_1mm": 121,
+        "racha_seca_max_dias": 96,
+        "dias_lluvia_ge_1mm": 172,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -126,7 +126,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P04",
@@ -142,14 +142,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 4.37,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 13.52,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 13.8,
         "tmin_absoluta_ajustada_c": 1.83,
         "dias_helada": 0,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 57,
-        "dias_lluvia_ge_1mm": 121,
+        "racha_seca_max_dias": 96,
+        "dias_lluvia_ge_1mm": 172,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -166,7 +166,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P05",
@@ -182,14 +182,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 0.81,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 8.94,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 9.24,
         "tmin_absoluta_ajustada_c": -2.91,
-        "dias_helada": 14,
+        "dias_helada": 16,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 36,
-        "dias_lluvia_ge_1mm": 107,
+        "racha_seca_max_dias": 75,
+        "dias_lluvia_ge_1mm": 143,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -206,7 +206,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P06",
@@ -222,14 +222,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": -1.98,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 11.82,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 12.04,
         "tmin_absoluta_ajustada_c": 0.83,
         "dias_helada": 0,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 36,
-        "dias_lluvia_ge_1mm": 134,
+        "racha_seca_max_dias": 75,
+        "dias_lluvia_ge_1mm": 190,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -246,7 +246,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P07",
@@ -262,14 +262,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 1.24,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 9.37,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 9.66,
         "tmin_absoluta_ajustada_c": -2.48,
-        "dias_helada": 12,
+        "dias_helada": 13,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 36,
-        "dias_lluvia_ge_1mm": 107,
+        "racha_seca_max_dias": 75,
+        "dias_lluvia_ge_1mm": 143,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -286,7 +286,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P08",
@@ -302,14 +302,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 1.21,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 9.35,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 9.64,
         "tmin_absoluta_ajustada_c": -2.51,
-        "dias_helada": 12,
+        "dias_helada": 13,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 36,
-        "dias_lluvia_ge_1mm": 107,
+        "racha_seca_max_dias": 75,
+        "dias_lluvia_ge_1mm": 143,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -326,7 +326,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P09",
@@ -342,14 +342,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": 5.67,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 13.8,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 14.1,
         "tmin_absoluta_ajustada_c": 1.95,
         "dias_helada": 0,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 36,
-        "dias_lluvia_ge_1mm": 107,
+        "racha_seca_max_dias": 75,
+        "dias_lluvia_ge_1mm": 143,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -366,7 +366,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "id": "P10",
@@ -382,14 +382,14 @@
       "gradiente_c_km": -4.35,
       "ajuste_termico_c": -0.75,
       "clima_campana_2025_2026": {
-        "ventana_campana": "2025-07-01 a 2026-06-30",
-        "t2m_media_ajustada_c": 10.99,
+        "ventana_campana": "2025-07-01 a 2026-11-12",
+        "t2m_media_ajustada_c": 11.25,
         "tmin_absoluta_ajustada_c": -0.54,
         "dias_helada": 1,
         "umbral_helada_c": 0.0,
         "nota_umbral_helada": "Parametro configurable; pendiente de validar con SENAMHI por cultivo",
-        "racha_seca_max_dias": 36,
-        "dias_lluvia_ge_1mm": 125,
+        "racha_seca_max_dias": 75,
+        "dias_lluvia_ge_1mm": 174,
         "dias_faltantes_temp": 0,
         "dias_faltantes_prec": 0,
         "estado_ajuste_termico": "estimado",
@@ -406,7 +406,7 @@
         "fuente": "ISRIC SoilGrids v2.0 (0-5cm, mean)",
         "fallback_aplicado": false
       },
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     }
   ]
 }

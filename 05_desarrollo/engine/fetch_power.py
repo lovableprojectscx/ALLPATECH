@@ -88,15 +88,36 @@ def descargar_power(lat: float, lon: float, inicio: str, fin: str) -> dict:
         return json.load(resp)
 
 
+def fecha_completa_max(power_json: dict) -> str:
+    """Devuelve YYYYMMDD mas reciente sin valores -999 en temperatura, lluvia ni humedad."""
+    par = power_json["properties"]["parameter"]
+    completas = [
+        k for k, v in par["T2M"].items()
+        if v != FALTANTE
+        and par["T2M_MAX"].get(k, FALTANTE) != FALTANTE
+        and par["T2M_MIN"].get(k, FALTANTE) != FALTANTE
+        and par["PRECTOTCORR"].get(k, FALTANTE) != FALTANTE
+        and par.get("GWETROOT", {}).get(k, 0.0) != FALTANTE
+    ]
+    return max(completas)
+
+
 def obtener_power_celda(lat: float, lon: float, inicio: str, fin: str, raw_dir: str, force: bool = False) -> tuple[str, dict]:
     """Descarga una sola vez por celda POWER unica o reutiliza el JSON crudo en data/raw/."""
     cid = cell_key(lat, lon)
     os.makedirs(raw_dir, exist_ok=True)
-    ruta = os.path.join(raw_dir, f"power_{cid}_{inicio}_{fin}.json")
+    fin_req = date.today().strftime("%Y%m%d") if fin == "auto" else fin
+    ruta = os.path.join(raw_dir, f"power_{cid}_{inicio}_{fin_req}.json")
     if os.path.exists(ruta) and not force:
         with open(ruta, encoding="utf-8") as f:
             return cid, json.load(f)
-    data = descargar_power(lat, lon, inicio, fin)
+    data = descargar_power(lat, lon, inicio, fin_req)
+    # Mover crudos anteriores de la misma celda a _obsoleto/
+    obs_dir = os.path.join(os.path.dirname(raw_dir), "_obsoleto")
+    for fname in os.listdir(raw_dir):
+        if fname.startswith(f"power_{cid}_") and fname.endswith(".json") and fname != os.path.basename(ruta):
+            os.makedirs(obs_dir, exist_ok=True)
+            os.replace(os.path.join(raw_dir, fname), os.path.join(obs_dir, fname))
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(data, f)
     return cid, data
@@ -249,12 +270,22 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
     ajuste_c = round(((elev_dem_m - elev_celda) / 1000.0) * gradiente_c_km, 2)
     por_mes = metricas_mensuales_1981_2026(power_json)
 
-    meses_nombres = {7: "julio", 8: "agosto", 9: "septiembre", 10: "octubre"}
+    meses_nombres = {7: "julio", 8: "agosto", 9: "septiembre", 10: "octubre", 11: "noviembre"}
     resultados_mes = []
-    dato_hasta = max(k for k, v in power_json["properties"]["parameter"]["T2M"].items() if v != FALTANTE)
+    par_all = power_json["properties"]["parameter"]
+    fechas_completas = [
+        k for k, v in par_all["T2M"].items()
+        if v != FALTANTE
+        and par_all["T2M_MAX"].get(k, FALTANTE) != FALTANTE
+        and par_all["T2M_MIN"].get(k, FALTANTE) != FALTANTE
+        and par_all["PRECTOTCORR"].get(k, FALTANTE) != FALTANTE
+    ]
+    dato_hasta = max(fechas_completas)
     dato_hasta_iso = f"{dato_hasta[:4]}-{dato_hasta[4:6]}-{dato_hasta[6:8]}"
+    hasta_m, hasta_d = int(dato_hasta[4:6]), int(dato_hasta[6:8])
 
-    for m in [7, 8, 9, 10]:
+    meses_eval = [7, 8, 9, 10] + ([11] if hasta_m >= 11 else [])
+    for m in meses_eval:
         serie_t2m = {}
         for y in range(1981, 2027):
             vals = por_mes[(y, m)]["t2m"]
@@ -267,8 +298,9 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
 
         ordenado = sorted(serie_t2m.items(), key=lambda x: x[1], reverse=True)
         puesto_2026 = next((i + 1 for i, (yr, _) in enumerate(ordenado) if yr == 2026), None)
+        es_mes_en_curso = (m == hasta_m and hasta_d < 30)
 
-        resultados_mes.append({
+        item_mes = {
             "mes_num": m,
             "mes": meses_nombres[m],
             "t2m_celda_2026_c": round(val_2026, 2) if val_2026 is not None else "no disponible",
@@ -277,13 +309,19 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
             "anomalia_c": round(val_2026 - normal_91_20, 2) if val_2026 is not None else "no disponible",
             "puesto_1981_2026": puesto_2026,
             "total_anios_serie": len(serie_t2m),
-            "estado_celda": "observado" if val_2026 is not None else "no_disponible",
+            "estado_celda": ("estimado" if es_mes_en_curso else "observado") if val_2026 is not None else "no_disponible",
             "estado_ajustada": "estimado" if val_2026 is not None else "no_disponible",
-        })
+        }
+        if es_mes_en_curso:
+            item_mes["nota"] = "mes en curso"
+        resultados_mes.append(item_mes)
 
-    # Acumulado jul-sep y jul-oct 2026 vs normal 1991-2020
+    # Acumulado jul-sep, jul-oct y jul-nov (si hay datos) 2026 vs normal 1991-2020
     periodos = {}
-    for nombre, ms in [("jul_sep", [7, 8, 9]), ("jul_oct", [7, 8, 9, 10])]:
+    lista_periodos = [("jul_sep", [7, 8, 9]), ("jul_oct", [7, 8, 9, 10])]
+    if hasta_m >= 11:
+        lista_periodos.append(("jul_nov", [7, 8, 9, 10, 11]))
+    for nombre, ms in lista_periodos:
         serie_p = {}
         for y in range(1981, 2027):
             vals = [v for m in ms for v in por_mes[(y, m)]["t2m"]]
@@ -298,10 +336,10 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
             "anomalia_c": round(serie_p[2026] - norm_p, 2),
             "puesto_1981_2026": puesto,
             "total_anios_serie": len(serie_p),
-            "estado": "observado",
+            "estado": "estimado" if (nombre == "jul_nov" and hasta_d < 30) else "observado",
         }
 
-    # GDD de tuna (T_base = 0 °C, metodo residual (Tmax+Tmin)/2 - T_base) jul 1 - oct 31 en P01 ajustada
+    # GDD de tuna (T_base = 0 °C, metodo residual (Tmax+Tmin)/2 - T_base) jul 1 - dato_hasta en P01 ajustada
     par = power_json["properties"]["parameter"]
     tmax_s = par["T2M_MAX"]
     tmin_s = par["T2M_MIN"]
@@ -316,7 +354,7 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
             continue
         y, m, d_num = int(k[:4]), int(k[4:6]), int(k[6:8])
         gdd_dia = max(0.0, ((tx + ajuste_c) + (tn + ajuste_c)) / 2.0 - t_base_c)
-        if 7 <= m <= 10:
+        if (7, 1) <= (m, d_num) <= (hasta_m, hasta_d):
             gdd_por_anio[y] = gdd_por_anio.get(y, 0.0) + gdd_dia
         if 1991 <= y <= 2020 and ((m == 10 and d_num >= 16) or (m == 11 and d_num <= 15)):
             gdd_oct_nov_norm.append(gdd_dia)
@@ -431,7 +469,7 @@ def main():
     ap = argparse.ArgumentParser(description="MUYU - Descarga NASA POWER 1981-2026 por celda unica y cache de parcelas.")
     ap.add_argument("--csv", default="data/parcelas_demo_v1.csv", help="CSV de parcelas con elev_dem_m")
     ap.add_argument("--inicio", default="19810101")
-    ap.add_argument("--fin", default="20261031")
+    ap.add_argument("--fin", default="auto")
     ap.add_argument("--gradiente", type=float, default=GRADIENTE_DEFAULT, help="Gradiente termico andino C/km (-4.93 a -3.78)")
     ap.add_argument("--umbral-helada", type=float, default=0.0, help="Umbral C para dias de helada (pendiente validar con SENAMHI)")
     ap.add_argument("--cache-suelo", action="store_true", help="Consultar SoilGrids con fallback y guardar data/processed/parcelas_demo.json")
@@ -512,7 +550,11 @@ def main():
         elev_cell = float(pj["geometry"]["coordinates"][2])
         ajuste_c = round(((elev_dem - elev_cell) / 1000.0) * args.gradiente, 2)
 
-        clima_campana = resumen_climatico_parcela(pj, elev_dem, args.gradiente, args.umbral_helada)
+        dato_hasta_c = fecha_completa_max(pj)
+        dato_hasta_iso = f"{dato_hasta_c[:4]}-{dato_hasta_c[4:6]}-{dato_hasta_c[6:8]}"
+        clima_campana = resumen_climatico_parcela(
+            pj, elev_dem, args.gradiente, args.umbral_helada, fecha_fin=dato_hasta_c
+        )
         if p["ID"] in suelo_previo and not args.forzar:
             suelo = suelo_previo[p["ID"]]
         else:
@@ -534,7 +576,7 @@ def main():
             "ajuste_termico_c": ajuste_c,
             "clima_campana_2025_2026": clima_campana,
             "suelo": suelo,
-            "dato_hasta": "2026-10-31",
+            "dato_hasta": dato_hasta_iso,
         })
 
     with open(ruta_parcelas, "w", encoding="utf-8") as f:

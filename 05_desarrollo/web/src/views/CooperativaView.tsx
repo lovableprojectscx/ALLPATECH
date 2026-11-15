@@ -2,10 +2,11 @@ import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { ArrowLeft, ChevronDown, ChevronUp, FileText, Map as MapIcon } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronUp, FileText, Map as MapIcon, Snowflake } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 import { ComparadorABC } from "../components/ComparadorABC";
 import { EstadoBadge } from "../components/EstadoBadge";
+import { ExplicacionIA } from "../components/ExplicacionIA";
 import { FuenteDisclosure } from "../components/FuenteDisclosure";
 import {
   formatValor,
@@ -44,8 +45,40 @@ function crearIconoEstrategia(colorHex: string, forma: string, selected: boolean
   });
 }
 
+export function construirResumenHelada(
+  parcelas: Array<{
+    id: string;
+    distrito: string;
+    elev_dem_m: number;
+    dato_hasta: string;
+    clima_campana_2025_2026: { dias_helada: number };
+  }>,
+  lang: "es" | "en"
+) {
+  const conHelada = parcelas.filter((p) => p.clima_campana_2025_2026.dias_helada > 0);
+  if (conHelada.length === 0) return null;
+  const altas = conHelada.filter((p) => p.elev_dem_m > 3500);
+  const foco = altas.length > 0 ? altas : conHelada;
+  const noches = foco.map((p) => p.clima_campana_2025_2026.dias_helada);
+  const minN = Math.min(...noches);
+  const maxN = Math.max(...noches);
+  const nombres = foco.map((p) => getParcelaNombre(p.id, p.distrito)).join(", ");
+  const resumenCorto =
+    lang === "en"
+      ? `${foco.length} high-altitude plots (${nombres}) had between ${minN} and ${maxN} frost nights this season.`
+      : `${foco.length} chacras altas (${nombres}) tuvieron entre ${minN} y ${maxN} noches de helada esta campaña.`;
+  const detalle = `Criterio SENAMHI (Tmin ajustada ≤ 0 °C). Ajuste por altura desde NASA POWER (~50 km) + DEM 30 m. Chacras con heladas: ${conHelada
+    .map((p) => `${getParcelaNombre(p.id, p.distrito)}: ${p.clima_campana_2025_2026.dias_helada}`)
+    .join("; ")}.`;
+  return {
+    resumenCorto,
+    detalle,
+    fecha: foco[0]?.dato_hasta ?? "2026-11-12",
+  };
+}
+
 export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
   const [detalleId, setDetalleId] = useState<string | null>(null);
   const [showMap, setShowMap] = useState(false);
   const [showAllPlots, setShowAllPlots] = useState(false);
@@ -190,7 +223,7 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
           <FuenteDisclosure
             fuente="NASADEM / Copernicus DEM + NASA POWER + SoilGrids"
             escala="Chacra 30–90 m y clima ~50 km"
-            fecha="octubre de 2026"
+            fecha={parcelaActiva.dato_hasta}
             detalleTecnico={
               ndviValidos.length > 0
                 ? `Celda ${parcelaActiva.power_cell_id} (MERRA-2 GWETROOT=${formatValor(
@@ -203,6 +236,8 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
                   )}). Verdor satelital: sin dato.`
             }
           />
+
+          <ExplicacionIA parcela={parcelaActiva} planItem={planActivo} />
 
           {parcelaComp ? (
             <div style={{ marginTop: "20px" }}>
@@ -286,6 +321,38 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
               detalleTecnico={t("alert3Tech")}
             />
           </article>
+
+          {(() => {
+            const heladaInfo = construirResumenHelada(parcelas, lang);
+            if (!heladaInfo) return null;
+            return (
+              <article
+                className="muyu-alert-card"
+                aria-label="Alerta de helada"
+                style={{ borderColor: "var(--noche)", backgroundColor: "var(--hielo)" }}
+              >
+                <div style={{ display: "grid", gap: "6px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
+                    <span style={{ fontWeight: 700, color: "var(--noche)", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                      <Snowflake size={16} aria-hidden="true" />
+                      {t("whatToDoLabel")}
+                    </span>
+                    <EstadoBadge estado="estimado" />
+                  </div>
+                  <p style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700, color: "var(--noche)" }}>
+                    {t("alert4Action")}
+                  </p>
+                  <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.95rem" }}>{heladaInfo.resumenCorto}</p>
+                </div>
+                <FuenteDisclosure
+                  fuente="NASA POWER + ajuste por altura"
+                  escala="~50 km + DEM 30 m"
+                  fecha={heladaInfo.fecha}
+                  detalleTecnico={heladaInfo.detalle}
+                />
+              </article>
+            );
+          })()}
         </div>
       </section>
 

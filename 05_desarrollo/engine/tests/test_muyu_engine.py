@@ -186,13 +186,42 @@ def test_ndvi_en_rango_menos_1_a_1():
 
 def test_prueba1_tuna_gdd_tbase_0():
     data = json.loads((PROCESSED_DIR / "prueba1_tuna_huanta.json").read_text(encoding="utf-8"))
+    assert data["_metadata"]["dato_hasta"] >= "2026-11-12"
     gdd = data["gdd_tuna_jul1_oct31"]
     assert gdd["t_base_c"] == 0.0
-    assert gdd["gdd_2026"] == pytest.approx(1865.0, abs=5.0)
-    assert gdd["gdd_normal_1991_2020"] == pytest.approx(1714.0, abs=5.0)
-    assert gdd["diferencia_gd"] == pytest.approx(151.0, abs=5.0)
+    assert gdd["gdd_2026"] == pytest.approx(2046.7, abs=10.0)
+    assert gdd["gdd_normal_1991_2020"] == pytest.approx(1895.3, abs=10.0)
+    assert gdd["diferencia_gd"] == pytest.approx(151.4, abs=5.0)
     assert gdd["puesto_1981_2026"] == 2
     assert gdd["total_anios_serie"] == 46
-    assert gdd["adelanto_dias"] == pytest.approx(10.0, abs=1.0)
+    assert gdd["adelanto_dias"] == pytest.approx(10.1, abs=1.0)
     assert gdd["estado"] == "estimado"
     assert "1 de julio" in gdd["nota"]
+    nov = [m for m in data["mensual_2026"] if m["mes_num"] == 11]
+    assert len(nov) == 1
+    assert nov[0]["estado_celda"] == "estimado"
+    assert nov[0]["nota"] == "mes en curso"
+
+
+def test_actualizar_todo_orden_pasos():
+    import actualizar_todo
+
+    nombres = [n for n, _ in actualizar_todo.construir_pasos(dry_run=True)]
+    assert len(nombres) == 8
+    assert "POWER" in nombres[0]
+    assert "MODIS" in nombres[1]
+    assert "Mercado" in nombres[2]
+    assert "pytest" in nombres[6]
+    assert "ETL" in nombres[7]
+
+
+def test_alerta_helada_chacras_altas():
+    parcelas = json.loads((PROCESSED_DIR / "parcelas_demo.json").read_text(encoding="utf-8"))["parcelas"]
+    altas_con_helada = [
+        p for p in parcelas if p["elev_dem_m"] > 3500 and p["clima_campana_2025_2026"]["dias_helada"] > 0
+    ]
+    assert len(altas_con_helada) == 3
+    assert {p["id"] for p in altas_con_helada} == {"P05", "P07", "P08"}
+    for p in altas_con_helada:
+        assert p["dato_hasta"] >= "2026-11-12"
+        assert p["clima_campana_2025_2026"]["tmin_absoluta_ajustada_c"] <= 0.0

@@ -21,8 +21,8 @@ import { getClimaMensual, getFuentes, getImergMensual, getMercadoPapa } from "..
 import type { Fuente } from "../data/schemas";
 import { useI18n } from "../i18n";
 
-const NOMBRES_MES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct"];
-const NOMBRES_MES_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+const NOMBRES_MES_ES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+const NOMBRES_MES_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export default function DraView() {
   const { lang, t } = useI18n();

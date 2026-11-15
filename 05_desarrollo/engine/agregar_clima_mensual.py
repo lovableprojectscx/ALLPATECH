@@ -7,6 +7,7 @@ Incluye T2M media, Tmin media/absoluta, lluvia total, normal 1991-2020,
 anomalia T2M y puesto (1 = mas calido de la serie) con peso < 1 MB.
 """
 
+import calendar
 import json
 import statistics
 from collections import defaultdict
@@ -101,6 +102,9 @@ def agregar_celda(raw_path: Path) -> Dict[str, Any]:
             round(statistics.mean(bucket["gwetroot"]), 3) if bucket["gwetroot"] else "no disponible"
         )
 
+        dias_mes = calendar.monthrange(anio, mes)[1]
+        es_mes_en_curso = anio == 2026 and len(bucket["t2m"]) < dias_mes
+
         registros.append(
             {
                 "anio": anio,
@@ -115,7 +119,7 @@ def agregar_celda(raw_path: Path) -> Dict[str, Any]:
                 "anomalia_t2m_c": anom_m,
                 "puesto_calor": rankings.get((anio, mes), "no disponible"),
                 "total_anios_mes": totales_por_mes.get(mes, 0),
-                "estado": "observado",
+                "estado": "estimado" if es_mes_en_curso else "observado",
                 "dato_hasta": dato_hasta,
             }
         )

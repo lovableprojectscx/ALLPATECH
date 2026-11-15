@@ -322,3 +322,98 @@ export async function getNdviParcelas(
     return [];
   }
 }
+
+export async function getLatestDatoHasta(
+  client: SupabaseClient | null = getSupabaseClient()
+): Promise<string> {
+  const fechas: string[] = [];
+  if (client) {
+    try {
+      const [pRes, cRes, iRes, mRes] = await Promise.all([
+        client.from("parcelas").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
+        client.from("clima_mensual").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
+        client.from("lluvia_imerg_mensual").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
+        client.from("mercado_papa_mensual").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
+      ]);
+      for (const r of [pRes, cRes, iRes, mRes]) {
+        const val = r.data?.[0]?.dato_hasta;
+        if (typeof val === "string" && /^\d{4}-\d{2}-\d{2}$/.test(val)) {
+          fechas.push(val);
+        }
+      }
+      if (fechas.length > 0) {
+        return fechas.sort().reverse()[0];
+      }
+    } catch {
+      // fallback abajo
+    }
+  }
+  return "2026-11-12";
+}
+
+export interface ExplicacionIAResponse {
+  texto: string;
+  modelo: string;
+  es_plantilla: boolean;
+  usado_cache: boolean;
+  etiqueta_quechua: string | null;
+  datos_usados: Record<string, unknown>;
+}
+
+export async function explicarChacra(
+  parcela: Parcela,
+  planItem: { estrategia_elegida: string; cultivo_asignado: string } | undefined,
+  idioma: "es" | "en" | "qu"
+): Promise<ExplicacionIAResponse> {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
+
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      const resp = await fetch(`${supabaseUrl}/functions/v1/explicar-chacra`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${supabaseAnonKey}`,
+          apikey: supabaseAnonKey,
+        },
+        body: JSON.stringify({ parcela_id: parcela.id, idioma }),
+      });
+      if (resp.ok) {
+        return (await resp.json()) as ExplicacionIAResponse;
+      }
+    } catch {
+      // Conmuta a plantilla fija local sin mostrar error técnico
+    }
+  }
+
+  const cultivo = planItem?.cultivo_asignado ?? "cultivo recomendado";
+  const estrategia = planItem?.estrategia_elegida ?? "B";
+  const heladas = parcela.clima_campana_2025_2026.dias_helada;
+  const texto =
+    idioma === "en"
+      ? `Plant ${cultivo} on plot ${parcela.id} (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m). ${
+          heladas > 0 ? `There were ${heladas} frost nights.` : "There were no frost nights."
+        } Follow option ${estrategia} to protect soil and water.`
+      : idioma === "qu"
+      ? `${parcela.id} chakrapi (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m) ${cultivo} tarpuy. ${heladas} tuta qasa karqan. ${estrategia} ñanta qatiy allpata yakutapas waqaychanapaq.`
+      : `Siembra ${cultivo} en tu chacra ${parcela.id} (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m). ${
+          heladas > 0 ? `Hubo ${heladas} noches de helada.` : "No hubo noches de helada."
+        } Sigue la opción ${estrategia} para cuidar suelo y agua.`;
+
+  return {
+    texto,
+    modelo: "plantilla_fija",
+    es_plantilla: true,
+    usado_cache: false,
+    etiqueta_quechua: idioma === "qu" ? "Borrador automático en quechua — debe revisarlo un hablante" : null,
+    datos_usados: {
+      parcela_id: parcela.id,
+      distrito: parcela.distrito,
+      elev_dem_m: Math.round(parcela.elev_dem_m),
+      estrategia_elegida: estrategia,
+      cultivo_asignado: cultivo,
+      dias_helada: heladas,
+    },
+  };
+}

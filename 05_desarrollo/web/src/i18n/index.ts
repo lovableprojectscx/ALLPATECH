@@ -4,7 +4,7 @@ export type Lang = "es" | "en";
 
 export const DICTIONARY = {
   es: {
-    brandName: "MUYU",
+    brandName: "Kultiva",
     brandTagline: "Sabe lo que viene. Siembra lo que conviene.",
     navLabel: "Vistas principales",
     viewCoop: "Cooperativa",
@@ -55,6 +55,12 @@ export const DICTIONARY = {
     alert3Action: "Riesgo de que sobre papa al cosechar. Considera rotar con tarwi o haba.",
     alert3Short: "En Ayacucho sembrarán +19 % más papa.",
     alert3Tech: "Encuesta ENIS MIDAGRI (+19.3 % intención de siembra en Ayacucho) cruzada con índice de sobreoferta I_m en Mercado Mayorista de Lima (EMMSA).",
+    alert4Action: "Protege la semilla y el almácigo en las chacras altas.",
+    explainSimpleBtn: "Explícamelo simple",
+    explainLoading: "Preparando explicación simple...",
+    explainBadge: "Redactado por IA con estos datos",
+    explainSeeData: "Ver los datos usados",
+    explainQuechuaBtn: "Quechua (borrador)",
 
     // Tus chacras & Mapa
     plotsHeading: "Tus chacras",
@@ -121,7 +127,7 @@ export const DICTIONARY = {
     emptyData: "Sin registros disponibles.",
   },
   en: {
-    brandName: "MUYU",
+    brandName: "Kultiva",
     brandTagline: "Know what is coming. Plant what fits best.",
     navLabel: "Main views",
     viewCoop: "Cooperative",
@@ -172,6 +178,12 @@ export const DICTIONARY = {
     alert3Action: "Risk of potato oversupply at harvest. Consider rotating with tarwi or fava bean.",
     alert3Short: "Potato planting in Ayacucho grows +19 %.",
     alert3Tech: "ENIS MIDAGRI survey (+19.3 % potato planting intention in Ayacucho) crossed with oversupply index I_m at Lima Wholesale Market (EMMSA).",
+    alert4Action: "Protect seed and seedlings in high-altitude plots.",
+    explainSimpleBtn: "Explain it simply",
+    explainLoading: "Preparing simple explanation...",
+    explainBadge: "Written by AI using this data",
+    explainSeeData: "See data used",
+    explainQuechuaBtn: "Quechua (draft)",
 
     // Your plots & Map
     plotsHeading: "Your plots",

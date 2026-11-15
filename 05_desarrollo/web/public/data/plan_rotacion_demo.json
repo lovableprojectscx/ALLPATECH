@@ -50,7 +50,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P02",
@@ -70,7 +70,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P03",
@@ -90,7 +90,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P04",
@@ -110,7 +110,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P05",
@@ -130,7 +130,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P06",
@@ -150,7 +150,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P07",
@@ -170,7 +170,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P08",
@@ -190,7 +190,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P09",
@@ -210,7 +210,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     },
     {
       "parcela_id": "P10",
@@ -230,7 +230,7 @@
         "estado_regla": "no_disponible"
       },
       "estado": "ilustrativo",
-      "dato_hasta": "2026-10-31"
+      "dato_hasta": "2026-11-12"
     }
   ],
   "comparador_abc_por_parcela": [
@@ -264,25 +264,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.17,
+                "t2m_media_evaluada_c": 13.45,
                 "tmin_absoluta_evaluada_c": 1.49,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -293,7 +293,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -321,25 +321,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.17,
+                "t2m_media_evaluada_c": 13.45,
                 "tmin_absoluta_evaluada_c": 1.49,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -350,7 +350,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -378,25 +378,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.17,
+                "t2m_media_evaluada_c": 13.45,
                 "tmin_absoluta_evaluada_c": 1.49,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -407,7 +407,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -445,25 +445,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 40.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 10.54,
+                "t2m_media_evaluada_c": 10.82,
                 "tmin_absoluta_evaluada_c": -1.15,
                 "dias_helada_base": 2,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -474,7 +474,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -502,25 +502,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 35.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 10.54,
+                "t2m_media_evaluada_c": 10.82,
                 "tmin_absoluta_evaluada_c": -1.15,
                 "dias_helada_base": 2,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -531,7 +531,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -564,25 +564,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 50.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 10.54,
+                "t2m_media_evaluada_c": 10.82,
                 "tmin_absoluta_evaluada_c": -1.15,
                 "dias_helada_base": 2,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -593,7 +593,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -631,25 +631,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 12.39,
+                "t2m_media_evaluada_c": 12.67,
                 "tmin_absoluta_evaluada_c": 0.7,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -660,7 +660,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -688,25 +688,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 12.39,
+                "t2m_media_evaluada_c": 12.67,
                 "tmin_absoluta_evaluada_c": 0.7,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -717,7 +717,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -745,25 +745,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 12.39,
+                "t2m_media_evaluada_c": 12.67,
                 "tmin_absoluta_evaluada_c": 0.7,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -774,7 +774,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -812,25 +812,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.52,
+                "t2m_media_evaluada_c": 13.8,
                 "tmin_absoluta_evaluada_c": 1.83,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -841,7 +841,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -869,25 +869,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.52,
+                "t2m_media_evaluada_c": 13.8,
                 "tmin_absoluta_evaluada_c": 1.83,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -898,7 +898,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -926,25 +926,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.52,
+                "t2m_media_evaluada_c": 13.8,
                 "tmin_absoluta_evaluada_c": 1.83,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 57
+                "racha_seca_max_dias": 96
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -955,7 +955,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -993,25 +993,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 40.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 8.94,
+                "t2m_media_evaluada_c": 9.24,
                 "tmin_absoluta_evaluada_c": -2.91,
-                "dias_helada_base": 14,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 16,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -1022,7 +1022,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1050,25 +1050,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 35.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 8.94,
+                "t2m_media_evaluada_c": 9.24,
                 "tmin_absoluta_evaluada_c": -2.91,
-                "dias_helada_base": 14,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 16,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1079,7 +1079,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1112,25 +1112,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 50.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 8.94,
+                "t2m_media_evaluada_c": 9.24,
                 "tmin_absoluta_evaluada_c": -2.91,
-                "dias_helada_base": 14,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 16,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1141,7 +1141,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1179,25 +1179,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 11.82,
+                "t2m_media_evaluada_c": 12.04,
                 "tmin_absoluta_evaluada_c": 0.83,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -1208,7 +1208,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1236,25 +1236,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 11.82,
+                "t2m_media_evaluada_c": 12.04,
                 "tmin_absoluta_evaluada_c": 0.83,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1265,7 +1265,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1293,25 +1293,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 11.82,
+                "t2m_media_evaluada_c": 12.04,
                 "tmin_absoluta_evaluada_c": 0.83,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1322,7 +1322,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1360,25 +1360,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 40.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 9.37,
+                "t2m_media_evaluada_c": 9.66,
                 "tmin_absoluta_evaluada_c": -2.48,
-                "dias_helada_base": 12,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 13,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -1389,7 +1389,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1417,25 +1417,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 35.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 9.37,
+                "t2m_media_evaluada_c": 9.66,
                 "tmin_absoluta_evaluada_c": -2.48,
-                "dias_helada_base": 12,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 13,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1446,7 +1446,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1479,25 +1479,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 50.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 9.37,
+                "t2m_media_evaluada_c": 9.66,
                 "tmin_absoluta_evaluada_c": -2.48,
-                "dias_helada_base": 12,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 13,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1508,7 +1508,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1546,25 +1546,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 40.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 9.35,
+                "t2m_media_evaluada_c": 9.64,
                 "tmin_absoluta_evaluada_c": -2.51,
-                "dias_helada_base": 12,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 13,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -1575,7 +1575,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1603,25 +1603,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 35.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 9.35,
+                "t2m_media_evaluada_c": 9.64,
                 "tmin_absoluta_evaluada_c": -2.51,
-                "dias_helada_base": 12,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 13,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1632,7 +1632,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1665,25 +1665,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 50.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 9.35,
+                "t2m_media_evaluada_c": 9.64,
                 "tmin_absoluta_evaluada_c": -2.51,
-                "dias_helada_base": 12,
-                "racha_seca_max_dias": 36
+                "dias_helada_base": 13,
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1694,7 +1694,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1732,25 +1732,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.8,
+                "t2m_media_evaluada_c": 14.1,
                 "tmin_absoluta_evaluada_c": 1.95,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -1761,7 +1761,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1789,25 +1789,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.8,
+                "t2m_media_evaluada_c": 14.1,
                 "tmin_absoluta_evaluada_c": 1.95,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1818,7 +1818,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1846,25 +1846,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 60.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 13.8,
+                "t2m_media_evaluada_c": 14.1,
                 "tmin_absoluta_evaluada_c": 1.95,
                 "dias_helada_base": 0,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 90.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1875,7 +1875,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1913,25 +1913,25 @@
               "banda": "alto",
               "_interno_0_100": 75.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 40.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 10.99,
+                "t2m_media_evaluada_c": 11.25,
                 "tmin_absoluta_evaluada_c": -0.54,
                 "dias_helada_base": 1,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "alto",
@@ -1942,7 +1942,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -1970,25 +1970,25 @@
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "bajo",
               "_interno_0_100": 35.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 10.99,
+                "t2m_media_evaluada_c": 11.25,
                 "tmin_absoluta_evaluada_c": -0.54,
                 "dias_helada_base": 1,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "alto",
               "_interno_0_100": 70.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -1999,7 +1999,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },
@@ -2032,25 +2032,25 @@
               "banda": "alto",
               "_interno_0_100": 95.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "resiliencia_climatica": {
               "banda": "medio",
               "_interno_0_100": 50.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "detalle": {
-                "t2m_media_evaluada_c": 10.99,
+                "t2m_media_evaluada_c": 11.25,
                 "tmin_absoluta_evaluada_c": -0.54,
                 "dias_helada_base": 1,
-                "racha_seca_max_dias": 36
+                "racha_seca_max_dias": 75
               }
             },
             "salud_suelo_y_rotacion": {
               "banda": "bajo",
               "_interno_0_100": 30.0,
               "estado": "estimado",
-              "dato_hasta": "2026-10-31"
+              "dato_hasta": "2026-11-12"
             },
             "mercado_y_sobreoferta": {
               "banda": "bajo",
@@ -2061,7 +2061,7 @@
             "riesgo_plagas": {
               "banda": "evidencia_insuficiente",
               "estado": "no_disponible",
-              "dato_hasta": "2026-10-31",
+              "dato_hasta": "2026-11-12",
               "motivo": "Sin modelo fitosanitario validado en esta fase"
             }
           },

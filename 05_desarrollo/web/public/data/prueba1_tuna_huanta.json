@@ -9,16 +9,16 @@
     "gradiente_usado_c_km": -4.35,
     "ajuste_termico_parcela_c": 4.03,
     "escala_dato_power": "regional_50km",
-    "dato_hasta": "2026-10-31",
+    "dato_hasta": "2026-11-12",
     "t_base_c": 0.0,
     "fuente_tuna": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernandez 2009); 2,751.31 GD, 161 dias",
     "nota_supuesto": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce."
   },
   "gdd_tuna_jul1_oct31": {
     "t_base_c": 0.0,
-    "gdd_2026": 1865.0,
-    "gdd_normal_1991_2020": 1713.7,
-    "diferencia_gd": 151.3,
+    "gdd_2026": 2046.7,
+    "gdd_normal_1991_2020": 1895.3,
+    "diferencia_gd": 151.4,
     "puesto_1981_2026": 2,
     "total_anios_serie": 46,
     "gd_diario_normal_oct_nov": 15.02,
@@ -74,6 +74,19 @@
       "total_anios_serie": 46,
       "estado_celda": "observado",
       "estado_ajustada": "estimado"
+    },
+    {
+      "mes_num": 11,
+      "mes": "noviembre",
+      "t2m_celda_2026_c": 10.68,
+      "t2m_ajustada_parcela_2026_c": 14.71,
+      "normal_1991_2020_celda_c": 10.27,
+      "anomalia_c": 0.41,
+      "puesto_1981_2026": 7,
+      "total_anios_serie": 46,
+      "estado_celda": "estimado",
+      "estado_ajustada": "estimado",
+      "nota": "mes en curso"
     }
   ],
   "periodos_acumulados_2026": {
@@ -92,6 +105,14 @@
       "puesto_1981_2026": 2,
       "total_anios_serie": 46,
       "estado": "observado"
+    },
+    "jul_nov": {
+      "t2m_celda_2026_c": 10.19,
+      "normal_1991_2020_celda_c": 9.08,
+      "anomalia_c": 1.11,
+      "puesto_1981_2026": 2,
+      "total_anios_serie": 46,
+      "estado": "estimado"
     }
   }
 }

@@ -10,7 +10,7 @@ export function MuyuLogo({ size = 36, dotColor = "#9CC3D5" }: MuyuLogoProps) {
       height={size}
       viewBox="0 0 100 100"
       role="img"
-      aria-label="Logo de MUYU"
+      aria-label="Logo de Kultiva"
       style={{ flexShrink: 0 }}
     >
       <g fill="none" strokeWidth="14" strokeDasharray="70 156.2">

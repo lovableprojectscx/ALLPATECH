@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AlertTriangle, Calendar, Check, Copy, Printer, Sprout } from "lucide-react";
+import { ExplicacionIA } from "../components/ExplicacionIA";
 import { MuyuLogo } from "../components/MuyuLogo";
 import { getParcelas, getPlanRotacion } from "../data/api";
 import { getParcelaNombre } from "../data/nombres";
@@ -56,7 +57,7 @@ export default function FichaView({
     parcela.clima_campana_2025_2026.dias_helada > 0 ? t("fichaWatchFrost") : t("fichaWatchDry");
 
   const whatsappText = [
-    `🌱 MUYU · ${nombreChacra}`,
+    `🌱 Kultiva · ${nombreChacra}`,
     `📅 ${t("fichaCampaign")}`,
     `1) ${t("fichaWhatToPlant")}: ${msgWhatToPlant}`,
     `2) ${t("fichaWhen")}: ${msgWhen}`,
@@ -195,6 +196,8 @@ export default function FichaView({
           </div>
         </footer>
       </article>
+
+      <ExplicacionIA parcela={parcela} planItem={planItem} />
     </div>
   );
 }

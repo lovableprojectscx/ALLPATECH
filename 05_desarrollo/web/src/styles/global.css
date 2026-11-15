@@ -196,7 +196,7 @@ a:focus-visible,
 
 .muyu-alerts-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
 
@@ -339,7 +339,16 @@ a:focus-visible,
     margin-top: 8px;
   }
   .muyu-alerts-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .muyu-alerts-grid .muyu-alert-card {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
   }
   .muyu-coop-split {
     grid-template-columns: 1fr;

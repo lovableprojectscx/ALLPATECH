@@ -13,6 +13,7 @@ import json
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import date
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -61,22 +62,28 @@ def fetch_parcela_ndvi(parcela: Dict[str, str], forzar: bool = False) -> Dict[st
     RAW_MODIS_DIR.mkdir(parents=True, exist_ok=True)
     cache_file = RAW_MODIS_DIR / f"mod13q1_{pid}.json"
 
+    existentes: Dict[str, Dict[str, Any]] = {}
     if cache_file.exists() and not forzar:
         cached = json.loads(cache_file.read_text(encoding="utf-8"))
-        return cached
+        for r in cached.get("registros", []):
+            existentes[r["modis_date"]] = r
 
+    hoy_iso = date.today().isoformat()
     dates_url = f"{ORNL_BASE}/dates?latitude={lat}&longitude={lon}"
     dates_resp = http_get_json(dates_url)
     target_dates = [
         d for d in dates_resp.get("dates", [])
-        if "2024-01-01" <= d["calendar_date"] <= "2026-10-31"
+        if "2024-01-01" <= d["calendar_date"] <= hoy_iso
     ]
+    nuevas_dates = [d for d in target_dates if d["modis_date"] not in existentes]
+    if not nuevas_dates and cache_file.exists() and not forzar:
+        return json.loads(cache_file.read_text(encoding="utf-8"))
 
     ndvi_by_date: Dict[str, Optional[int]] = {}
     rel_by_date: Dict[str, Optional[int]] = {}
 
-    for i in range(0, len(target_dates), MAX_DATES_PER_REQ):
-        chunk = target_dates[i : i + MAX_DATES_PER_REQ]
+    for i in range(0, len(nuevas_dates), MAX_DATES_PER_REQ):
+        chunk = nuevas_dates[i : i + MAX_DATES_PER_REQ]
         sd = chunk[0]["modis_date"]
         ed = chunk[-1]["modis_date"]
 
@@ -94,9 +101,7 @@ def fetch_parcela_ndvi(parcela: Dict[str, str], forzar: bool = False) -> Dict[st
                 vals = item.get("data", [])
                 target_map[mdate] = int(vals[0]) if vals else None
 
-    registros = []
-    valid_count = 0
-    for d in target_dates:
+    for d in nuevas_dates:
         mdate = d["modis_date"]
         cdate = d["calendar_date"]
         raw_ndvi = ndvi_by_date.get(mdate)
@@ -106,20 +111,20 @@ def fetch_parcela_ndvi(parcela: Dict[str, str], forzar: bool = False) -> Dict[st
         if rel in (0, 1) and raw_ndvi is not None and -2000 <= raw_ndvi <= 10000:
             ndvi_val = round(raw_ndvi * SCALE_NDVI, 4)
             estado = "observado"
-            valid_count += 1
         else:
             ndvi_val = "no disponible"
             estado = "no_disponible"
 
-        registros.append(
-            {
-                "modis_date": mdate,
-                "calendar_date": cdate,
-                "ndvi": ndvi_val,
-                "pixel_reliability": rel,
-                "estado": estado,
-            }
-        )
+        existentes[mdate] = {
+            "modis_date": mdate,
+            "calendar_date": cdate,
+            "ndvi": ndvi_val,
+            "pixel_reliability": rel,
+            "estado": estado,
+        }
+
+    registros = [existentes[k] for k in sorted(existentes)]
+    valid_count = sum(1 for r in registros if r["estado"] == "observado")
 
     dato_hasta = max((r["calendar_date"] for r in registros), default="no disponible")
     out = {
@@ -170,19 +175,26 @@ def main() -> None:
             print(f"[MODIS] {pid}: {res['fechas_validas']}/{res['total_fechas']} fechas validas (hasta {res['dato_hasta']})")
         except Exception as exc:
             fallos.append({"parcela_id": pid, "error": str(exc)})
-            resultados.append(
-                {
-                    "parcela_id": pid,
-                    "distrito": p["Category"],
-                    "escala": "250 m",
-                    "estado": "no_disponible",
-                    "total_fechas": 0,
-                    "fechas_validas": 0,
-                    "dato_hasta": "no disponible",
-                    "registros": [],
-                }
-            )
-            print(f"[MODIS][WARN] {pid} fallo: {exc}")
+            if cache_file.exists():
+                cached = json.loads(cache_file.read_text(encoding="utf-8"))
+                cached["escala"] = "250 m"
+                cached["estado"] = "observado"
+                resultados.append(cached)
+                print(f"[MODIS][WARN] {pid} uso cache previo por error de red: {exc}")
+            else:
+                resultados.append(
+                    {
+                        "parcela_id": pid,
+                        "distrito": p["Category"],
+                        "escala": "250 m",
+                        "estado": "no_disponible",
+                        "total_fechas": 0,
+                        "fechas_validas": 0,
+                        "dato_hasta": "no disponible",
+                        "registros": [],
+                    }
+                )
+                print(f"[MODIS][WARN] {pid} fallo: {exc}")
 
     con_datos = sum(1 for r in resultados if r["estado"] == "observado" and r["fechas_validas"] > 0)
     salida = {
