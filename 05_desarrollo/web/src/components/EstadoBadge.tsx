@@ -4,7 +4,6 @@ import { useI18n } from "../i18n";
 interface EstadoBadgeProps {
   estado: EstadoDato;
   fuente?: string;
-  datoHasta?: string;
 }
 
 const ESTILO_ESTADO: Record<
@@ -55,7 +54,7 @@ function EstadoIcono({ estado }: { estado: EstadoDato }) {
   );
 }
 
-export function EstadoBadge({ estado, fuente, datoHasta }: EstadoBadgeProps) {
+export function EstadoBadge({ estado, fuente }: EstadoBadgeProps) {
   const { t } = useI18n();
   const st = ESTILO_ESTADO[estado];
   const labelMap: Record<EstadoDato, string> = {
@@ -85,7 +84,6 @@ export function EstadoBadge({ estado, fuente, datoHasta }: EstadoBadgeProps) {
     >
       <EstadoIcono estado={estado} />
       <span>{labelMap[estado]}</span>
-      {datoHasta ? <span style={{ opacity: 0.92 }}>· {datoHasta}</span> : null}
     </span>
   );
 }

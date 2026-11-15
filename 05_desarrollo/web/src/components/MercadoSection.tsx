@@ -17,14 +17,22 @@ interface MercadoSectionProps {
   fuentesMap: Record<string, Fuente>;
 }
 
+function formatMiles(val: number): string {
+  return Math.round(val)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
 export function MercadoSection({ mercado, fuentesMap }: MercadoSectionProps) {
   const { t } = useI18n();
-  const filasRecientes = mercado.filter((m) => m.anio >= 2024);
+  // Excluir nov 2026 incompleto (mes en curso hasta el día 13) para no mostrar un falso desplome
+  const filasCompletas = mercado.filter(
+    (m) => m.anio >= 2024 && !(m.anio === 2026 && m.mes === 11)
+  );
 
-  const chartData = filasRecientes.map((m) => ({
+  const chartData = filasCompletas.map((m) => ({
     label: `${m.anio}-${String(m.mes).padStart(2, "0")}`,
     toneladas: Math.round(m.ingreso_t),
-    precio: Number(m.precio_soles_kg.toFixed(1)),
   }));
 
   return (
@@ -51,13 +59,18 @@ export function MercadoSection({ mercado, fuentesMap }: MercadoSectionProps) {
         {t("draMarketPrueba2")}
       </div>
 
-      <div style={{ height: "260px", marginBottom: "10px" }} role="img" aria-label={t("draMarketTitle")}>
+      <div className="muyu-chart-box" style={{ marginBottom: "8px" }} role="img" aria-label={t("draMarketTitle")}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={chartData}>
+          <BarChart data={chartData} margin={{ left: 16, right: 8, top: 8, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#C4D1CE" />
             <XAxis dataKey="label" tick={{ fill: "#14303A", fontSize: 12 }} />
-            <YAxis tick={{ fill: "#14303A", fontSize: 12 }} />
-            <Tooltip />
+            <YAxis
+              width={72}
+              tick={{ fill: "#14303A", fontSize: 12 }}
+              tickFormatter={formatMiles}
+              label={{ value: "toneladas", angle: -90, position: "insideLeft", fill: "#14303A", fontSize: 12 }}
+            />
+            <Tooltip formatter={(val: number) => [`${formatMiles(val)} toneladas`, "Ingreso"]} />
             <Bar dataKey="toneladas" name="Toneladas al mes" fill="#003F6E" />
           </BarChart>
         </ResponsiveContainer>

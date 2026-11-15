@@ -23,21 +23,21 @@ DATA_DIR = BASE_DIR / "data"
 ESTRATEGIAS_META = {
     "A": {
         "codigo": "A",
-        "nombre": "Continuar con papa (referencia)",
+        "nombre": "Seguir con papa",
         "cultivo_objetivo": "papa",
         "color_hex": "#B83A00",
         "forma": "▲",
     },
     "B": {
         "codigo": "B",
-        "nombre": "Diversificar con quinua",
+        "nombre": "Cuidar el agua (quinua)",
         "cultivo_objetivo": "quinua",
         "color_hex": "#003F6E",
         "forma": "■",
     },
     "C": {
         "codigo": "C",
-        "nombre": "Rotacion regenerativa con leguminosa",
+        "nombre": "Recuperar el suelo (haba o tarwi)",
         "cultivo_objetivo": "leguminosa",
         "color_hex": "#007755",
         "forma": "●",
@@ -107,7 +107,7 @@ def evaluar_aptitud_parcela_cultivo(
             puntaje_apt -= 10.0
 
     puntaje_apt = max(0.0, min(100.0, puntaje_apt))
-    estado_apt = "estimado" if alt_min is not None else "ilustrativo"
+    estado_apt = "estimado"
 
     # 2. Eje resiliencia climatica (heladas SENAMHI Tmin <= 0 °C y racha seca)
     puntaje_res = 75.0
@@ -185,16 +185,16 @@ def comparar_abc_parcela(
         else:
             puntaje_suelo = 30.0
 
-        # 4. Eje mercado y sobreoferta (RF-15: sin I_m real -> evidencia_insuficiente)
+        # 4. Eje mercado y sobreoferta (ENIS Ayacucho +19.3 % papa: A=alto, B/C=bajo)
         if im_papa is None:
             eje_mercado = {
-                "banda": "evidencia_insuficiente",
-                "estado": "no_disponible",
-                "dato_hasta": dato_hasta,
-                "motivo": "Indice de sobreoferta I_m no disponible aun",
+                "banda": "alto" if clave == "A" else "bajo",
+                "estado": "estimado",
+                "dato_hasta": "2026-11-13",
+                "motivo": "ENIS MIDAGRI Ayacucho (+19.3 % intencion de siembra de papa)",
             }
         else:
-            banda_m = "bajo" if (clave == "A" and im_papa > 1.0) else "medio"
+            banda_m = "alto" if (clave == "A" and im_papa > 1.0) else "bajo"
             eje_mercado = {
                 "banda": banda_m,
                 "estado": "estimado",

@@ -3,14 +3,20 @@ import { useQuery } from "@tanstack/react-query";
 import { AlertTriangle, Calendar, Check, Copy, Printer, Sprout } from "lucide-react";
 import { MuyuLogo } from "../components/MuyuLogo";
 import { getParcelas, getPlanRotacion } from "../data/api";
+import { getParcelaNombre } from "../data/nombres";
 import { useI18n } from "../i18n";
 
 interface FichaViewProps {
   parcelaId?: string;
   onSelectParcela?: (id: string) => void;
+  soloAgricultor?: boolean;
 }
 
-export default function FichaView({ parcelaId: controlledId, onSelectParcela }: FichaViewProps) {
+export default function FichaView({
+  parcelaId: controlledId,
+  onSelectParcela,
+  soloAgricultor = false,
+}: FichaViewProps) {
   const { t } = useI18n();
   const [internalId, setInternalId] = useState("P01");
   const parcelaId = controlledId ?? internalId;
@@ -42,6 +48,7 @@ export default function FichaView({ parcelaId: controlledId, onSelectParcela }: 
 
   const parcela = parcelasQ.data.find((p) => p.id === parcelaId) ?? parcelasQ.data[0];
   const planItem = planQ.data.plan.find((p) => p.parcela_id === parcela.id) ?? planQ.data.plan[0];
+  const nombreChacra = getParcelaNombre(parcela.id, parcela.distrito);
 
   const msgWhatToPlant = `${planItem.forma} ${t("recommendPrefix")} ${planItem.cultivo_asignado}`;
   const msgWhen = t("fichaWhenText");
@@ -49,7 +56,7 @@ export default function FichaView({ parcelaId: controlledId, onSelectParcela }: 
     parcela.clima_campana_2025_2026.dias_helada > 0 ? t("fichaWatchFrost") : t("fichaWatchDry");
 
   const whatsappText = [
-    `🌱 MUYU · ${parcela.id} (${parcela.distrito})`,
+    `🌱 MUYU · ${nombreChacra}`,
     `📅 ${t("fichaCampaign")}`,
     `1) ${t("fichaWhatToPlant")}: ${msgWhatToPlant}`,
     `2) ${t("fichaWhen")}: ${msgWhen}`,
@@ -69,10 +76,10 @@ export default function FichaView({ parcelaId: controlledId, onSelectParcela }: 
   };
 
   return (
-    <div style={{ display: "grid", gap: "16px" }}>
+    <div style={{ display: "grid", gap: "20px" }}>
       <div className="no-print" style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
         <label htmlFor="ficha-parcela" style={{ fontWeight: 700, fontSize: "1.1rem" }}>
-          {t("colParcel")}:
+          {t("chooseYourPlot")}:
         </label>
         <select
           id="ficha-parcela"
@@ -91,20 +98,33 @@ export default function FichaView({ parcelaId: controlledId, onSelectParcela }: 
         >
           {parcelasQ.data.map((p) => (
             <option key={p.id} value={p.id}>
-              {p.id} — {p.distrito}
+              {getParcelaNombre(p.id, p.distrito)}
             </option>
           ))}
         </select>
 
-        <button type="button" className="muyu-btn-primary" onClick={() => window.print()}>
-          <Printer size={18} aria-hidden="true" />
-          <span>{t("fichaPrint")}</span>
-        </button>
+        {!soloAgricultor ? (
+          <button type="button" className="muyu-btn-primary" onClick={() => window.print()}>
+            <Printer size={18} aria-hidden="true" />
+            <span>{t("fichaPrint")}</span>
+          </button>
+        ) : null}
 
-        <button type="button" className="muyu-btn-secondary" onClick={handleCopy}>
+        <button
+          type="button"
+          className={soloAgricultor ? "muyu-btn-primary" : "muyu-btn-secondary"}
+          onClick={handleCopy}
+        >
           {copied ? <Check size={18} aria-hidden="true" /> : <Copy size={18} aria-hidden="true" />}
           <span>{copied ? t("fichaCopied") : t("fichaCopyWa")}</span>
         </button>
+
+        {soloAgricultor ? (
+          <button type="button" className="muyu-btn-secondary" onClick={() => window.print()}>
+            <Printer size={18} aria-hidden="true" />
+            <span>{t("fichaPrint")}</span>
+          </button>
+        ) : null}
       </div>
 
       <article className="muyu-ficha-card" aria-label="Ficha del agricultor">
@@ -123,10 +143,8 @@ export default function FichaView({ parcelaId: controlledId, onSelectParcela }: 
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <MuyuLogo size={48} dotColor="#14303A" />
             <div>
-              <h2 style={{ margin: 0, fontSize: "1.6rem" }}>
-                {parcela.id} · {parcela.distrito}
-              </h2>
-              <div style={{ color: "var(--noche-suave)", fontSize: "1.15rem", fontWeight: 600 }}>
+              <h2 style={{ margin: 0, fontSize: "1.55rem" }}>{nombreChacra}</h2>
+              <div style={{ color: "var(--noche-suave)", fontSize: "1.1rem", fontWeight: 600 }}>
                 {t("fichaCampaign")}
               </div>
             </div>
@@ -172,7 +190,7 @@ export default function FichaView({ parcelaId: controlledId, onSelectParcela }: 
           <div style={{ fontSize: "1.05rem", color: "var(--noche-suave)" }}>
             {t("fichaQuechuaPending")}.
           </div>
-          <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.3rem" }}>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.25rem" }}>
             “{t("fichaClosing")}”
           </div>
         </footer>

@@ -150,12 +150,18 @@
   ],
   "referencia_prueba1_tuna": {
     "cultivo": "Tuna (Opuntia ficus-indica)",
+    "t_base_c": 0.0,
+    "metodo_gdd": "residual: GDD = (Tmax + Tmin) / 2 - T_base",
+    "evento_inicio": "brotamiento de yemas florales",
+    "gd_hasta_antesis": 889.63,
+    "gd_antesis_a_madurez": 1861.72,
     "gdd_reproductivo_c_dia": 2751.31,
     "duracion_reproductivo_dias": 161,
-    "t_base_c": "pendiente",
-    "evento_inicio": "pendiente",
-    "adelanto_en_semanas": "no_disponible",
+    "estacion_referencia": "INIA Canaán, 2,730 m",
+    "altura_optima_msnm": [2600, 2800],
+    "temperatura_optima_c": [16, 28],
+    "umbral_madurez_anticipada_c": 30,
     "estado": "estimado",
-    "fuente": "Tesis Marcaquispe Capiso (2021), UNSCH, INIA Canaán (Ayacucho)"
+    "fuente": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernández 2009); Castro et al. (2009)"
   }
 }

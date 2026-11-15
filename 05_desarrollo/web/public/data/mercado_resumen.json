@@ -31,7 +31,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -48,7 +48,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -65,7 +65,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -82,7 +82,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -99,7 +99,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -116,7 +116,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -133,7 +133,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -150,7 +150,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior",
       "fuente_id": "emmsa_siea",
-      "estado": "observado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -252,7 +252,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -269,7 +269,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -286,7 +286,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -303,7 +303,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -337,7 +337,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -354,7 +354,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -371,7 +371,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "sin mismo mes del anio anterior; extraccion automatica pendiente de revision manual (boletin 03-01-2025)",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     },
     {
@@ -813,7 +813,7 @@
       "etiqueta_riesgo": "no disponible",
       "nota": "mes incompleto (hasta dia 13); no comparable contra mes completo",
       "fuente_id": "emmsa_siea",
-      "estado": "estimado",
+      "estado": "no_disponible",
       "dato_hasta": "2026-11-13"
     }
   ],

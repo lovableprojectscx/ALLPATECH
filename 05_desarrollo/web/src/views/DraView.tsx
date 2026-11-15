@@ -95,7 +95,7 @@ export default function DraView() {
           <EstadoBadge estado="observado" />
         </div>
 
-        <div style={{ height: "260px", marginTop: "12px" }} role="img" aria-label={t("draTempTitle")}>
+        <div className="muyu-chart-box" role="img" aria-label={t("draTempTitle")}>
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={serieHuanta}>
               <CartesianGrid strokeDasharray="3 3" stroke="#C4D1CE" />
@@ -132,7 +132,7 @@ export default function DraView() {
           <EstadoBadge estado="observado" />
         </div>
 
-        <div style={{ height: "260px", marginTop: "12px" }} role="img" aria-label={t("draRainTitle")}>
+        <div className="muyu-chart-box" role="img" aria-label={t("draRainTitle")}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={imergData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#C4D1CE" />

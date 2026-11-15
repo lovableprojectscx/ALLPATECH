@@ -66,7 +66,8 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     expect(container.textContent).toContain("—");
   });
 
-  it("permite cambiar entre ES y EN y muestra el banner de modo sin conexión", () => {
+  it("permite cambiar entre ES y EN, elegir perfil y muestra el banner de modo sin conexión", () => {
+    window.localStorage.clear();
     markLocalFallback(true);
     const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
     render(
@@ -75,12 +76,15 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
       </QueryClientProvider>
     );
 
+    expect(screen.getByText(/¿Quién eres\?/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Trabajo en una cooperativa/i }));
     expect(screen.getByText(/Sin conexión: mostrando la última copia guardada/i)).toBeInTheDocument();
     const langBtn = screen.getByRole("button", { name: /Cambiar idioma a inglés/i });
     fireEvent.click(langBtn);
     expect(screen.getByText(/Offline: showing last saved copy/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Farmer Sheet/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Switch profile/i })).toBeInTheDocument();
     markLocalFallback(false);
+    window.localStorage.clear();
   });
 
   it("ausencia de textos prohibidos en diccionarios ES y EN", () => {
@@ -260,8 +264,25 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
 
     const { container } = render(<ComparadorABC parcelaComp={parcelaMock} />);
     expect(screen.getByText("Medio")).toBeInTheDocument();
-    expect(screen.getByText("Sin dato suficiente")).toBeInTheDocument();
+    expect(screen.getByText(/Plagas: en la siguiente fase/i)).toBeInTheDocument();
     expect(container.textContent).not.toMatch(/puntaje|_interno_0_100|\b(75|85|90|100)\b/);
+  });
+
+  it("el título del gráfico de temperatura coincide con los datos (desde junio, anomalía > 0)", () => {
+    const climaJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/clima_mensual.json"), "utf-8")
+    ) as {
+      celdas: Record<string, { registros: Array<{ anio: number; mes: number; anomalia_t2m_c: number }> }>;
+    };
+    const regs = climaJson.celdas["c-26_-119"].registros.filter((r) => r.anio === 2026);
+    const desdeJunio = regs.filter((r) => r.mes >= 6);
+    expect(desdeJunio.length).toBeGreaterThanOrEqual(5);
+    for (const r of desdeJunio) {
+      expect(r.anomalia_t2m_c).toBeGreaterThan(0);
+    }
+    const mayo = regs.find((r) => r.mes === 5);
+    expect(mayo?.anomalia_t2m_c).toBeLessThan(0);
+    expect(DICTIONARY.es.draTempTitle).toBe("Desde junio, cada mes fue más caluroso que lo normal");
   });
 
   it("muestra riesgo en mercado, nunca 'precio va a caer', y funciona en DRA", () => {

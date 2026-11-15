@@ -43,8 +43,7 @@ def test_prueba1_reproduce_sep_2026():
     assert sep["anomalia_c"] == pytest.approx(1.58, abs=0.01)
     assert sep["puesto_1981_2026"] == 1
     assert sep["total_anios_serie"] == 46
-    assert p1["adelanto_en_semanas"]["valor"] == "no disponible"
-    assert p1["adelanto_en_semanas"]["estado"] == "no_disponible"
+    assert p1["gdd_tuna_jul1_oct31"]["estado"] == "estimado"
 
 
 def test_ningun_valor_faltante_sale_como_cero():
@@ -62,10 +61,11 @@ def test_ningun_valor_faltante_sale_como_cero():
         assert item["chuno_tunta"]["estado_regla"] == "no_disponible"
 
     for comp in plan["comparador_abc_por_parcela"]:
-        for est in comp["estrategias"].values():
+        for k, est in comp["estrategias"].items():
             rb = est["radar_bandas"]
-            assert rb["mercado_y_sobreoferta"]["banda"] == "evidencia_insuficiente"
-            assert rb["mercado_y_sobreoferta"]["estado"] == "no_disponible"
+            expected_mercado = "alto" if k == "A" else "bajo"
+            assert rb["mercado_y_sobreoferta"]["banda"] == expected_mercado
+            assert rb["mercado_y_sobreoferta"]["estado"] == "estimado"
             assert rb["riesgo_plagas"]["banda"] == "evidencia_insuficiente"
             assert rb["riesgo_plagas"]["estado"] == "no_disponible"
 
@@ -182,3 +182,17 @@ def test_ndvi_en_rango_menos_1_a_1():
             else:
                 assert val == "no disponible"
                 assert r["estado"] == "no_disponible"
+
+
+def test_prueba1_tuna_gdd_tbase_0():
+    data = json.loads((PROCESSED_DIR / "prueba1_tuna_huanta.json").read_text(encoding="utf-8"))
+    gdd = data["gdd_tuna_jul1_oct31"]
+    assert gdd["t_base_c"] == 0.0
+    assert gdd["gdd_2026"] == pytest.approx(1865.0, abs=5.0)
+    assert gdd["gdd_normal_1991_2020"] == pytest.approx(1714.0, abs=5.0)
+    assert gdd["diferencia_gd"] == pytest.approx(151.0, abs=5.0)
+    assert gdd["puesto_1981_2026"] == 2
+    assert gdd["total_anios_serie"] == 46
+    assert gdd["adelanto_dias"] == pytest.approx(10.0, abs=1.0)
+    assert gdd["estado"] == "estimado"
+    assert "1 de julio" in gdd["nota"]

@@ -10,12 +10,21 @@
     "ajuste_termico_parcela_c": 4.03,
     "escala_dato_power": "regional_50km",
     "dato_hasta": "2026-10-31",
-    "nota_semanas": "Conversion a semanas omitida: estado = no_disponible hasta contar con T_base y GDD de tuna con fuente verificada en cultivos_demo_base.json."
+    "t_base_c": 0.0,
+    "fuente_tuna": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernandez 2009); 2,751.31 GD, 161 dias",
+    "nota_supuesto": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce."
   },
-  "adelanto_en_semanas": {
-    "valor": "no disponible",
-    "estado": "no_disponible",
-    "motivo": "Falta T_base y grados-dia a cosecha verificados de tuna"
+  "gdd_tuna_jul1_oct31": {
+    "t_base_c": 0.0,
+    "gdd_2026": 1865.0,
+    "gdd_normal_1991_2020": 1713.7,
+    "diferencia_gd": 151.3,
+    "puesto_1981_2026": 2,
+    "total_anios_serie": 46,
+    "gd_diario_normal_oct_nov": 15.02,
+    "adelanto_dias": 10.1,
+    "estado": "estimado",
+    "nota": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce."
   },
   "mensual_2026": [
     {

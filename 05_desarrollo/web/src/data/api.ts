@@ -288,7 +288,10 @@ export async function getNdviParcelas(
         .from("ndvi_parcelas")
         .select("parcela_id,calendar_date,ndvi,estado,dato_hasta")
         .order("calendar_date");
-      if (!error && data && data.length > 0) {
+      if (!error && data) {
+        if (data.length === 0) {
+          return [];
+        }
         const grouped = new Map<string, NdviParcela>();
         for (const row of data as Array<Record<string, unknown>>) {
           const pid = String(row.parcela_id);

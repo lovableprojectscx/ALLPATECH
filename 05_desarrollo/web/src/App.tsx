@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
-import { Calendar, Globe, Sprout, BarChart3, FileText, WifiOff } from "lucide-react";
+import { BarChart3, Calendar, Globe, Sprout, User, WifiOff } from "lucide-react";
 import { MuyuLogo } from "./components/MuyuLogo";
 import { subscribeLocalFallback } from "./data/api";
 import { DICTIONARY, I18nContext, type Lang } from "./i18n";
@@ -8,17 +8,56 @@ const CooperativaView = lazy(() => import("./views/CooperativaView"));
 const DraView = lazy(() => import("./views/DraView"));
 const FichaView = lazy(() => import("./views/FichaView"));
 
-type Vista = "cooperativa" | "dra" | "ficha";
+type Perfil = "cooperativa" | "dra" | "agricultor";
+
+const STORAGE_KEY = "muyu_perfil_v1";
+
+function leerPerfilGuardado(): Perfil | null {
+  try {
+    const pathMatch = window.location.pathname.match(/\/ficha\/(P\d+)/i);
+    if (pathMatch) return "agricultor";
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved === "cooperativa" || saved === "dra" || saved === "agricultor") {
+      return saved;
+    }
+  } catch {
+    // localStorage no disponible
+  }
+  return null;
+}
+
+function leerParcelaDeUrl(): string {
+  try {
+    const pathMatch = window.location.pathname.match(/\/ficha\/(P\d+)/i);
+    if (pathMatch) return pathMatch[1].toUpperCase();
+  } catch {
+    // ignore
+  }
+  return "P01";
+}
 
 export default function App() {
-  const [vista, setVista] = useState<Vista>("cooperativa");
+  const [perfil, setPerfil] = useState<Perfil | null>(() => leerPerfilGuardado());
   const [lang, setLang] = useState<Lang>("es");
-  const [selectedParcelaId, setSelectedParcelaId] = useState("P01");
+  const [selectedParcelaId, setSelectedParcelaId] = useState<string>(() => leerParcelaDeUrl());
   const [offlineFallback, setOfflineFallback] = useState(false);
 
   useEffect(() => {
     return subscribeLocalFallback(setOfflineFallback);
   }, []);
+
+  const elegirPerfil = (nuevo: Perfil | null) => {
+    setPerfil(nuevo);
+    try {
+      if (nuevo) {
+        window.localStorage.setItem(STORAGE_KEY, nuevo);
+      } else {
+        window.localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch {
+      // ignore
+    }
+  };
 
   const i18nValue = useMemo(
     () => ({
@@ -33,8 +72,17 @@ export default function App() {
 
   const handleOpenFicha = (parcelaId: string) => {
     setSelectedParcelaId(parcelaId);
-    setVista("ficha");
+    elegirPerfil("agricultor");
   };
+
+  const perfilLabel =
+    perfil === "cooperativa"
+      ? t("viewCoop")
+      : perfil === "dra"
+      ? t("viewDra")
+      : perfil === "agricultor"
+      ? t("viewFicha")
+      : null;
 
   return (
     <I18nContext.Provider value={i18nValue}>
@@ -51,37 +99,41 @@ export default function App() {
               </div>
             </div>
 
-            <nav className="muyu-nav" aria-label={t("navLabel")}>
-              <button
-                type="button"
-                className="muyu-nav-btn"
-                aria-current={vista === "cooperativa" ? "page" : undefined}
-                onClick={() => setVista("cooperativa")}
-              >
-                <Sprout size={18} aria-hidden="true" />
-                <span>{t("viewCoop")}</span>
-              </button>
-              <button
-                type="button"
-                className="muyu-nav-btn"
-                aria-current={vista === "dra" ? "page" : undefined}
-                onClick={() => setVista("dra")}
-              >
-                <BarChart3 size={18} aria-hidden="true" />
-                <span>{t("viewDra")}</span>
-              </button>
-              <button
-                type="button"
-                className="muyu-nav-btn"
-                aria-current={vista === "ficha" ? "page" : undefined}
-                onClick={() => setVista("ficha")}
-              >
-                <FileText size={18} aria-hidden="true" />
-                <span>{t("viewFicha")}</span>
-              </button>
-            </nav>
-
             <div className="muyu-topbar-meta">
+              {perfilLabel ? (
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                  <span
+                    style={{
+                      padding: "6px 12px",
+                      borderRadius: "var(--radius-sm)",
+                      backgroundColor: "var(--quinua)",
+                      color: "#FFFFFF",
+                      fontWeight: 700,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    {perfilLabel}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => elegirPerfil(null)}
+                    style={{
+                      minHeight: "48px",
+                      padding: "6px 12px",
+                      background: "transparent",
+                      border: "1px solid var(--hielo)",
+                      borderRadius: "var(--radius-sm)",
+                      color: "var(--hielo)",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      fontSize: "0.9rem",
+                    }}
+                  >
+                    {t("changeProfile")}
+                  </button>
+                </div>
+              ) : null}
+
               <span className="muyu-chip-fecha">
                 <Calendar size={15} aria-hidden="true" />
                 <span>{t("dataUntil")}</span>
@@ -107,26 +159,117 @@ export default function App() {
         ) : null}
 
         <main className="muyu-main">
-          <Suspense
-            fallback={
-              <div className="muyu-card" aria-busy="true">
-                <div className="muyu-skeleton" style={{ height: "28px", width: "45%", marginBottom: "12px" }} />
-                <div className="muyu-skeleton" style={{ height: "180px", width: "100%" }} />
+          {perfil === null ? (
+            <section aria-label={t("whoAreYou")} style={{ maxWidth: "760px", margin: "12px auto", display: "grid", gap: "20px" }}>
+              <div>
+                <h1 style={{ margin: "0 0 6px", fontSize: "2rem" }}>{t("whoAreYou")}</h1>
+                <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "1.1rem" }}>{t("whoSubtitle")}</p>
               </div>
-            }
-          >
-            {vista === "cooperativa" ? (
-              <CooperativaView
-                parcelaId={selectedParcelaId}
-                onSelectParcela={setSelectedParcelaId}
-                onOpenFicha={handleOpenFicha}
-              />
-            ) : null}
-            {vista === "dra" ? <DraView /> : null}
-            {vista === "ficha" ? (
-              <FichaView parcelaId={selectedParcelaId} onSelectParcela={setSelectedParcelaId} />
-            ) : null}
-          </Suspense>
+
+              <div style={{ display: "grid", gap: "16px" }}>
+                <button
+                  type="button"
+                  onClick={() => elegirPerfil("cooperativa")}
+                  style={{
+                    minHeight: "72px",
+                    padding: "18px 20px",
+                    borderRadius: "var(--radius-md)",
+                    border: "2px solid var(--quinua)",
+                    backgroundColor: "var(--quinua)",
+                    color: "#FFFFFF",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                  }}
+                >
+                  <Sprout size={32} aria-hidden="true" style={{ flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700 }}>
+                      {t("roleCoop")}
+                    </div>
+                    <div style={{ fontSize: "0.95rem", opacity: 0.92 }}>{t("roleCoopDesc")}</div>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => elegirPerfil("dra")}
+                  style={{
+                    minHeight: "72px",
+                    padding: "18px 20px",
+                    borderRadius: "var(--radius-md)",
+                    border: "2px solid var(--noche)",
+                    backgroundColor: "var(--blanco)",
+                    color: "var(--noche)",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                  }}
+                >
+                  <BarChart3 size={32} color="#003F6E" aria-hidden="true" style={{ flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700 }}>
+                      {t("roleDra")}
+                    </div>
+                    <div style={{ fontSize: "0.95rem", color: "var(--noche-suave)" }}>{t("roleDraDesc")}</div>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => elegirPerfil("agricultor")}
+                  style={{
+                    minHeight: "72px",
+                    padding: "18px 20px",
+                    borderRadius: "var(--radius-md)",
+                    border: "2px solid var(--noche)",
+                    backgroundColor: "var(--blanco)",
+                    color: "var(--noche)",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                  }}
+                >
+                  <User size={32} color="#007755" aria-hidden="true" style={{ flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700 }}>
+                      {t("roleFarmer")}
+                    </div>
+                    <div style={{ fontSize: "0.95rem", color: "var(--noche-suave)" }}>{t("roleFarmerDesc")}</div>
+                  </div>
+                </button>
+              </div>
+
+              <p style={{ margin: "4px 0 0", fontSize: "0.9rem", color: "var(--noche-suave)" }}>
+                {t("moreProfilesSoon")}
+              </p>
+            </section>
+          ) : (
+            <Suspense
+              fallback={
+                <div className="muyu-card" aria-busy="true">
+                  <div className="muyu-skeleton" style={{ height: "28px", width: "45%", marginBottom: "12px" }} />
+                  <div className="muyu-skeleton" style={{ height: "180px", width: "100%" }} />
+                </div>
+              }
+            >
+              {perfil === "cooperativa" ? <CooperativaView onOpenFicha={handleOpenFicha} /> : null}
+              {perfil === "dra" ? <DraView /> : null}
+              {perfil === "agricultor" ? (
+                <FichaView
+                  parcelaId={selectedParcelaId}
+                  onSelectParcela={setSelectedParcelaId}
+                  soloAgricultor
+                />
+              ) : null}
+            </Suspense>
+          )}
         </main>
       </div>
     </I18nContext.Provider>

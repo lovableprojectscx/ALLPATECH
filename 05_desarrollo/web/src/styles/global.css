@@ -315,9 +315,28 @@ a:focus-visible,
   box-shadow: 0 0 0 2px var(--noche);
 }
 
+.muyu-chart-box {
+  height: 260px;
+  margin-top: 12px;
+}
+
 @media (max-width: 960px) {
   body {
     font-size: 1.125rem; /* 18 px base en celular */
+  }
+  .muyu-main {
+    padding: 14px 12px 24px;
+  }
+  .muyu-card {
+    padding: 14px;
+  }
+  .muyu-plot-card {
+    padding: 10px 12px;
+    gap: 4px;
+  }
+  .muyu-chart-box {
+    height: 155px;
+    margin-top: 8px;
   }
   .muyu-alerts-grid {
     grid-template-columns: 1fr;

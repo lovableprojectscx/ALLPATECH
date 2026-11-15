@@ -301,6 +301,35 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
             "estado": "observado",
         }
 
+    # GDD de tuna (T_base = 0 °C, metodo residual (Tmax+Tmin)/2 - T_base) jul 1 - oct 31 en P01 ajustada
+    par = power_json["properties"]["parameter"]
+    tmax_s = par["T2M_MAX"]
+    tmin_s = par["T2M_MIN"]
+    t_base_c = 0.0
+    gdd_por_anio = {}
+    gdd_oct_nov_norm = []
+
+    for k in sorted(tmax_s):
+        tx = tmax_s[k]
+        tn = tmin_s.get(k, FALTANTE)
+        if tx == FALTANTE or tn == FALTANTE:
+            continue
+        y, m, d_num = int(k[:4]), int(k[4:6]), int(k[6:8])
+        gdd_dia = max(0.0, ((tx + ajuste_c) + (tn + ajuste_c)) / 2.0 - t_base_c)
+        if 7 <= m <= 10:
+            gdd_por_anio[y] = gdd_por_anio.get(y, 0.0) + gdd_dia
+        if 1991 <= y <= 2020 and ((m == 10 and d_num >= 16) or (m == 11 and d_num <= 15)):
+            gdd_oct_nov_norm.append(gdd_dia)
+
+    gdd_2026 = gdd_por_anio.get(2026, 0.0)
+    gdd_norm_vals = [gdd_por_anio[y] for y in range(1991, 2021) if y in gdd_por_anio]
+    gdd_normal = sum(gdd_norm_vals) / len(gdd_norm_vals)
+    diff_gd = gdd_2026 - gdd_normal
+    orden_gdd = sorted(gdd_por_anio.items(), key=lambda x: x[1], reverse=True)
+    puesto_gdd = next((i + 1 for i, (yr, _) in enumerate(orden_gdd) if yr == 2026), None)
+    gd_diario_oct_nov = sum(gdd_oct_nov_norm) / len(gdd_oct_nov_norm) if gdd_oct_nov_norm else 15.0
+    adelanto_dias = round(diff_gd / gd_diario_oct_nov, 1)
+
     return {
         "_metadata": {
             "prueba": "Prueba 1 - Adelanto termico de la tuna en Huanta (2026)",
@@ -313,12 +342,21 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
             "ajuste_termico_parcela_c": ajuste_c,
             "escala_dato_power": "regional_50km",
             "dato_hasta": dato_hasta_iso,
-            "nota_semanas": "Conversion a semanas omitida: estado = no_disponible hasta contar con T_base y GDD de tuna con fuente verificada en cultivos_demo_base.json.",
+            "t_base_c": t_base_c,
+            "fuente_tuna": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernandez 2009); 2,751.31 GD, 161 dias",
+            "nota_supuesto": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce.",
         },
-        "adelanto_en_semanas": {
-            "valor": "no disponible",
-            "estado": "no_disponible",
-            "motivo": "Falta T_base y grados-dia a cosecha verificados de tuna",
+        "gdd_tuna_jul1_oct31": {
+            "t_base_c": t_base_c,
+            "gdd_2026": round(gdd_2026, 1),
+            "gdd_normal_1991_2020": round(gdd_normal, 1),
+            "diferencia_gd": round(diff_gd, 1),
+            "puesto_1981_2026": puesto_gdd,
+            "total_anios_serie": len(gdd_por_anio),
+            "gd_diario_normal_oct_nov": round(gd_diario_oct_nov, 2),
+            "adelanto_dias": adelanto_dias,
+            "estado": "estimado",
+            "nota": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce.",
         },
         "mensual_2026": resultados_mes,
         "periodos_acumulados_2026": periodos,
