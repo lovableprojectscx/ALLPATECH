@@ -27,8 +27,10 @@ import {
   getOportunidades,
   getParcelas,
   getPlanRotacion,
+  getVigilanciaRancha,
 } from "../data/api";
 import { getParcelaNombre } from "../data/nombres";
+import { formatOportunidadCard } from "../data/oportunidadesHelper";
 import { useI18n } from "../i18n";
 
 interface CooperativaViewProps {
@@ -90,6 +92,29 @@ export function construirResumenHelada(
   };
 }
 
+function iconoPorCodigo(codigo: string) {
+  switch (codigo) {
+    case "O1":
+      return <CloudRain size={16} aria-hidden="true" color="#003F6E" />;
+    case "O2":
+      return <Snowflake size={16} aria-hidden="true" color="#14303A" />;
+    case "O3":
+      return <Sun size={16} aria-hidden="true" color="#B83A00" />;
+    case "O4":
+      return <TrendingUp size={16} aria-hidden="true" color="#A3325F" />;
+    default:
+      return <Sprout size={16} aria-hidden="true" color="#007755" />;
+  }
+}
+
+function bordePorCodigo(codigo: string) {
+  if (codigo === "O2") return "var(--noche)";
+  if (codigo === "O3" || codigo === "O5") return "var(--est-a)";
+  if (codigo === "O4") return "var(--quinua)";
+  if (codigo === "O1") return "var(--est-b)";
+  return "var(--est-c)";
+}
+
 export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
   const { lang, t } = useI18n();
   const [detalleId, setDetalleId] = useState<string | null>(null);
@@ -103,6 +128,7 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
   const climaQ = useQuery({ queryKey: ["clima-mensual"], queryFn: () => getClimaMensual() });
   const ndviQ = useQuery({ queryKey: ["ndvi-parcelas"], queryFn: () => getNdviParcelas() });
   const oportunidadesQ = useQuery({ queryKey: ["oportunidades"], queryFn: () => getOportunidades() });
+  const ranchaQ = useQuery({ queryKey: ["vigilancia-rancha"], queryFn: () => getVigilanciaRancha() });
 
   const parcelas = parcelasQ.data ?? [];
   const plan = planQ.data?.plan ?? [];
@@ -273,39 +299,103 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
               style={{ marginTop: "18px", display: "grid", gap: "10px" }}
             >
               <h3 style={{ margin: 0, fontSize: "1.12rem" }}>{t("plotOpportunitiesHeading")}</h3>
-              <div style={{ display: "grid", gap: "10px" }}>
+              <div className="muyu-alerts-grid">
                 {parcelaOps.oportunidades.map((op) => {
                   const esHelada = op.codigo === "O2";
+                  const { titulo, frase, detalle } = formatOportunidadCard(op, t);
                   return (
                     <article
                       key={op.codigo}
                       className="muyu-alert-card"
+                      aria-label={esHelada ? "Oportunidad de helada" : titulo}
                       style={{
-                        borderColor: esHelada ? "var(--noche)" : "var(--est-c)",
+                        borderColor: esHelada ? "var(--noche)" : bordePorCodigo(op.codigo),
                         backgroundColor: esHelada ? "var(--hielo)" : "var(--blanco)",
                       }}
                     >
                       <div style={{ display: "grid", gap: "6px" }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-                          <span style={{ fontWeight: 700, color: "var(--noche)" }}>{op.titulo}</span>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "8px" }}>
+                          <span
+                            className="muyu-op-title"
+                            style={{
+                              fontWeight: 700,
+                              color: "var(--noche)",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "6px",
+                            }}
+                          >
+                            {iconoPorCodigo(op.codigo)}
+                            <span>{titulo}</span>
+                          </span>
                           <EstadoBadge estado={op.estado} />
                         </div>
                         <p style={{ margin: 0, fontWeight: 700, color: "var(--noche)" }}>
-                          {op.accion_positiva}
-                        </p>
-                        <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.93rem" }}>
-                          {op.por_que_corto}
+                          {frase}
                         </p>
                       </div>
                       <FuenteDisclosure
                         fuente={op.fuente}
                         escala={op.escala}
                         fecha={op.dato_hasta}
-                        detalleTecnico={op.nota}
+                        detalleTecnico={detalle}
                       />
                     </article>
                   );
                 })}
+              </div>
+            </section>
+          ) : null}
+
+          {planActivo.cultivo_asignado.toLowerCase().includes("papa") && ranchaQ.data ? (
+            <section
+              className="muyu-alert-card"
+              aria-label={ranchaQ.data.titulo}
+              data-rancha-card="true"
+              style={{
+                marginTop: "18px",
+                borderColor: "var(--est-b)",
+                backgroundColor: "#F2F6FA",
+              }}
+            >
+              <div style={{ display: "grid", gap: "8px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
+                  <span
+                    style={{
+                      fontWeight: 700,
+                      color: "var(--noche)",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                    }}
+                  >
+                    <CloudRain size={16} aria-hidden="true" color="#003F6E" />
+                    <span>{ranchaQ.data.titulo}</span>
+                  </span>
+                  <EstadoBadge estado={ranchaQ.data.estado} />
+                </div>
+                <p style={{ margin: 0, color: "var(--noche)" }}>{ranchaQ.data.mensaje}</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "8px",
+                    fontSize: "0.86rem",
+                    color: "var(--noche-suave)",
+                  }}
+                >
+                  <span>{ranchaQ.data.etiqueta_fuente}</span>
+                  <a
+                    href={ranchaQ.data.enlace_senamhi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontWeight: 700 }}
+                  >
+                    {ranchaQ.data.enlace_senamhi_texto}
+                  </a>
+                </div>
               </div>
             </section>
           ) : null}
@@ -337,29 +427,6 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
   const visibles = showAllPlots ? parcelas : parcelas.slice(0, 6);
   const opsVisibles = showAllOps ? opsCoop : opsCoop.slice(0, 3);
 
-  const iconoPorCodigo = (codigo: string) => {
-    switch (codigo) {
-      case "O1":
-        return <CloudRain size={16} aria-hidden="true" color="#003F6E" />;
-      case "O2":
-        return <Snowflake size={16} aria-hidden="true" color="#14303A" />;
-      case "O3":
-        return <Sun size={16} aria-hidden="true" color="#B83A00" />;
-      case "O4":
-        return <TrendingUp size={16} aria-hidden="true" color="#A3325F" />;
-      default:
-        return <Sprout size={16} aria-hidden="true" color="#007755" />;
-    }
-  };
-
-  const bordePorCodigo = (codigo: string) => {
-    if (codigo === "O2") return "var(--noche)";
-    if (codigo === "O3" || codigo === "O5") return "var(--est-a)";
-    if (codigo === "O4") return "var(--quinua)";
-    if (codigo === "O1") return "var(--est-b)";
-    return "var(--est-c)";
-  };
-
   return (
     <div style={{ display: "grid", gap: "28px" }}>
       {/* Bloque 1: Oportunidades de esta campaña (máx 3 visibles + Ver más) */}
@@ -390,19 +457,24 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
         <div className="muyu-alerts-grid">
           {opsVisibles.map((op) => {
             const esO2 = op.codigo === "O2";
+            const fallbackValores = opsPorParcela
+              .flatMap((p) => p.oportunidades)
+              .find((o) => o.codigo === op.codigo)?.valores_json;
+            const { titulo, frase, detalle } = formatOportunidadCard(op, t, fallbackValores);
             return (
               <article
                 key={op.codigo}
                 className="muyu-alert-card"
-                aria-label={esO2 ? "Oportunidad de helada" : op.titulo}
+                aria-label={esO2 ? "Oportunidad de helada" : titulo}
                 style={{
                   borderColor: bordePorCodigo(op.codigo),
                   backgroundColor: esO2 ? "var(--hielo)" : undefined,
                 }}
               >
                 <div style={{ display: "grid", gap: "6px" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "8px" }}>
                     <span
+                      className="muyu-op-title"
                       style={{
                         fontWeight: 700,
                         color: "var(--noche)",
@@ -412,22 +484,19 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
                       }}
                     >
                       {iconoPorCodigo(op.codigo)}
-                      <span>{op.titulo}</span>
+                      <span>{titulo}</span>
                     </span>
                     <EstadoBadge estado={op.estado} />
                   </div>
-                  <p style={{ margin: 0, fontSize: "1.06rem", fontWeight: 700, color: "var(--noche)" }}>
-                    {op.accion_positiva}
-                  </p>
-                  <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.94rem" }}>
-                    {op.por_que_corto}
+                  <p style={{ margin: 0, fontSize: "1.02rem", fontWeight: 700, color: "var(--noche)" }}>
+                    {frase}
                   </p>
                 </div>
                 <FuenteDisclosure
                   fuente={op.fuente}
                   escala={op.escala}
                   fecha={op.dato_hasta}
-                  detalleTecnico={op.nota}
+                  detalleTecnico={detalle}
                 />
               </article>
             );

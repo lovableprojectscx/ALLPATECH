@@ -544,9 +544,18 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     expect(resNum.valida).toBe(false);
     expect(resNum.motivo).toContain("numero_no_presente:85");
 
-    const conCultivoNoRec = "Mejor siembra maíz en lugar de Quinua en P05.";
+    const conCultivoNoRec = "Mejor siembra maíz por las 16 heladas en P05.";
     const resCult = validarRespuestaIA(conCultivoNoRec, datos);
     expect(resCult.valida).toBe(false);
+
+    const conFraseBloqueada = "Siembra Quinua porque tiene buena acidez y 16 noches de helada.";
+    expect(validarRespuestaIA(conFraseBloqueada, datos).valida).toBe(false);
+
+    const sinHelada = "Siembra Quinua en Chiara a 3,682 m con pH 5.8.";
+    expect(validarRespuestaIA(sinHelada, datos).valida).toBe(false);
+
+    const conPhYHelada = "Siembra Quinua en Chiara con 16 noches de helada y pH 5.8.";
+    expect(validarRespuestaIA(conPhYHelada, datos).valida).toBe(true);
 
     const plantilla = generarPlantillaFija(datos, "es");
     expect(plantilla).toContain("Quinua");
@@ -736,5 +745,130 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
 
     const plantilla = generarPlantillaFija(datosConOps, "es");
     expect(plantilla).toContain("30 de diciembre");
+  });
+
+  it("Fix 3 validador rechaza juicios agronómicos, 'rancha' y exige mención de helada si dias_helada > 0", () => {
+    const datosConHelada = {
+      parcela_id: "P05",
+      distrito: "chiara_alta_2",
+      elev_dem_m: 3682,
+      estrategia_elegida: "C" as const,
+      cultivo_asignado: "tarwi",
+      dias_helada: 16,
+      humedad_suelo_pct: 48,
+      ph_suelo: 6.5,
+      ndvi_ultimo: 0.61,
+      enis_papa_ayacucho_pct: 19.3,
+      lluvia_oct_anomalia_pct: -44.3,
+    };
+
+    for (const frase of [
+      "Tu chacra tiene 16 noches de helada pero es adecuada para sembrar tarwi.",
+      "Tienes 16 noches de helada y buena acidez en el suelo.",
+      "Con 16 noches de helada es buen momento para sembrar tarwi.",
+      "Con 16 noches de helada garantiza buena cosecha de tarwi.",
+      "Vigila la rancha porque hubo 16 noches de helada.",
+    ]) {
+      expect(validarRespuestaIA(frase, datosConHelada).valida).toBe(false);
+    }
+
+    // Sin mención de helada aunque dias_helada > 0
+    expect(validarRespuestaIA("Siembra tarwi a 3682 m en Chiara.", datosConHelada).valida).toBe(false);
+    // Válida mencionando helada y dato numérico sin juicios
+    expect(
+      validarRespuestaIA("Siembra tarwi a 3682 m. Hubo 16 noches de helada desde julio.", datosConHelada).valida
+    ).toBe(true);
+  });
+
+  it("tarjeta 'Revisa tu papa' solo aparece en detalle de chacra con papa (P10) y no en chacras sin papa", async () => {
+    const parcelasJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/parcelas_demo.json"), "utf-8")
+    );
+    const planJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/plan_rotacion_demo.json"), "utf-8")
+    );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+    const ranchaJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/vigilancia_rancha.json"), "utf-8")
+    );
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        if (String(url).includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("plan_rotacion_demo")) return { ok: true, json: async () => planJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
+        if (String(url).includes("vigilancia_rancha")) return { ok: true, json: async () => ranchaJson };
+        return { ok: true, json: async () => ({ parcelas: [], celdas: {} }) };
+      })
+    );
+
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    render(
+      <QueryClientProvider client={qc}>
+        <CooperativaView />
+      </QueryClientProvider>
+    );
+
+    // Entrar a una chacra sin papa (P05 -> tarwi)
+    const btnVerTodas = await waitFor(() => screen.getByRole("button", { name: /Ver todas las chacras/i }));
+    fireEvent.click(btnVerTodas);
+    fireEvent.click(screen.getByText(/Chacra alta de Chiara 2/i));
+    await waitFor(() => expect(screen.getByRole("heading", { name: /Chacra alta de Chiara 2/i })).toBeInTheDocument());
+    expect(screen.queryByText("Revisa tu papa")).not.toBeInTheDocument();
+
+    // Volver y entrar a P10 (papa; todas las chacras ya están visibles tras abrir 'Ver todas las chacras')
+    fireEvent.click(screen.getByRole("button", { name: /Volver a tus chacras/i }));
+    fireEvent.click(screen.getByText(/Chacra de Vilcashuamán/i));
+
+    const ranchaCard = await waitFor(() => screen.getByRole("region", { name: "Revisa tu papa" }));
+    expect(ranchaCard).toBeInTheDocument();
+    expect(ranchaCard.textContent).toContain("llovió 4 de 7 días");
+    expect(ranchaCard.textContent).toContain("Medido · NASA IMERG · Dato hasta el 31 de octubre");
+    expect(screen.getByRole("link", { name: /Boletín agrometeorológico de SENAMHI/i })).toBeInTheDocument();
+    vi.unstubAllGlobals();
+  });
+
+  it("tarjetas de oportunidades muestran solo título corto + 1 frase, ocultan textos largos en disclosure y normalizan helada", async () => {
+    const { normalizarTextoHelada, formatOportunidadCard } = await import("../data/oportunidadesHelper");
+    expect(normalizarTextoHelada("Esta campaña hubo 16 noches con helada.")).toBe(
+      "Desde julio de 2025: 16 noches con helada."
+    );
+
+    const cardO2 = formatOportunidadCard(
+      {
+        codigo: "O2",
+        titulo: "Título largo",
+        accion_positiva: "Acción larga de prueba.",
+        por_que_corto: "Esta campaña hubo 16 noches con helada.",
+        nota: "Nota técnica",
+        valores_json: { ventana_inicio_mes: "noviembre", ventana_fin_mes: "marzo" },
+      },
+      (k) => DICTIONARY.es[k]
+    );
+    expect(cardO2.titulo).toBe("Siembra sin helada");
+    expect(cardO2.frase).toBe("Tu ventana segura: noviembre a marzo.");
+    expect(cardO2.detalle).toContain("Acción larga de prueba.");
+    expect(cardO2.detalle).toContain("Desde julio de 2025: 16 noches con helada.");
+
+    const cardO3 = formatOportunidadCard(
+      {
+        codigo: "O3",
+        titulo: "Tuna",
+        accion_positiva: "Acción tuna.",
+        por_que_corto: "Por qué tuna.",
+        nota: "",
+        valores_json: { fecha_estimada_2026_texto: "30 de diciembre", adelanto_dias: 10 },
+      },
+      (k) => DICTIONARY.es[k]
+    );
+    expect(cardO3.titulo).toBe("Tuna adelantada");
+    expect(cardO3.frase).toBe("Lista hacia el 30 de diciembre, 10 días antes. Busca comprador.");
+
+    const globalCss = fs.readFileSync(path.resolve(__dirname, "../styles/global.css"), "utf-8");
+    expect(globalCss).toContain("grid-template-columns: repeat(3, minmax(0, 1fr))");
+    expect(globalCss).toContain("-webkit-line-clamp: 2");
   });
 });

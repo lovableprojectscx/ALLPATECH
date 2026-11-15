@@ -6,6 +6,7 @@ import { ExplicacionIA } from "../components/ExplicacionIA";
 import { MuyuLogo } from "../components/MuyuLogo";
 import { getOportunidades, getParcelas, getPlanRotacion } from "../data/api";
 import { getParcelaNombre } from "../data/nombres";
+import { normalizarTextoHelada } from "../data/oportunidadesHelper";
 import { useI18n } from "../i18n";
 
 interface FichaViewProps {
@@ -60,13 +61,15 @@ export default function FichaView({
   const msgWhatToWatch =
     parcela.clima_campana_2025_2026.dias_helada > 0 ? t("fichaWatchFrost") : t("fichaWatchDry");
 
+  const msgOportunidadFicha = oportunidadFicha ? normalizarTextoHelada(oportunidadFicha.accion_ficha) : "";
+
   const whatsappText = [
     `🌱 Kultiva · ${nombreChacra}`,
     `📅 ${t("fichaCampaign")}`,
     `1) ${t("fichaWhatToPlant")}: ${msgWhatToPlant}`,
     `2) ${t("fichaWhen")}: ${msgWhen}`,
     `3) ${t("fichaWhatToWatch")}: ${msgWhatToWatch}`,
-    oportunidadFicha ? `★ ${t("fichaOpportunityTitle")}: ${oportunidadFicha.accion_ficha}` : "",
+    msgOportunidadFicha ? `★ ${t("fichaOpportunityTitle")}: ${msgOportunidadFicha}` : "",
     `${t("fichaQuechuaPending")}.`,
     `"${t("fichaClosing")}"`,
   ]
@@ -214,7 +217,7 @@ export default function FichaView({
                 {t("fichaOpportunityTitle")}
               </div>
               <div style={{ fontWeight: 700, fontSize: "1.12rem", color: "var(--noche)" }}>
-                {oportunidadFicha.accion_ficha}
+                {msgOportunidadFicha}
               </div>
             </div>
           </div>
