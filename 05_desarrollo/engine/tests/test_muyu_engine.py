@@ -43,7 +43,7 @@ def test_prueba1_reproduce_sep_2026():
     assert sep["anomalia_c"] == pytest.approx(1.58, abs=0.01)
     assert sep["puesto_1981_2026"] == 1
     assert sep["total_anios_serie"] == 46
-    assert p1["gdd_tuna_jul1_oct31"]["estado"] == "estimado"
+    assert p1["gdd_tuna_jul1_a_dato_hasta"]["estado"] == "estimado"
 
 
 def test_ningun_valor_faltante_sale_como_cero():
@@ -187,7 +187,8 @@ def test_ndvi_en_rango_menos_1_a_1():
 def test_prueba1_tuna_gdd_tbase_0():
     data = json.loads((PROCESSED_DIR / "prueba1_tuna_huanta.json").read_text(encoding="utf-8"))
     assert data["_metadata"]["dato_hasta"] >= "2026-11-12"
-    gdd = data["gdd_tuna_jul1_oct31"]
+    gdd = data["gdd_tuna_jul1_a_dato_hasta"]
+    assert gdd["dato_hasta"] == data["_metadata"]["dato_hasta"]
     assert gdd["t_base_c"] == 0.0
     assert gdd["gdd_2026"] == pytest.approx(2046.7, abs=10.0)
     assert gdd["gdd_normal_1991_2020"] == pytest.approx(1895.3, abs=10.0)
@@ -207,12 +208,12 @@ def test_actualizar_todo_orden_pasos():
     import actualizar_todo
 
     nombres = [n for n, _ in actualizar_todo.construir_pasos(dry_run=True)]
-    assert len(nombres) == 8
+    assert len(nombres) >= 8
     assert "POWER" in nombres[0]
     assert "MODIS" in nombres[1]
     assert "Mercado" in nombres[2]
-    assert "pytest" in nombres[6]
-    assert "ETL" in nombres[7]
+    assert "pytest" in nombres[-2]
+    assert "ETL" in nombres[-1]
 
 
 def test_alerta_helada_chacras_altas():

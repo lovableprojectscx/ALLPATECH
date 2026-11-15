@@ -384,7 +384,8 @@ def generar_prueba1_tuna_huanta(power_json: dict, elev_dem_m: float, gradiente_c
             "fuente_tuna": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernandez 2009); 2,751.31 GD, 161 dias",
             "nota_supuesto": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce.",
         },
-        "gdd_tuna_jul1_oct31": {
+        "gdd_tuna_jul1_a_dato_hasta": {
+            "dato_hasta": dato_hasta_iso,
             "t_base_c": t_base_c,
             "gdd_2026": round(gdd_2026, 1),
             "gdd_normal_1991_2020": round(gdd_normal, 1),

@@ -32,8 +32,9 @@ def construir_pasos(dry_run: bool = False) -> List[Tuple[str, List[str]]]:
         ("4. Agregar clima mensual", [py, str(ENGINE_DIR / "agregar_clima_mensual.py")]),
         ("5. Procesar lluvia IMERG", [py, str(ENGINE_DIR / "procesar_imerg.py")]),
         ("6. Estrategias y planificador", [py, str(ENGINE_DIR / "estrategias_y_planificador.py")]),
-        ("7. Pruebas pytest del motor", [py, "-m", "pytest", str(ENGINE_DIR / "tests"), "-v"]),
-        ("8. ETL a Supabase", etl_cmd),
+        ("7. Oportunidades y calendario", [py, str(ENGINE_DIR / "oportunidades.py")]),
+        ("8. Pruebas pytest del motor", [py, "-m", "pytest", str(ENGINE_DIR / "tests"), "-v"]),
+        ("9. ETL a Supabase", etl_cmd),
     ]
 
 
@@ -54,7 +55,7 @@ def main() -> None:
 
     pasos = construir_pasos(dry_run=args.dry_run)
     for nombre, cmd in pasos:
-        if nombre.startswith("7."):
+        if nombre.startswith("8."):
             sincronizar_public_data()
         print(f"\n=== {nombre} ===")
         res = subprocess.run(cmd, cwd=str(BASE_DIR))

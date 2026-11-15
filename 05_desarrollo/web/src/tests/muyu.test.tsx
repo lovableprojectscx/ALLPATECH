@@ -9,7 +9,7 @@ import { EstadoBadge } from "../components/EstadoBadge";
 import { ExplicacionIA } from "../components/ExplicacionIA";
 import { MercadoSection } from "../components/MercadoSection";
 import { formatValor, getImergMensual, markLocalFallback } from "../data/api";
-import { ParcelaSchema } from "../data/schemas";
+import { ParcelaSchema, Prueba1TunaSchema } from "../data/schemas";
 import { DICTIONARY } from "../i18n";
 import CooperativaView, { construirResumenHelada } from "../views/CooperativaView";
 import FichaView from "../views/FichaView";
@@ -514,6 +514,18 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
 
     const plantilla = generarPlantillaFija(datos, "es");
     expect(plantilla).toContain("Quinua");
-    expect(plantilla).toContain("16");
+    expect(plantilla).toContain("Desde julio de 2025 hubo 16 noches de helada");
+    expect(plantilla).toContain("la que reparte el riesgo (como la quinua)");
+  });
+
+  it("valida prueba1_tuna_huanta.json con gdd_tuna_jul1_a_dato_hasta y dato_hasta", () => {
+    const raw = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/prueba1_tuna_huanta.json"), "utf-8")
+    );
+    const parsed = Prueba1TunaSchema.safeParse(raw);
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(parsed.data.gdd_tuna_jul1_a_dato_hasta.dato_hasta).toBe(parsed.data._metadata.dato_hasta);
+    }
   });
 });

@@ -172,6 +172,25 @@ export const NdviParcelaSchema = z.object({
 
 export const NdviResponseSchema = z.array(NdviParcelaSchema);
 
+export const Prueba1TunaSchema = z.object({
+  _metadata: z.object({
+    dato_hasta: z.string().min(1),
+    t_base_c: z.number(),
+  }),
+  gdd_tuna_jul1_a_dato_hasta: z.object({
+    dato_hasta: z.string().min(1),
+    t_base_c: z.number(),
+    gdd_2026: z.number(),
+    gdd_normal_1991_2020: z.number(),
+    diferencia_gd: z.number(),
+    puesto_1981_2026: z.number(),
+    total_anios_serie: z.number(),
+    adelanto_dias: z.number(),
+    estado: EstadoSchema,
+    nota: z.string().min(1),
+  }),
+});
+
 export type Parcela = z.infer<typeof ParcelaSchema>;
 export type PlanRotacionContract = z.infer<typeof PlanRotacionContractSchema>;
 export type ImergMes = z.infer<typeof ImergMesSchema>;

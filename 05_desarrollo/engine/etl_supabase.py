@@ -47,6 +47,12 @@ def construir_lotes() -> List[Tuple[str, str, List[Dict[str, Any]]]]:
     mercado_json = json.loads((PROCESSED_DIR / "mercado_resumen.json").read_text(encoding="utf-8"))
     ndvi_path = PROCESSED_DIR / "ndvi_parcelas.json"
     ndvi_json = json.loads(ndvi_path.read_text(encoding="utf-8")) if ndvi_path.exists() else {"parcelas": []}
+    oportunidades_path = PROCESSED_DIR / "oportunidades.json"
+    oportunidades_json = (
+        json.loads(oportunidades_path.read_text(encoding="utf-8"))
+        if oportunidades_path.exists()
+        else {"filas_supabase": []}
+    )
 
     # 1. celdas_power
     celdas_rows = []
@@ -357,6 +363,9 @@ def construir_lotes() -> List[Tuple[str, str, List[Dict[str, Any]]]]:
         },
     ]
 
+    # 10. oportunidades (O1-O6 por parcela)
+    oportunidades_rows = list(oportunidades_json.get("filas_supabase", []))
+
     lotes = [
         ("celdas_power", "cell_key", celdas_rows),
         ("parcelas", "id", parcelas_rows),
@@ -369,6 +378,7 @@ def construir_lotes() -> List[Tuple[str, str, List[Dict[str, Any]]]]:
         ("produccion_region", "id", prod_rows),
         ("ndvi_parcelas", "parcela_id,modis_date", ndvi_rows),
         ("fuentes", "id", fuentes_rows),
+        ("oportunidades", "parcela_id,codigo", oportunidades_rows),
     ]
 
     for tabla, _, filas in lotes:

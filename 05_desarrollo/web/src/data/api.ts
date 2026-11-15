@@ -323,32 +323,36 @@ export async function getNdviParcelas(
   }
 }
 
-export async function getLatestDatoHasta(
+export interface FechasResumen {
+  clima: string;
+  mercado: string;
+}
+
+export async function getFechasResumen(
   client: SupabaseClient | null = getSupabaseClient()
-): Promise<string> {
-  const fechas: string[] = [];
+): Promise<FechasResumen> {
   if (client) {
     try {
-      const [pRes, cRes, iRes, mRes] = await Promise.all([
+      const [pRes, cRes, mRes] = await Promise.all([
         client.from("parcelas").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
         client.from("clima_mensual").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
-        client.from("lluvia_imerg_mensual").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
         client.from("mercado_papa_mensual").select("dato_hasta").order("dato_hasta", { ascending: false }).limit(1),
       ]);
-      for (const r of [pRes, cRes, iRes, mRes]) {
-        const val = r.data?.[0]?.dato_hasta;
-        if (typeof val === "string" && /^\d{4}-\d{2}-\d{2}$/.test(val)) {
-          fechas.push(val);
-        }
-      }
-      if (fechas.length > 0) {
-        return fechas.sort().reverse()[0];
-      }
+      const climaFechas = [pRes.data?.[0]?.dato_hasta, cRes.data?.[0]?.dato_hasta].filter(
+        (v): v is string => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v)
+      );
+      const mercadoVal = mRes.data?.[0]?.dato_hasta;
+      const clima = climaFechas.length > 0 ? climaFechas.sort().reverse()[0] : "2026-11-12";
+      const mercado =
+        typeof mercadoVal === "string" && /^\d{4}-\d{2}-\d{2}$/.test(mercadoVal)
+          ? mercadoVal
+          : "2026-11-13";
+      return { clima, mercado };
     } catch {
       // fallback abajo
     }
   }
-  return "2026-11-12";
+  return { clima: "2026-11-12", mercado: "2026-11-13" };
 }
 
 export interface ExplicacionIAResponse {
@@ -388,18 +392,32 @@ export async function explicarChacra(
   }
 
   const cultivo = planItem?.cultivo_asignado ?? "cultivo recomendado";
-  const estrategia = planItem?.estrategia_elegida ?? "B";
+  const estrategia = (planItem?.estrategia_elegida ?? "B") as "A" | "B" | "C";
   const heladas = parcela.clima_campana_2025_2026.dias_helada;
+  const estTextoEs: Record<"A" | "B" | "C", string> = {
+    A: "la que busca mejor precio",
+    B: "la que reparte el riesgo (como la quinua)",
+    C: "la que cuida el suelo (como el tarwi)",
+  };
+  const estTextoEn: Record<"A" | "B" | "C", string> = {
+    A: "the option seeking a better price",
+    B: "the option that spreads risk (like quinoa)",
+    C: "the option that cares for the soil (like tarwi)",
+  };
   const texto =
     idioma === "en"
       ? `Plant ${cultivo} on plot ${parcela.id} (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m). ${
-          heladas > 0 ? `There were ${heladas} frost nights.` : "There were no frost nights."
-        } Follow option ${estrategia} to protect soil and water.`
+          heladas > 0
+            ? `Since July 2025 there were ${heladas} frost nights.`
+            : "Since July 2025 there were no frost nights."
+        } Follow ${estTextoEn[estrategia] ?? estTextoEn.B}.`
       : idioma === "qu"
-      ? `${parcela.id} chakrapi (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m) ${cultivo} tarpuy. ${heladas} tuta qasa karqan. ${estrategia} ñanta qatiy allpata yakutapas waqaychanapaq.`
+      ? `${parcela.id} chakrapi (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m) ${cultivo} tarpuy. Julio 2025 watamanta ${heladas} tuta qasa karqan. ${estrategia} ñanta qatiy allpata yakutapas waqaychanapaq.`
       : `Siembra ${cultivo} en tu chacra ${parcela.id} (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m). ${
-          heladas > 0 ? `Hubo ${heladas} noches de helada.` : "No hubo noches de helada."
-        } Sigue la opción ${estrategia} para cuidar suelo y agua.`;
+          heladas > 0
+            ? `Desde julio de 2025 hubo ${heladas} noches de helada.`
+            : "Desde julio de 2025 no hubo noches de helada."
+        } Sigue ${estTextoEs[estrategia] ?? estTextoEs.B}.`;
 
   return {
     texto,

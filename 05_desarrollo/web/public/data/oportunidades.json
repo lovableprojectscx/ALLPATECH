@@ -1,0 +1,4103 @@
+{
+  "_metadata": {
+    "proyecto": "Kultiva",
+    "dato_hasta": "2026-11-12",
+    "nota_honestidad": "Solo datos reales. Sin puntajes compuestos ni pronósticos de precio."
+  },
+  "global_o1_lluvias": {
+    "codigo": "O1",
+    "titulo": "Cuándo sembrar: inicio real de las lluvias",
+    "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+    "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+    "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+    "mediana_dias_desde_sep1": 56.5,
+    "fecha_mediana_normal": "27 de octubre",
+    "n_anios_con_inicio": 24,
+    "rango_min_md": "22 de septiembre",
+    "rango_max_md": "29 de diciembre",
+    "anio_2026_estado": "no_establecidas",
+    "anio_2026_fecha_inicio": null,
+    "anio_2026_texto": "todavía no se establecen al 31 de octubre",
+    "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+    "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+    "estado": "estimado",
+    "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+    "dato_hasta": "2026-10-31"
+  },
+  "global_o4_precios_papa": {
+    "codigo": "O4",
+    "titulo": "Cuándo vender: calendario de precios de la papa",
+    "accion_positiva": "La papa suele pagarse menos de febrero a mayo (~S/ 0.90 por kilo) y más de julio a septiembre (~S/ 1.30–1.50). Si puedes, guarda una parte y vende escalonado.",
+    "por_que_corto": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+    "accion_ficha": "La papa suele pagarse mejor entre julio y septiembre que entre febrero y mayo: si puedes, guarda una parte y vende escalonado.",
+    "meses": [
+      {
+        "mes": 1,
+        "mes_nombre": "enero",
+        "mediana_soles_kg": 0.98,
+        "min_soles_kg": 0.81,
+        "max_soles_kg": 2.09,
+        "n_anios": 4
+      },
+      {
+        "mes": 2,
+        "mes_nombre": "febrero",
+        "mediana_soles_kg": 0.88,
+        "min_soles_kg": 0.84,
+        "max_soles_kg": 1.03,
+        "n_anios": 3
+      },
+      {
+        "mes": 3,
+        "mes_nombre": "marzo",
+        "mediana_soles_kg": 0.92,
+        "min_soles_kg": 0.78,
+        "max_soles_kg": 1.81,
+        "n_anios": 3
+      },
+      {
+        "mes": 4,
+        "mes_nombre": "abril",
+        "mediana_soles_kg": 0.91,
+        "min_soles_kg": 0.9,
+        "max_soles_kg": 1.83,
+        "n_anios": 3
+      },
+      {
+        "mes": 5,
+        "mes_nombre": "mayo",
+        "mediana_soles_kg": 0.99,
+        "min_soles_kg": 0.96,
+        "max_soles_kg": 1.35,
+        "n_anios": 3
+      },
+      {
+        "mes": 6,
+        "mes_nombre": "junio",
+        "mediana_soles_kg": 1.14,
+        "min_soles_kg": 0.78,
+        "max_soles_kg": 1.34,
+        "n_anios": 5
+      },
+      {
+        "mes": 7,
+        "mes_nombre": "julio",
+        "mediana_soles_kg": 1.29,
+        "min_soles_kg": 0.98,
+        "max_soles_kg": 1.41,
+        "n_anios": 4
+      },
+      {
+        "mes": 8,
+        "mes_nombre": "agosto",
+        "mediana_soles_kg": 1.36,
+        "min_soles_kg": 1.1,
+        "max_soles_kg": 1.98,
+        "n_anios": 4
+      },
+      {
+        "mes": 9,
+        "mes_nombre": "septiembre",
+        "mediana_soles_kg": 1.53,
+        "min_soles_kg": 0.94,
+        "max_soles_kg": 2.17,
+        "n_anios": 4
+      },
+      {
+        "mes": 10,
+        "mes_nombre": "octubre",
+        "mediana_soles_kg": 1.12,
+        "min_soles_kg": 0.9,
+        "max_soles_kg": 1.99,
+        "n_anios": 5
+      },
+      {
+        "mes": 11,
+        "mes_nombre": "noviembre",
+        "mediana_soles_kg": 1.31,
+        "min_soles_kg": 0.77,
+        "max_soles_kg": 1.67,
+        "n_anios": 4
+      },
+      {
+        "mes": 12,
+        "mes_nombre": "diciembre",
+        "mediana_soles_kg": 1.17,
+        "min_soles_kg": 0.7,
+        "max_soles_kg": 2.26,
+        "n_anios": 4
+      }
+    ],
+    "meses_precio_bajo": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "meses_precio_alto": [
+      7,
+      8,
+      9
+    ],
+    "advertencia": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+    "fuente": "EMMSA / MIDAGRI-SIEA (GMML Lima 2022–2026)",
+    "escala": "Gran Mercado Mayorista de Lima (referencia)",
+    "estado": "estimado",
+    "nota": "Precios medidos (EMMSA); mediana mensual calculada excluyendo mes en curso. Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+    "dato_hasta": "2026-10-31"
+  },
+  "global_o6_enis": {
+    "enis_papa_ayacucho_pct": 19.3,
+    "estado": "observado",
+    "dato_hasta": "2026-07-15"
+  },
+  "semaforo_regional": {
+    "total_chacras": 10,
+    "conteo": {
+      "tarwi_o_haba": 7,
+      "quinua": 2,
+      "papa": 1
+    },
+    "linea": "Si estas 10 chacras siguen la recomendación: 7 tarwi o haba, 2 quinua y 1 papa.",
+    "nota_siguiente_fase": "Siguiente fase: con las siembras registradas por cooperativa, Kultiva cambiará la recomendación cuando un cultivo se acerque al exceso (semáforo regional).",
+    "estado": "ilustrativo",
+    "dato_hasta": "2026-11-12"
+  },
+  "oportunidades_cooperativa": [
+    {
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "parcelas_aplican": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10"
+      ],
+      "parcela_referencia": "P01",
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "estado": "estimado",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "codigo": "O2",
+      "titulo": "Ventana segura contra la helada",
+      "accion_positiva": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
+      "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 31 de octubre y en 2 de cada 10 años volvió desde el 30 de marzo. Esta campaña hubo 16 noches con helada.",
+      "parcelas_aplican": [
+        "P02",
+        "P05",
+        "P07",
+        "P08",
+        "P10"
+      ],
+      "parcela_referencia": "P05",
+      "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "estado": "estimado",
+      "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "parcelas_aplican": [
+        "P01",
+        "P03",
+        "P04",
+        "P05",
+        "P07",
+        "P08",
+        "P09"
+      ],
+      "parcela_referencia": "P01",
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "estado": "observado",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "codigo": "O3",
+      "titulo": "Fecha estimada de cosecha de tuna",
+      "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+      "por_que_corto": "Acumula 2047 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 9 de enero).",
+      "parcelas_aplican": [
+        "P01",
+        "P03",
+        "P04",
+        "P09"
+      ],
+      "parcela_referencia": "P01",
+      "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "estado": "estimado",
+      "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "codigo": "O5",
+      "titulo": "Transformar en vez de malvender: chuño y tunta",
+      "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+      "por_que_corto": "Está a 3682 m con 16 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "parcelas_aplican": [
+        "P05",
+        "P07",
+        "P08"
+      ],
+      "parcela_referencia": "P05",
+      "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+      "escala": "Chacra (altura/helada) + regional Ayacucho",
+      "estado": "estimado",
+      "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "codigo": "O4",
+      "titulo": "Cuándo vender: calendario de precios de la papa",
+      "accion_positiva": "La papa suele pagarse menos de febrero a mayo (~S/ 0.90 por kilo) y más de julio a septiembre (~S/ 1.30–1.50). Si puedes, guarda una parte y vende escalonado.",
+      "por_que_corto": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+      "parcelas_aplican": [
+        "P10"
+      ],
+      "parcela_referencia": "P10",
+      "fuente": "EMMSA / MIDAGRI-SIEA (GMML Lima 2022–2026)",
+      "escala": "Gran Mercado Mayorista de Lima (referencia)",
+      "estado": "estimado",
+      "nota": "Precios medidos (EMMSA); mediana mensual calculada excluyendo mes en curso. Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+      "dato_hasta": "2026-10-31"
+    }
+  ],
+  "por_parcela": [
+    {
+      "parcela_id": "P01",
+      "distrito": "huanta",
+      "elev_dem_m": 2667.0,
+      "cultivo_asignado": "haba",
+      "oportunidades_aplicables": [
+        "O3",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O3",
+        "titulo": "Fecha estimada de cosecha de tuna",
+        "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+        "por_que_corto": "Acumula 2047 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 9 de enero).",
+        "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+        "valores_json": {
+          "t_base_c": 0.0,
+          "meta_gd": 2751.31,
+          "ajuste_termico_c": 4.03,
+          "gdd_acumulados_2026": 2046.7,
+          "gd_diario_normal_nov_ene": 14.83,
+          "fecha_estimada_2026": "2026-12-30",
+          "fecha_estimada_2026_texto": "30 de diciembre",
+          "mes_cosecha_2026": 12,
+          "fecha_normal_1991_2020": "2027-01-09",
+          "fecha_normal_texto": "9 de enero",
+          "adelanto_dias": 10
+        },
+        "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O3",
+          "titulo": "Fecha estimada de cosecha de tuna",
+          "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+          "por_que_corto": "Acumula 2047 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 9 de enero).",
+          "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+          "valores_json": {
+            "t_base_c": 0.0,
+            "meta_gd": 2751.31,
+            "ajuste_termico_c": 4.03,
+            "gdd_acumulados_2026": 2046.7,
+            "gd_diario_normal_nov_ene": 14.83,
+            "fecha_estimada_2026": "2026-12-30",
+            "fecha_estimada_2026_texto": "30 de diciembre",
+            "mes_cosecha_2026": 12,
+            "fecha_normal_1991_2020": "2027-01-09",
+            "fecha_normal_texto": "9 de enero",
+            "adelanto_dias": 10
+          },
+          "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "haba"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 3
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P01",
+        "cultivo_asignado": "haba",
+        "tiene_helada": false,
+        "tiene_tuna": true,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 30 de diciembre.",
+        "aria_label": "Calendario agrícola agosto a julio para P01 (huanta). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Sin meses con riesgo de helada. Cosecha estimada de tuna: 30 de diciembre. Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 30 de diciembre.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": true,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P02",
+      "distrito": "quinua",
+      "elev_dem_m": 3273.0,
+      "cultivo_asignado": "quinua",
+      "oportunidades_aplicables": [
+        "O2",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O2",
+        "titulo": "Ventana segura contra la helada",
+        "accion_positiva": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
+        "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 25 de agosto y en 2 de cada 10 años volvió desde el 9 de junio. Esta campaña hubo 2 noches con helada.",
+        "accion_ficha": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
+        "valores_json": {
+          "ajuste_termico_c": 1.39,
+          "n_anios_ultima_helada": 14,
+          "n_anios_primera_helada": 20,
+          "ultima_helada_mediana": "08-15",
+          "ultima_helada_mediana_texto": "15 de agosto",
+          "ultima_helada_p80": "08-25",
+          "ultima_helada_p80_texto": "25 de agosto",
+          "primera_helada_mediana": "06-27",
+          "primera_helada_mediana_texto": "27 de junio",
+          "primera_helada_p20": "06-09",
+          "primera_helada_p20_texto": "9 de junio",
+          "dias_helada_campana": 2,
+          "meses_riesgo_helada": [
+            8,
+            6,
+            7
+          ],
+          "ventana_segura_meses": [
+            11,
+            12,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "ventana_inicio_mes": "noviembre",
+          "ventana_fin_mes": "mayo",
+          "cosecha_antes_de": "junio"
+        },
+        "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O2",
+          "titulo": "Ventana segura contra la helada",
+          "accion_positiva": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
+          "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 25 de agosto y en 2 de cada 10 años volvió desde el 9 de junio. Esta campaña hubo 2 noches con helada.",
+          "accion_ficha": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
+          "valores_json": {
+            "ajuste_termico_c": 1.39,
+            "n_anios_ultima_helada": 14,
+            "n_anios_primera_helada": 20,
+            "ultima_helada_mediana": "08-15",
+            "ultima_helada_mediana_texto": "15 de agosto",
+            "ultima_helada_p80": "08-25",
+            "ultima_helada_p80_texto": "25 de agosto",
+            "primera_helada_mediana": "06-27",
+            "primera_helada_mediana_texto": "27 de junio",
+            "primera_helada_p20": "06-09",
+            "primera_helada_p20_texto": "9 de junio",
+            "dias_helada_campana": 2,
+            "meses_riesgo_helada": [
+              8,
+              6,
+              7
+            ],
+            "ventana_segura_meses": [
+              11,
+              12,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "ventana_inicio_mes": "noviembre",
+            "ventana_fin_mes": "mayo",
+            "cosecha_antes_de": "junio"
+          },
+          "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 2
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P02",
+        "cultivo_asignado": "quinua",
+        "tiene_helada": true,
+        "tiene_tuna": false,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Siembra de noviembre a mayo, después de las lluvias; cosecha antes de junio.",
+        "aria_label": "Calendario agrícola agosto a julio para P02 (quinua). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Meses con riesgo de helada: agosto, junio, julio. Ventana segura de siembra: noviembre, diciembre, enero, febrero, marzo, abril, mayo. Siembra de noviembre a mayo, después de las lluvias; cosecha antes de junio.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P03",
+      "distrito": "acosvinchos",
+      "elev_dem_m": 2848.0,
+      "cultivo_asignado": "tarwi",
+      "oportunidades_aplicables": [
+        "O3",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O3",
+        "titulo": "Fecha estimada de cosecha de tuna",
+        "accion_positiva": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
+        "por_que_corto": "Acumula 1940 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 20 de enero).",
+        "accion_ficha": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
+        "valores_json": {
+          "t_base_c": 0.0,
+          "meta_gd": 2751.31,
+          "ajuste_termico_c": 3.24,
+          "gdd_acumulados_2026": 1940.0,
+          "gd_diario_normal_nov_ene": 14.04,
+          "fecha_estimada_2026": "2027-01-09",
+          "fecha_estimada_2026_texto": "9 de enero",
+          "mes_cosecha_2026": 1,
+          "fecha_normal_1991_2020": "2027-01-20",
+          "fecha_normal_texto": "20 de enero",
+          "adelanto_dias": 11
+        },
+        "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O3",
+          "titulo": "Fecha estimada de cosecha de tuna",
+          "accion_positiva": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
+          "por_que_corto": "Acumula 1940 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 20 de enero).",
+          "accion_ficha": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
+          "valores_json": {
+            "t_base_c": 0.0,
+            "meta_gd": 2751.31,
+            "ajuste_termico_c": 3.24,
+            "gdd_acumulados_2026": 1940.0,
+            "gd_diario_normal_nov_ene": 14.04,
+            "fecha_estimada_2026": "2027-01-09",
+            "fecha_estimada_2026_texto": "9 de enero",
+            "mes_cosecha_2026": 1,
+            "fecha_normal_1991_2020": "2027-01-20",
+            "fecha_normal_texto": "20 de enero",
+            "adelanto_dias": 11
+          },
+          "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "tarwi"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 3
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P03",
+        "cultivo_asignado": "tarwi",
+        "tiene_helada": false,
+        "tiene_tuna": true,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 9 de enero.",
+        "aria_label": "Calendario agrícola agosto a julio para P03 (acosvinchos). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Sin meses con riesgo de helada. Cosecha estimada de tuna: 9 de enero. Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 9 de enero.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": true,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P04",
+      "distrito": "pacaycasa",
+      "elev_dem_m": 2588.0,
+      "cultivo_asignado": "haba",
+      "oportunidades_aplicables": [
+        "O3",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O3",
+        "titulo": "Fecha estimada de cosecha de tuna",
+        "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+        "por_que_corto": "Acumula 2093 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 5 de enero).",
+        "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+        "valores_json": {
+          "t_base_c": 0.0,
+          "meta_gd": 2751.31,
+          "ajuste_termico_c": 4.37,
+          "gdd_acumulados_2026": 2092.6,
+          "gd_diario_normal_nov_ene": 15.17,
+          "fecha_estimada_2026": "2026-12-25",
+          "fecha_estimada_2026_texto": "25 de diciembre",
+          "mes_cosecha_2026": 12,
+          "fecha_normal_1991_2020": "2027-01-05",
+          "fecha_normal_texto": "5 de enero",
+          "adelanto_dias": 11
+        },
+        "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O3",
+          "titulo": "Fecha estimada de cosecha de tuna",
+          "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+          "por_que_corto": "Acumula 2093 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 5 de enero).",
+          "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+          "valores_json": {
+            "t_base_c": 0.0,
+            "meta_gd": 2751.31,
+            "ajuste_termico_c": 4.37,
+            "gdd_acumulados_2026": 2092.6,
+            "gd_diario_normal_nov_ene": 15.17,
+            "fecha_estimada_2026": "2026-12-25",
+            "fecha_estimada_2026_texto": "25 de diciembre",
+            "mes_cosecha_2026": 12,
+            "fecha_normal_1991_2020": "2027-01-05",
+            "fecha_normal_texto": "5 de enero",
+            "adelanto_dias": 11
+          },
+          "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "haba"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 3
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P04",
+        "cultivo_asignado": "haba",
+        "tiene_helada": false,
+        "tiene_tuna": true,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 25 de diciembre.",
+        "aria_label": "Calendario agrícola agosto a julio para P04 (pacaycasa). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Sin meses con riesgo de helada. Cosecha estimada de tuna: 25 de diciembre. Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 25 de diciembre.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": true,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P05",
+      "distrito": "chiara_alta_2",
+      "elev_dem_m": 3682.0,
+      "cultivo_asignado": "tarwi",
+      "oportunidades_aplicables": [
+        "O2",
+        "O5",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O2",
+        "titulo": "Ventana segura contra la helada",
+        "accion_positiva": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
+        "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 31 de octubre y en 2 de cada 10 años volvió desde el 30 de marzo. Esta campaña hubo 16 noches con helada.",
+        "accion_ficha": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
+        "valores_json": {
+          "ajuste_termico_c": 0.81,
+          "n_anios_ultima_helada": 30,
+          "n_anios_primera_helada": 29,
+          "ultima_helada_mediana": "09-01",
+          "ultima_helada_mediana_texto": "1 de septiembre",
+          "ultima_helada_p80": "10-31",
+          "ultima_helada_p80_texto": "31 de octubre",
+          "primera_helada_mediana": "05-23",
+          "primera_helada_mediana_texto": "23 de mayo",
+          "primera_helada_p20": "03-30",
+          "primera_helada_p20_texto": "30 de marzo",
+          "dias_helada_campana": 16,
+          "meses_riesgo_helada": [
+            8,
+            9,
+            10,
+            4,
+            5,
+            6,
+            7
+          ],
+          "ventana_segura_meses": [
+            11,
+            12,
+            1,
+            2,
+            3
+          ],
+          "ventana_inicio_mes": "noviembre",
+          "ventana_fin_mes": "marzo",
+          "cosecha_antes_de": "abril"
+        },
+        "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O2",
+          "titulo": "Ventana segura contra la helada",
+          "accion_positiva": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
+          "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 31 de octubre y en 2 de cada 10 años volvió desde el 30 de marzo. Esta campaña hubo 16 noches con helada.",
+          "accion_ficha": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
+          "valores_json": {
+            "ajuste_termico_c": 0.81,
+            "n_anios_ultima_helada": 30,
+            "n_anios_primera_helada": 29,
+            "ultima_helada_mediana": "09-01",
+            "ultima_helada_mediana_texto": "1 de septiembre",
+            "ultima_helada_p80": "10-31",
+            "ultima_helada_p80_texto": "31 de octubre",
+            "primera_helada_mediana": "05-23",
+            "primera_helada_mediana_texto": "23 de mayo",
+            "primera_helada_p20": "03-30",
+            "primera_helada_p20_texto": "30 de marzo",
+            "dias_helada_campana": 16,
+            "meses_riesgo_helada": [
+              8,
+              9,
+              10,
+              4,
+              5,
+              6,
+              7
+            ],
+            "ventana_segura_meses": [
+              11,
+              12,
+              1,
+              2,
+              3
+            ],
+            "ventana_inicio_mes": "noviembre",
+            "ventana_fin_mes": "marzo",
+            "cosecha_antes_de": "abril"
+          },
+          "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O5",
+          "titulo": "Transformar en vez de malvender: chuño y tunta",
+          "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+          "por_que_corto": "Está a 3682 m con 16 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+          "accion_ficha": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+          "valores_json": {
+            "elev_dem_m": 3682,
+            "dias_helada_campana": 16,
+            "enis_papa_ayacucho_pct": 19.3,
+            "im_reciente": 0.979,
+            "sin_rendimiento_fijo": true
+          },
+          "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+          "escala": "Chacra (altura/helada) + regional Ayacucho",
+          "estado": "estimado",
+          "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "tarwi"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 3
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 4
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P05",
+        "cultivo_asignado": "tarwi",
+        "tiene_helada": true,
+        "tiene_tuna": false,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Siembra de noviembre a marzo, después de las lluvias; cosecha antes de abril.",
+        "aria_label": "Calendario agrícola agosto a julio para P05 (chiara_alta_2). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Meses con riesgo de helada: agosto, septiembre, octubre, abril, mayo, junio, julio. Ventana segura de siembra: noviembre, diciembre, enero, febrero, marzo. Siembra de noviembre a marzo, después de las lluvias; cosecha antes de abril.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P06",
+      "distrito": "acocro",
+      "elev_dem_m": 3245.0,
+      "cultivo_asignado": "quinua",
+      "oportunidades_aplicables": [
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O1",
+        "titulo": "Cuándo sembrar: inicio real de las lluvias",
+        "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+        "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+        "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+        "valores_json": {
+          "mediana_dias_desde_sep1": 56.5,
+          "fecha_mediana_normal": "27 de octubre",
+          "n_anios_con_inicio": 24,
+          "rango_min_md": "22 de septiembre",
+          "rango_max_md": "29 de diciembre",
+          "anio_2026_estado": "no_establecidas",
+          "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+        },
+        "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+        "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+        "estado": "estimado",
+        "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+        "dato_hasta": "2026-10-31",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 1
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P06",
+        "cultivo_asignado": "quinua",
+        "tiene_helada": false,
+        "tiene_tuna": false,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre).",
+        "aria_label": "Calendario agrícola agosto a julio para P06 (acocro). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Sin meses con riesgo de helada. Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre).",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P07",
+      "distrito": "chiara_alta_1",
+      "elev_dem_m": 3584.0,
+      "cultivo_asignado": "tarwi",
+      "oportunidades_aplicables": [
+        "O2",
+        "O5",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O2",
+        "titulo": "Ventana segura contra la helada",
+        "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+        "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+        "accion_ficha": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+        "valores_json": {
+          "ajuste_termico_c": 1.24,
+          "n_anios_ultima_helada": 28,
+          "n_anios_primera_helada": 29,
+          "ultima_helada_mediana": "08-24",
+          "ultima_helada_mediana_texto": "24 de agosto",
+          "ultima_helada_p80": "09-12",
+          "ultima_helada_p80_texto": "12 de septiembre",
+          "primera_helada_mediana": "06-11",
+          "primera_helada_mediana_texto": "11 de junio",
+          "primera_helada_p20": "04-27",
+          "primera_helada_p20_texto": "27 de abril",
+          "dias_helada_campana": 13,
+          "meses_riesgo_helada": [
+            8,
+            9,
+            5,
+            6,
+            7
+          ],
+          "ventana_segura_meses": [
+            11,
+            12,
+            1,
+            2,
+            3,
+            4
+          ],
+          "ventana_inicio_mes": "noviembre",
+          "ventana_fin_mes": "abril",
+          "cosecha_antes_de": "mayo"
+        },
+        "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O2",
+          "titulo": "Ventana segura contra la helada",
+          "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+          "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+          "accion_ficha": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+          "valores_json": {
+            "ajuste_termico_c": 1.24,
+            "n_anios_ultima_helada": 28,
+            "n_anios_primera_helada": 29,
+            "ultima_helada_mediana": "08-24",
+            "ultima_helada_mediana_texto": "24 de agosto",
+            "ultima_helada_p80": "09-12",
+            "ultima_helada_p80_texto": "12 de septiembre",
+            "primera_helada_mediana": "06-11",
+            "primera_helada_mediana_texto": "11 de junio",
+            "primera_helada_p20": "04-27",
+            "primera_helada_p20_texto": "27 de abril",
+            "dias_helada_campana": 13,
+            "meses_riesgo_helada": [
+              8,
+              9,
+              5,
+              6,
+              7
+            ],
+            "ventana_segura_meses": [
+              11,
+              12,
+              1,
+              2,
+              3,
+              4
+            ],
+            "ventana_inicio_mes": "noviembre",
+            "ventana_fin_mes": "abril",
+            "cosecha_antes_de": "mayo"
+          },
+          "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O5",
+          "titulo": "Transformar en vez de malvender: chuño y tunta",
+          "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+          "por_que_corto": "Está a 3584 m con 13 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+          "accion_ficha": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+          "valores_json": {
+            "elev_dem_m": 3584,
+            "dias_helada_campana": 13,
+            "enis_papa_ayacucho_pct": 19.3,
+            "im_reciente": 0.979,
+            "sin_rendimiento_fijo": true
+          },
+          "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+          "escala": "Chacra (altura/helada) + regional Ayacucho",
+          "estado": "estimado",
+          "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "tarwi"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 3
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 4
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P07",
+        "cultivo_asignado": "tarwi",
+        "tiene_helada": true,
+        "tiene_tuna": false,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Siembra de noviembre a abril, después de las lluvias; cosecha antes de mayo.",
+        "aria_label": "Calendario agrícola agosto a julio para P07 (chiara_alta_1). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Meses con riesgo de helada: agosto, septiembre, mayo, junio, julio. Ventana segura de siembra: noviembre, diciembre, enero, febrero, marzo, abril. Siembra de noviembre a abril, después de las lluvias; cosecha antes de mayo.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P08",
+      "distrito": "vinchos_alta_1",
+      "elev_dem_m": 3589.0,
+      "cultivo_asignado": "tarwi",
+      "oportunidades_aplicables": [
+        "O2",
+        "O5",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O2",
+        "titulo": "Ventana segura contra la helada",
+        "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+        "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+        "accion_ficha": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+        "valores_json": {
+          "ajuste_termico_c": 1.21,
+          "n_anios_ultima_helada": 28,
+          "n_anios_primera_helada": 29,
+          "ultima_helada_mediana": "08-24",
+          "ultima_helada_mediana_texto": "24 de agosto",
+          "ultima_helada_p80": "09-12",
+          "ultima_helada_p80_texto": "12 de septiembre",
+          "primera_helada_mediana": "06-11",
+          "primera_helada_mediana_texto": "11 de junio",
+          "primera_helada_p20": "04-27",
+          "primera_helada_p20_texto": "27 de abril",
+          "dias_helada_campana": 13,
+          "meses_riesgo_helada": [
+            8,
+            9,
+            5,
+            6,
+            7
+          ],
+          "ventana_segura_meses": [
+            11,
+            12,
+            1,
+            2,
+            3,
+            4
+          ],
+          "ventana_inicio_mes": "noviembre",
+          "ventana_fin_mes": "abril",
+          "cosecha_antes_de": "mayo"
+        },
+        "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O2",
+          "titulo": "Ventana segura contra la helada",
+          "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+          "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+          "accion_ficha": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+          "valores_json": {
+            "ajuste_termico_c": 1.21,
+            "n_anios_ultima_helada": 28,
+            "n_anios_primera_helada": 29,
+            "ultima_helada_mediana": "08-24",
+            "ultima_helada_mediana_texto": "24 de agosto",
+            "ultima_helada_p80": "09-12",
+            "ultima_helada_p80_texto": "12 de septiembre",
+            "primera_helada_mediana": "06-11",
+            "primera_helada_mediana_texto": "11 de junio",
+            "primera_helada_p20": "04-27",
+            "primera_helada_p20_texto": "27 de abril",
+            "dias_helada_campana": 13,
+            "meses_riesgo_helada": [
+              8,
+              9,
+              5,
+              6,
+              7
+            ],
+            "ventana_segura_meses": [
+              11,
+              12,
+              1,
+              2,
+              3,
+              4
+            ],
+            "ventana_inicio_mes": "noviembre",
+            "ventana_fin_mes": "abril",
+            "cosecha_antes_de": "mayo"
+          },
+          "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O5",
+          "titulo": "Transformar en vez de malvender: chuño y tunta",
+          "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+          "por_que_corto": "Está a 3589 m con 13 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+          "accion_ficha": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+          "valores_json": {
+            "elev_dem_m": 3589,
+            "dias_helada_campana": 13,
+            "enis_papa_ayacucho_pct": 19.3,
+            "im_reciente": 0.979,
+            "sin_rendimiento_fijo": true
+          },
+          "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+          "escala": "Chacra (altura/helada) + regional Ayacucho",
+          "estado": "estimado",
+          "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "tarwi"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 3
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 4
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P08",
+        "cultivo_asignado": "tarwi",
+        "tiene_helada": true,
+        "tiene_tuna": false,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Siembra de noviembre a abril, después de las lluvias; cosecha antes de mayo.",
+        "aria_label": "Calendario agrícola agosto a julio para P08 (vinchos_alta_1). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Meses con riesgo de helada: agosto, septiembre, mayo, junio, julio. Ventana segura de siembra: noviembre, diciembre, enero, febrero, marzo, abril. Siembra de noviembre a abril, después de las lluvias; cosecha antes de mayo.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P09",
+      "distrito": "cangallo",
+      "elev_dem_m": 2564.0,
+      "cultivo_asignado": "haba",
+      "oportunidades_aplicables": [
+        "O3",
+        "O6",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O3",
+        "titulo": "Fecha estimada de cosecha de tuna",
+        "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+        "por_que_corto": "Acumula 2152 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 31 de diciembre).",
+        "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+        "valores_json": {
+          "t_base_c": 0.0,
+          "meta_gd": 2751.31,
+          "ajuste_termico_c": 5.67,
+          "gdd_acumulados_2026": 2152.0,
+          "gd_diario_normal_nov_ene": 15.63,
+          "fecha_estimada_2026": "2026-12-20",
+          "fecha_estimada_2026_texto": "20 de diciembre",
+          "mes_cosecha_2026": 12,
+          "fecha_normal_1991_2020": "2026-12-31",
+          "fecha_normal_texto": "31 de diciembre",
+          "adelanto_dias": 11
+        },
+        "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+        "escala": "~50 km ajustado a elevación DEM 90 m",
+        "estado": "estimado",
+        "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+        "dato_hasta": "2026-11-12",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O3",
+          "titulo": "Fecha estimada de cosecha de tuna",
+          "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+          "por_que_corto": "Acumula 2152 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 31 de diciembre).",
+          "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+          "valores_json": {
+            "t_base_c": 0.0,
+            "meta_gd": 2751.31,
+            "ajuste_termico_c": 5.67,
+            "gdd_acumulados_2026": 2152.0,
+            "gd_diario_normal_nov_ene": 15.63,
+            "fecha_estimada_2026": "2026-12-20",
+            "fecha_estimada_2026_texto": "20 de diciembre",
+            "mes_cosecha_2026": 12,
+            "fecha_normal_1991_2020": "2026-12-31",
+            "fecha_normal_texto": "31 de diciembre",
+            "adelanto_dias": 11
+          },
+          "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O6",
+          "titulo": "Siembra lo que pocos siembran",
+          "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+          "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+          "valores_json": {
+            "enis_papa_ayacucho_pct": 19.3,
+            "cultivo_recomendado": "haba"
+          },
+          "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+          "escala": "Regional Ayacucho",
+          "estado": "observado",
+          "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+          "dato_hasta": "2026-07-15",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 3
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P09",
+        "cultivo_asignado": "haba",
+        "tiene_helada": false,
+        "tiene_tuna": true,
+        "tiene_papa_en_plan": false,
+        "frase_resumen": "Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 20 de diciembre.",
+        "aria_label": "Calendario agrícola agosto a julio para P09 (cangallo). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Sin meses con riesgo de helada. Cosecha estimada de tuna: 20 de diciembre. Sin riesgo de helada en el año; siembra cuando se asienten las lluvias (normalmente fines de octubre). Cosecha estimada de tuna hacia el 20 de diciembre.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": true,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          }
+        ]
+      }
+    },
+    {
+      "parcela_id": "P10",
+      "distrito": "vilcashuaman",
+      "elev_dem_m": 3419.0,
+      "cultivo_asignado": "papa",
+      "oportunidades_aplicables": [
+        "O4",
+        "O2",
+        "O1"
+      ],
+      "oportunidad_ficha": {
+        "codigo": "O4",
+        "titulo": "Cuándo vender: calendario de precios de la papa",
+        "accion_positiva": "La papa suele pagarse menos de febrero a mayo (~S/ 0.90 por kilo) y más de julio a septiembre (~S/ 1.30–1.50). Si puedes, guarda una parte y vende escalonado.",
+        "por_que_corto": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+        "accion_ficha": "La papa suele pagarse mejor entre julio y septiembre que entre febrero y mayo: si puedes, guarda una parte y vende escalonado.",
+        "valores_json": {
+          "meses": [
+            {
+              "mes": 1,
+              "mes_nombre": "enero",
+              "mediana_soles_kg": 0.98,
+              "min_soles_kg": 0.81,
+              "max_soles_kg": 2.09,
+              "n_anios": 4
+            },
+            {
+              "mes": 2,
+              "mes_nombre": "febrero",
+              "mediana_soles_kg": 0.88,
+              "min_soles_kg": 0.84,
+              "max_soles_kg": 1.03,
+              "n_anios": 3
+            },
+            {
+              "mes": 3,
+              "mes_nombre": "marzo",
+              "mediana_soles_kg": 0.92,
+              "min_soles_kg": 0.78,
+              "max_soles_kg": 1.81,
+              "n_anios": 3
+            },
+            {
+              "mes": 4,
+              "mes_nombre": "abril",
+              "mediana_soles_kg": 0.91,
+              "min_soles_kg": 0.9,
+              "max_soles_kg": 1.83,
+              "n_anios": 3
+            },
+            {
+              "mes": 5,
+              "mes_nombre": "mayo",
+              "mediana_soles_kg": 0.99,
+              "min_soles_kg": 0.96,
+              "max_soles_kg": 1.35,
+              "n_anios": 3
+            },
+            {
+              "mes": 6,
+              "mes_nombre": "junio",
+              "mediana_soles_kg": 1.14,
+              "min_soles_kg": 0.78,
+              "max_soles_kg": 1.34,
+              "n_anios": 5
+            },
+            {
+              "mes": 7,
+              "mes_nombre": "julio",
+              "mediana_soles_kg": 1.29,
+              "min_soles_kg": 0.98,
+              "max_soles_kg": 1.41,
+              "n_anios": 4
+            },
+            {
+              "mes": 8,
+              "mes_nombre": "agosto",
+              "mediana_soles_kg": 1.36,
+              "min_soles_kg": 1.1,
+              "max_soles_kg": 1.98,
+              "n_anios": 4
+            },
+            {
+              "mes": 9,
+              "mes_nombre": "septiembre",
+              "mediana_soles_kg": 1.53,
+              "min_soles_kg": 0.94,
+              "max_soles_kg": 2.17,
+              "n_anios": 4
+            },
+            {
+              "mes": 10,
+              "mes_nombre": "octubre",
+              "mediana_soles_kg": 1.12,
+              "min_soles_kg": 0.9,
+              "max_soles_kg": 1.99,
+              "n_anios": 5
+            },
+            {
+              "mes": 11,
+              "mes_nombre": "noviembre",
+              "mediana_soles_kg": 1.31,
+              "min_soles_kg": 0.77,
+              "max_soles_kg": 1.67,
+              "n_anios": 4
+            },
+            {
+              "mes": 12,
+              "mes_nombre": "diciembre",
+              "mediana_soles_kg": 1.17,
+              "min_soles_kg": 0.7,
+              "max_soles_kg": 2.26,
+              "n_anios": 4
+            }
+          ],
+          "meses_precio_bajo": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "meses_precio_alto": [
+            7,
+            8,
+            9
+          ],
+          "advertencia": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81)."
+        },
+        "fuente": "EMMSA / MIDAGRI-SIEA (GMML Lima 2022–2026)",
+        "escala": "Gran Mercado Mayorista de Lima (referencia)",
+        "estado": "estimado",
+        "nota": "Precios medidos (EMMSA); mediana mensual calculada excluyendo mes en curso. Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+        "dato_hasta": "2026-10-31",
+        "prioridad": 1
+      },
+      "oportunidades": [
+        {
+          "codigo": "O4",
+          "titulo": "Cuándo vender: calendario de precios de la papa",
+          "accion_positiva": "La papa suele pagarse menos de febrero a mayo (~S/ 0.90 por kilo) y más de julio a septiembre (~S/ 1.30–1.50). Si puedes, guarda una parte y vende escalonado.",
+          "por_que_corto": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+          "accion_ficha": "La papa suele pagarse mejor entre julio y septiembre que entre febrero y mayo: si puedes, guarda una parte y vende escalonado.",
+          "valores_json": {
+            "meses": [
+              {
+                "mes": 1,
+                "mes_nombre": "enero",
+                "mediana_soles_kg": 0.98,
+                "min_soles_kg": 0.81,
+                "max_soles_kg": 2.09,
+                "n_anios": 4
+              },
+              {
+                "mes": 2,
+                "mes_nombre": "febrero",
+                "mediana_soles_kg": 0.88,
+                "min_soles_kg": 0.84,
+                "max_soles_kg": 1.03,
+                "n_anios": 3
+              },
+              {
+                "mes": 3,
+                "mes_nombre": "marzo",
+                "mediana_soles_kg": 0.92,
+                "min_soles_kg": 0.78,
+                "max_soles_kg": 1.81,
+                "n_anios": 3
+              },
+              {
+                "mes": 4,
+                "mes_nombre": "abril",
+                "mediana_soles_kg": 0.91,
+                "min_soles_kg": 0.9,
+                "max_soles_kg": 1.83,
+                "n_anios": 3
+              },
+              {
+                "mes": 5,
+                "mes_nombre": "mayo",
+                "mediana_soles_kg": 0.99,
+                "min_soles_kg": 0.96,
+                "max_soles_kg": 1.35,
+                "n_anios": 3
+              },
+              {
+                "mes": 6,
+                "mes_nombre": "junio",
+                "mediana_soles_kg": 1.14,
+                "min_soles_kg": 0.78,
+                "max_soles_kg": 1.34,
+                "n_anios": 5
+              },
+              {
+                "mes": 7,
+                "mes_nombre": "julio",
+                "mediana_soles_kg": 1.29,
+                "min_soles_kg": 0.98,
+                "max_soles_kg": 1.41,
+                "n_anios": 4
+              },
+              {
+                "mes": 8,
+                "mes_nombre": "agosto",
+                "mediana_soles_kg": 1.36,
+                "min_soles_kg": 1.1,
+                "max_soles_kg": 1.98,
+                "n_anios": 4
+              },
+              {
+                "mes": 9,
+                "mes_nombre": "septiembre",
+                "mediana_soles_kg": 1.53,
+                "min_soles_kg": 0.94,
+                "max_soles_kg": 2.17,
+                "n_anios": 4
+              },
+              {
+                "mes": 10,
+                "mes_nombre": "octubre",
+                "mediana_soles_kg": 1.12,
+                "min_soles_kg": 0.9,
+                "max_soles_kg": 1.99,
+                "n_anios": 5
+              },
+              {
+                "mes": 11,
+                "mes_nombre": "noviembre",
+                "mediana_soles_kg": 1.31,
+                "min_soles_kg": 0.77,
+                "max_soles_kg": 1.67,
+                "n_anios": 4
+              },
+              {
+                "mes": 12,
+                "mes_nombre": "diciembre",
+                "mediana_soles_kg": 1.17,
+                "min_soles_kg": 0.7,
+                "max_soles_kg": 2.26,
+                "n_anios": 4
+              }
+            ],
+            "meses_precio_bajo": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "meses_precio_alto": [
+              7,
+              8,
+              9
+            ],
+            "advertencia": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81)."
+          },
+          "fuente": "EMMSA / MIDAGRI-SIEA (GMML Lima 2022–2026)",
+          "escala": "Gran Mercado Mayorista de Lima (referencia)",
+          "estado": "estimado",
+          "nota": "Precios medidos (EMMSA); mediana mensual calculada excluyendo mes en curso. Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 1
+        },
+        {
+          "codigo": "O2",
+          "titulo": "Ventana segura contra la helada",
+          "accion_positiva": "Tu ventana segura es de noviembre a junio: siembra después de la última helada y cosecha antes de julio.",
+          "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 7 de octubre y en 2 de cada 10 años volvió desde el 2 de julio. Esta campaña hubo 1 noches con helada.",
+          "accion_ficha": "Tu ventana segura es de noviembre a junio: siembra después de la última helada y cosecha antes de julio.",
+          "valores_json": {
+            "ajuste_termico_c": -0.75,
+            "n_anios_ultima_helada": 3,
+            "n_anios_primera_helada": 6,
+            "ultima_helada_mediana": "08-19",
+            "ultima_helada_mediana_texto": "19 de agosto",
+            "ultima_helada_p80": "10-07",
+            "ultima_helada_p80_texto": "7 de octubre",
+            "primera_helada_mediana": "07-07",
+            "primera_helada_mediana_texto": "7 de julio",
+            "primera_helada_p20": "07-02",
+            "primera_helada_p20_texto": "2 de julio",
+            "dias_helada_campana": 1,
+            "meses_riesgo_helada": [
+              8,
+              9,
+              7
+            ],
+            "ventana_segura_meses": [
+              11,
+              12,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "ventana_inicio_mes": "noviembre",
+            "ventana_fin_mes": "junio",
+            "cosecha_antes_de": "julio"
+          },
+          "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+          "escala": "~50 km ajustado a elevación DEM 90 m",
+          "estado": "estimado",
+          "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+          "dato_hasta": "2026-11-12",
+          "prioridad": 2
+        },
+        {
+          "codigo": "O1",
+          "titulo": "Cuándo sembrar: inicio real de las lluvias",
+          "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+          "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+          "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
+          "valores_json": {
+            "mediana_dias_desde_sep1": 56.5,
+            "fecha_mediana_normal": "27 de octubre",
+            "n_anios_con_inicio": 24,
+            "rango_min_md": "22 de septiembre",
+            "rango_max_md": "29 de diciembre",
+            "anio_2026_estado": "no_establecidas",
+            "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+          },
+          "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+          "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+          "estado": "estimado",
+          "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+          "dato_hasta": "2026-10-31",
+          "prioridad": 3
+        }
+      ],
+      "calendario": {
+        "parcela_id": "P10",
+        "cultivo_asignado": "papa",
+        "tiene_helada": true,
+        "tiene_tuna": false,
+        "tiene_papa_en_plan": true,
+        "frase_resumen": "Siembra de noviembre a junio, después de las lluvias; cosecha antes de julio.",
+        "aria_label": "Calendario agrícola agosto a julio para P10 (vilcashuaman). Inicio normal de lluvias: fines de octubre; en 2026 todavía no se establecen al 31 de octubre. Meses con riesgo de helada: agosto, septiembre, julio. Ventana segura de siembra: noviembre, diciembre, enero, febrero, marzo, abril, mayo, junio. Precios de referencia de papa en Lima: más bajos de febrero a mayo y más altos de julio a septiembre. Siembra de noviembre a junio, después de las lluvias; cosecha antes de julio.",
+        "meses": [
+          {
+            "mes_num": 8,
+            "mes_corto": "Ago",
+            "mes_largo": "agosto",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": true
+          },
+          {
+            "mes_num": 9,
+            "mes_corto": "Sep",
+            "mes_largo": "septiembre",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": true
+          },
+          {
+            "mes_num": 10,
+            "mes_corto": "Oct",
+            "mes_largo": "octubre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": true,
+            "lluvias_2026_pendientes": true,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 11,
+            "mes_corto": "Nov",
+            "mes_largo": "noviembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 12,
+            "mes_corto": "Dic",
+            "mes_largo": "diciembre",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 1,
+            "mes_corto": "Ene",
+            "mes_largo": "enero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 2,
+            "mes_corto": "Feb",
+            "mes_largo": "febrero",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": true,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 3,
+            "mes_corto": "Mar",
+            "mes_largo": "marzo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": true,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 4,
+            "mes_corto": "Abr",
+            "mes_largo": "abril",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": true,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 5,
+            "mes_corto": "May",
+            "mes_largo": "mayo",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": true,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 6,
+            "mes_corto": "Jun",
+            "mes_largo": "junio",
+            "riesgo_helada": false,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": true,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": false
+          },
+          {
+            "mes_num": 7,
+            "mes_corto": "Jul",
+            "mes_largo": "julio",
+            "riesgo_helada": true,
+            "inicio_normal_lluvias": false,
+            "lluvias_2026_pendientes": false,
+            "ventana_segura": false,
+            "cosecha_tuna": false,
+            "precio_papa_bajo": false,
+            "precio_papa_alto": true
+          }
+        ]
+      }
+    }
+  ],
+  "filas_supabase": [
+    {
+      "parcela_id": "P01",
+      "codigo": "O3",
+      "titulo": "Fecha estimada de cosecha de tuna",
+      "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+      "por_que_corto": "Acumula 2047 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 9 de enero).",
+      "prioridad": 1,
+      "valores_json": {
+        "t_base_c": 0.0,
+        "meta_gd": 2751.31,
+        "ajuste_termico_c": 4.03,
+        "gdd_acumulados_2026": 2046.7,
+        "gd_diario_normal_nov_ene": 14.83,
+        "fecha_estimada_2026": "2026-12-30",
+        "fecha_estimada_2026_texto": "30 de diciembre",
+        "mes_cosecha_2026": 12,
+        "fecha_normal_1991_2020": "2027-01-09",
+        "fecha_normal_texto": "9 de enero",
+        "adelanto_dias": 10
+      },
+      "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P01",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 2,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "haba"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P01",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 3,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P02",
+      "codigo": "O2",
+      "titulo": "Ventana segura contra la helada",
+      "accion_positiva": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
+      "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 25 de agosto y en 2 de cada 10 años volvió desde el 9 de junio. Esta campaña hubo 2 noches con helada.",
+      "prioridad": 1,
+      "valores_json": {
+        "ajuste_termico_c": 1.39,
+        "n_anios_ultima_helada": 14,
+        "n_anios_primera_helada": 20,
+        "ultima_helada_mediana": "08-15",
+        "ultima_helada_mediana_texto": "15 de agosto",
+        "ultima_helada_p80": "08-25",
+        "ultima_helada_p80_texto": "25 de agosto",
+        "primera_helada_mediana": "06-27",
+        "primera_helada_mediana_texto": "27 de junio",
+        "primera_helada_p20": "06-09",
+        "primera_helada_p20_texto": "9 de junio",
+        "dias_helada_campana": 2,
+        "meses_riesgo_helada": [
+          8,
+          6,
+          7
+        ],
+        "ventana_segura_meses": [
+          11,
+          12,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "ventana_inicio_mes": "noviembre",
+        "ventana_fin_mes": "mayo",
+        "cosecha_antes_de": "junio"
+      },
+      "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P02",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 2,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P03",
+      "codigo": "O3",
+      "titulo": "Fecha estimada de cosecha de tuna",
+      "accion_positiva": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
+      "por_que_corto": "Acumula 1940 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 20 de enero).",
+      "prioridad": 1,
+      "valores_json": {
+        "t_base_c": 0.0,
+        "meta_gd": 2751.31,
+        "ajuste_termico_c": 3.24,
+        "gdd_acumulados_2026": 1940.0,
+        "gd_diario_normal_nov_ene": 14.04,
+        "fecha_estimada_2026": "2027-01-09",
+        "fecha_estimada_2026_texto": "9 de enero",
+        "mes_cosecha_2026": 1,
+        "fecha_normal_1991_2020": "2027-01-20",
+        "fecha_normal_texto": "20 de enero",
+        "adelanto_dias": 11
+      },
+      "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P03",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 2,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "tarwi"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P03",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 3,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P04",
+      "codigo": "O3",
+      "titulo": "Fecha estimada de cosecha de tuna",
+      "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+      "por_que_corto": "Acumula 2093 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 5 de enero).",
+      "prioridad": 1,
+      "valores_json": {
+        "t_base_c": 0.0,
+        "meta_gd": 2751.31,
+        "ajuste_termico_c": 4.37,
+        "gdd_acumulados_2026": 2092.6,
+        "gd_diario_normal_nov_ene": 15.17,
+        "fecha_estimada_2026": "2026-12-25",
+        "fecha_estimada_2026_texto": "25 de diciembre",
+        "mes_cosecha_2026": 12,
+        "fecha_normal_1991_2020": "2027-01-05",
+        "fecha_normal_texto": "5 de enero",
+        "adelanto_dias": 11
+      },
+      "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P04",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 2,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "haba"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P04",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 3,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P05",
+      "codigo": "O2",
+      "titulo": "Ventana segura contra la helada",
+      "accion_positiva": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
+      "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 31 de octubre y en 2 de cada 10 años volvió desde el 30 de marzo. Esta campaña hubo 16 noches con helada.",
+      "prioridad": 1,
+      "valores_json": {
+        "ajuste_termico_c": 0.81,
+        "n_anios_ultima_helada": 30,
+        "n_anios_primera_helada": 29,
+        "ultima_helada_mediana": "09-01",
+        "ultima_helada_mediana_texto": "1 de septiembre",
+        "ultima_helada_p80": "10-31",
+        "ultima_helada_p80_texto": "31 de octubre",
+        "primera_helada_mediana": "05-23",
+        "primera_helada_mediana_texto": "23 de mayo",
+        "primera_helada_p20": "03-30",
+        "primera_helada_p20_texto": "30 de marzo",
+        "dias_helada_campana": 16,
+        "meses_riesgo_helada": [
+          8,
+          9,
+          10,
+          4,
+          5,
+          6,
+          7
+        ],
+        "ventana_segura_meses": [
+          11,
+          12,
+          1,
+          2,
+          3
+        ],
+        "ventana_inicio_mes": "noviembre",
+        "ventana_fin_mes": "marzo",
+        "cosecha_antes_de": "abril"
+      },
+      "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P05",
+      "codigo": "O5",
+      "titulo": "Transformar en vez de malvender: chuño y tunta",
+      "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+      "por_que_corto": "Está a 3682 m con 16 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "prioridad": 2,
+      "valores_json": {
+        "elev_dem_m": 3682,
+        "dias_helada_campana": 16,
+        "enis_papa_ayacucho_pct": 19.3,
+        "im_reciente": 0.979,
+        "sin_rendimiento_fijo": true
+      },
+      "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+      "escala": "Chacra (altura/helada) + regional Ayacucho",
+      "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P05",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 3,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "tarwi"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P05",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 4,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P06",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 1,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P07",
+      "codigo": "O2",
+      "titulo": "Ventana segura contra la helada",
+      "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+      "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+      "prioridad": 1,
+      "valores_json": {
+        "ajuste_termico_c": 1.24,
+        "n_anios_ultima_helada": 28,
+        "n_anios_primera_helada": 29,
+        "ultima_helada_mediana": "08-24",
+        "ultima_helada_mediana_texto": "24 de agosto",
+        "ultima_helada_p80": "09-12",
+        "ultima_helada_p80_texto": "12 de septiembre",
+        "primera_helada_mediana": "06-11",
+        "primera_helada_mediana_texto": "11 de junio",
+        "primera_helada_p20": "04-27",
+        "primera_helada_p20_texto": "27 de abril",
+        "dias_helada_campana": 13,
+        "meses_riesgo_helada": [
+          8,
+          9,
+          5,
+          6,
+          7
+        ],
+        "ventana_segura_meses": [
+          11,
+          12,
+          1,
+          2,
+          3,
+          4
+        ],
+        "ventana_inicio_mes": "noviembre",
+        "ventana_fin_mes": "abril",
+        "cosecha_antes_de": "mayo"
+      },
+      "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P07",
+      "codigo": "O5",
+      "titulo": "Transformar en vez de malvender: chuño y tunta",
+      "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+      "por_que_corto": "Está a 3584 m con 13 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "prioridad": 2,
+      "valores_json": {
+        "elev_dem_m": 3584,
+        "dias_helada_campana": 13,
+        "enis_papa_ayacucho_pct": 19.3,
+        "im_reciente": 0.979,
+        "sin_rendimiento_fijo": true
+      },
+      "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+      "escala": "Chacra (altura/helada) + regional Ayacucho",
+      "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P07",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 3,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "tarwi"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P07",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 4,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P08",
+      "codigo": "O2",
+      "titulo": "Ventana segura contra la helada",
+      "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
+      "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+      "prioridad": 1,
+      "valores_json": {
+        "ajuste_termico_c": 1.21,
+        "n_anios_ultima_helada": 28,
+        "n_anios_primera_helada": 29,
+        "ultima_helada_mediana": "08-24",
+        "ultima_helada_mediana_texto": "24 de agosto",
+        "ultima_helada_p80": "09-12",
+        "ultima_helada_p80_texto": "12 de septiembre",
+        "primera_helada_mediana": "06-11",
+        "primera_helada_mediana_texto": "11 de junio",
+        "primera_helada_p20": "04-27",
+        "primera_helada_p20_texto": "27 de abril",
+        "dias_helada_campana": 13,
+        "meses_riesgo_helada": [
+          8,
+          9,
+          5,
+          6,
+          7
+        ],
+        "ventana_segura_meses": [
+          11,
+          12,
+          1,
+          2,
+          3,
+          4
+        ],
+        "ventana_inicio_mes": "noviembre",
+        "ventana_fin_mes": "abril",
+        "cosecha_antes_de": "mayo"
+      },
+      "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P08",
+      "codigo": "O5",
+      "titulo": "Transformar en vez de malvender: chuño y tunta",
+      "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
+      "por_que_corto": "Está a 3589 m con 13 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "prioridad": 2,
+      "valores_json": {
+        "elev_dem_m": 3589,
+        "dias_helada_campana": 13,
+        "enis_papa_ayacucho_pct": 19.3,
+        "im_reciente": 0.979,
+        "sin_rendimiento_fijo": true
+      },
+      "fuente": "DEM 90 m + NASA POWER + ENIS MIDAGRI",
+      "escala": "Chacra (altura/helada) + regional Ayacucho",
+      "nota": "Sin rendimiento fijo ni promesa de kilos. Referencia técnica NTP 011.401:2020.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P08",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 3,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "tarwi"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P08",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 4,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P09",
+      "codigo": "O3",
+      "titulo": "Fecha estimada de cosecha de tuna",
+      "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
+      "por_que_corto": "Acumula 2152 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 31 de diciembre).",
+      "prioridad": 1,
+      "valores_json": {
+        "t_base_c": 0.0,
+        "meta_gd": 2751.31,
+        "ajuste_termico_c": 5.67,
+        "gdd_acumulados_2026": 2152.0,
+        "gd_diario_normal_nov_ene": 15.63,
+        "fecha_estimada_2026": "2026-12-20",
+        "fecha_estimada_2026_texto": "20 de diciembre",
+        "mes_cosecha_2026": 12,
+        "fecha_normal_1991_2020": "2026-12-31",
+        "fecha_normal_texto": "31 de diciembre",
+        "adelanto_dias": 11
+      },
+      "fuente": "Tesis Marcaquispe Capiso (2021) + NASA POWER",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Supone que el brotamiento empezó el 1 de julio; la fecha real de 2026 no se conoce.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P09",
+      "codigo": "O6",
+      "titulo": "Siembra lo que pocos siembran",
+      "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
+      "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "prioridad": 2,
+      "valores_json": {
+        "enis_papa_ayacucho_pct": 19.3,
+        "cultivo_recomendado": "haba"
+      },
+      "fuente": "Encuesta ENIS MIDAGRI 2026/2027",
+      "escala": "Regional Ayacucho",
+      "nota": "Solo se reporta el dato medido de papa en ENIS (+19.3 %); sin porcentajes inventados de otros cultivos.",
+      "estado": "observado",
+      "dato_hasta": "2026-07-15"
+    },
+    {
+      "parcela_id": "P09",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 3,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P10",
+      "codigo": "O4",
+      "titulo": "Cuándo vender: calendario de precios de la papa",
+      "accion_positiva": "La papa suele pagarse menos de febrero a mayo (~S/ 0.90 por kilo) y más de julio a septiembre (~S/ 1.30–1.50). Si puedes, guarda una parte y vende escalonado.",
+      "por_que_corto": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+      "prioridad": 1,
+      "valores_json": {
+        "meses": [
+          {
+            "mes": 1,
+            "mes_nombre": "enero",
+            "mediana_soles_kg": 0.98,
+            "min_soles_kg": 0.81,
+            "max_soles_kg": 2.09,
+            "n_anios": 4
+          },
+          {
+            "mes": 2,
+            "mes_nombre": "febrero",
+            "mediana_soles_kg": 0.88,
+            "min_soles_kg": 0.84,
+            "max_soles_kg": 1.03,
+            "n_anios": 3
+          },
+          {
+            "mes": 3,
+            "mes_nombre": "marzo",
+            "mediana_soles_kg": 0.92,
+            "min_soles_kg": 0.78,
+            "max_soles_kg": 1.81,
+            "n_anios": 3
+          },
+          {
+            "mes": 4,
+            "mes_nombre": "abril",
+            "mediana_soles_kg": 0.91,
+            "min_soles_kg": 0.9,
+            "max_soles_kg": 1.83,
+            "n_anios": 3
+          },
+          {
+            "mes": 5,
+            "mes_nombre": "mayo",
+            "mediana_soles_kg": 0.99,
+            "min_soles_kg": 0.96,
+            "max_soles_kg": 1.35,
+            "n_anios": 3
+          },
+          {
+            "mes": 6,
+            "mes_nombre": "junio",
+            "mediana_soles_kg": 1.14,
+            "min_soles_kg": 0.78,
+            "max_soles_kg": 1.34,
+            "n_anios": 5
+          },
+          {
+            "mes": 7,
+            "mes_nombre": "julio",
+            "mediana_soles_kg": 1.29,
+            "min_soles_kg": 0.98,
+            "max_soles_kg": 1.41,
+            "n_anios": 4
+          },
+          {
+            "mes": 8,
+            "mes_nombre": "agosto",
+            "mediana_soles_kg": 1.36,
+            "min_soles_kg": 1.1,
+            "max_soles_kg": 1.98,
+            "n_anios": 4
+          },
+          {
+            "mes": 9,
+            "mes_nombre": "septiembre",
+            "mediana_soles_kg": 1.53,
+            "min_soles_kg": 0.94,
+            "max_soles_kg": 2.17,
+            "n_anios": 4
+          },
+          {
+            "mes": 10,
+            "mes_nombre": "octubre",
+            "mediana_soles_kg": 1.12,
+            "min_soles_kg": 0.9,
+            "max_soles_kg": 1.99,
+            "n_anios": 5
+          },
+          {
+            "mes": 11,
+            "mes_nombre": "noviembre",
+            "mediana_soles_kg": 1.31,
+            "min_soles_kg": 0.77,
+            "max_soles_kg": 1.67,
+            "n_anios": 4
+          },
+          {
+            "mes": 12,
+            "mes_nombre": "diciembre",
+            "mediana_soles_kg": 1.17,
+            "min_soles_kg": 0.7,
+            "max_soles_kg": 2.26,
+            "n_anios": 4
+          }
+        ],
+        "meses_precio_bajo": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "meses_precio_alto": [
+          7,
+          8,
+          9
+        ],
+        "advertencia": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81)."
+      },
+      "fuente": "EMMSA / MIDAGRI-SIEA (GMML Lima 2022–2026)",
+      "escala": "Gran Mercado Mayorista de Lima (referencia)",
+      "nota": "Precios medidos (EMMSA); mediana mensual calculada excluyendo mes en curso. Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P10",
+      "codigo": "O2",
+      "titulo": "Ventana segura contra la helada",
+      "accion_positiva": "Tu ventana segura es de noviembre a junio: siembra después de la última helada y cosecha antes de julio.",
+      "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 7 de octubre y en 2 de cada 10 años volvió desde el 2 de julio. Esta campaña hubo 1 noches con helada.",
+      "prioridad": 2,
+      "valores_json": {
+        "ajuste_termico_c": -0.75,
+        "n_anios_ultima_helada": 3,
+        "n_anios_primera_helada": 6,
+        "ultima_helada_mediana": "08-19",
+        "ultima_helada_mediana_texto": "19 de agosto",
+        "ultima_helada_p80": "10-07",
+        "ultima_helada_p80_texto": "7 de octubre",
+        "primera_helada_mediana": "07-07",
+        "primera_helada_mediana_texto": "7 de julio",
+        "primera_helada_p20": "07-02",
+        "primera_helada_p20_texto": "2 de julio",
+        "dias_helada_campana": 1,
+        "meses_riesgo_helada": [
+          8,
+          9,
+          7
+        ],
+        "ventana_segura_meses": [
+          11,
+          12,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "ventana_inicio_mes": "noviembre",
+        "ventana_fin_mes": "junio",
+        "cosecha_antes_de": "julio"
+      },
+      "fuente": "NASA POWER T2M_MIN (1991–2020) + ajuste por altura",
+      "escala": "~50 km ajustado a elevación DEM 90 m",
+      "nota": "Criterio SENAMHI: Tmin ajustada <= 0 °C con gradiente -4.35 °C/km. p80 = 8 de cada 10 años ya terminó; p20 = 2 de cada 10 años ya empezó.",
+      "estado": "estimado",
+      "dato_hasta": "2026-11-12"
+    },
+    {
+      "parcela_id": "P10",
+      "codigo": "O1",
+      "titulo": "Cuándo sembrar: inicio real de las lluvias",
+      "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
+      "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "prioridad": 3,
+      "valores_json": {
+        "mediana_dias_desde_sep1": 56.5,
+        "fecha_mediana_normal": "27 de octubre",
+        "n_anios_con_inicio": 24,
+        "rango_min_md": "22 de septiembre",
+        "rango_max_md": "29 de diciembre",
+        "anio_2026_estado": "no_establecidas",
+        "anio_2026_texto": "todavía no se establecen al 31 de octubre"
+      },
+      "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+      "escala": "Zona piloto (-74.4, -13.3, -74.0, -12.8), ~10 km",
+      "nota": "Escala de zona, no de chacra individual. Criterio: >=20 mm en 3 dias sin racha seca de 10 dias en los 30 dias siguientes.",
+      "estado": "estimado",
+      "dato_hasta": "2026-10-31"
+    }
+  ]
+}

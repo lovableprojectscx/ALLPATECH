@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart3, Calendar, Globe, Sprout, User, WifiOff } from "lucide-react";
 import { MuyuLogo } from "./components/MuyuLogo";
-import { getLatestDatoHasta, subscribeLocalFallback } from "./data/api";
+import { getFechasResumen, subscribeLocalFallback } from "./data/api";
 import { DICTIONARY, I18nContext, type Lang } from "./i18n";
 
 const CooperativaView = lazy(() => import("./views/CooperativaView"));
@@ -42,25 +42,32 @@ export default function App() {
   const [lang, setLang] = useState<Lang>("es");
   const [selectedParcelaId, setSelectedParcelaId] = useState<string>(() => leerParcelaDeUrl());
   const [offlineFallback, setOfflineFallback] = useState(false);
-  const { data: latestDatoHasta } = useQuery({
-    queryKey: ["latestDatoHasta"],
-    queryFn: () => getLatestDatoHasta(),
+  const { data: fechasResumen } = useQuery({
+    queryKey: ["fechasResumen"],
+    queryFn: () => getFechasResumen(),
   });
 
   const fechaBarra = useMemo(() => {
-    if (!latestDatoHasta || !/^\d{4}-\d{2}-\d{2}$/.test(latestDatoHasta)) {
+    const fmt = (iso: string | undefined) => {
+      if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return null;
+      const [anio, mesStr, diaStr] = iso.split("-");
+      const mesIdx = Number(mesStr) - 1;
+      const dia = Number(diaStr);
+      const mesesEs = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+      const mesesEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      return lang === "es"
+        ? `${dia} ${mesesEs[mesIdx] ?? mesStr} ${anio}`
+        : `${mesesEn[mesIdx] ?? mesStr} ${dia}, ${anio}`;
+    };
+    const fClima = fmt(fechasResumen?.clima);
+    const fMercado = fmt(fechasResumen?.mercado);
+    if (!fClima || !fMercado) {
       return lang === "es" ? DICTIONARY.es.dataUntil : DICTIONARY.en.dataUntil;
     }
-    const [anio, mesStr, diaStr] = latestDatoHasta.split("-");
-    const mesIdx = Number(mesStr) - 1;
-    const dia = Number(diaStr);
-    const mesesEs = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
-    const mesesEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    if (lang === "es") {
-      return `Datos a ${dia} ${mesesEs[mesIdx] ?? mesStr} ${anio}`;
-    }
-    return `Data through ${mesesEn[mesIdx] ?? mesStr} ${dia}, ${anio}`;
-  }, [latestDatoHasta, lang]);
+    return lang === "es"
+      ? `Clima al ${fClima} · Precio al ${fMercado}`
+      : `Climate through ${fClima} · Prices through ${fMercado}`;
+  }, [fechasResumen, lang]);
 
   useEffect(() => {
     return subscribeLocalFallback(setOfflineFallback);

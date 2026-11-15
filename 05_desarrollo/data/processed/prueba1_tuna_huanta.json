@@ -14,7 +14,8 @@
     "fuente_tuna": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernandez 2009); 2,751.31 GD, 161 dias",
     "nota_supuesto": "Supone que el brotamiento empezo el 1 de julio; la fecha real de 2026 no se conoce."
   },
-  "gdd_tuna_jul1_oct31": {
+  "gdd_tuna_jul1_a_dato_hasta": {
+    "dato_hasta": "2026-11-12",
     "t_base_c": 0.0,
     "gdd_2026": 2046.7,
     "gdd_normal_1991_2020": 1895.3,
