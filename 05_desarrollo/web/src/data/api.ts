@@ -362,6 +362,7 @@ export interface ExplicacionIAResponse {
   texto: string;
   modelo: string;
   es_plantilla: boolean;
+  motivo_plantilla?: string;
   usado_cache: boolean;
   etiqueta_quechua: string | null;
   datos_usados: Record<string, unknown>;
@@ -485,9 +486,9 @@ export async function explicarChacra(
   const elevFmt = Math.round(parcela.elev_dem_m).toLocaleString("en-US");
   const opPrincipal = oportunidades[0]?.accion_positiva;
   const estTextoEs: Record<"A" | "B" | "C", string> = {
-    A: "la que busca mejor precio",
-    B: "la que reparte el riesgo (como la quinua)",
-    C: "la que cuida el suelo (como el tarwi)",
+    A: "la estrategia que busca mejor precio",
+    B: "la estrategia que reparte el riesgo (como la quinua)",
+    C: "la estrategia que cuida el suelo (como el tarwi)",
   };
   const estTextoEn: Record<"A" | "B" | "C", string> = {
     A: "the option seeking a better price",

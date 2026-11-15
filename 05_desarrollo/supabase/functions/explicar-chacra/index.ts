@@ -9,8 +9,13 @@ import {
   type IdiomaIA,
 } from "./validator.ts";
 
-const GEMINI_MODEL = "gemini-flash-latest";
-const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_MODELS = [
+  "gemini-flash-latest",
+  "gemini-3.5-flash-lite",
+  "gemini-2.5-flash",
+] as const;
+const GEMINI_TIMEOUT_MS = 25_000;
+const RETRY_DELAY_MS = 2_000;
 const SYSTEM_PROMPT =
   "Eres un técnico agrario de Ayacucho. Explica en 3 frases cortas (máximo 15 palabras cada una), en palabras simples, qué hacer en esta chacra y por qué, usando SOLO los datos JSON dados. No agregues números, porcentajes, fechas ni cultivos que no estén en los datos. No prometas precios ni cosechas. Si un dato dice no_disponible, no lo menciones.";
 
@@ -49,51 +54,83 @@ async function sha256Hex(text: string): Promise<string> {
 }
 
 async function llamarGemini(
+  model: string,
   geminiKey: string,
   idiomaInst: string,
   datos: DatosChacraIA,
-  thinkingCfg: Record<string, unknown>,
-  timeoutMs = 15_000
-): Promise<{ status: number; finishReason: string; text: string; rawBody?: string }> {
-  const resp = await fetch(GEMINI_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-goog-api-key": geminiKey,
-    },
-    signal: AbortSignal.timeout(timeoutMs),
-    body: JSON.stringify({
-      systemInstruction: {
-        parts: [{ text: `${SYSTEM_PROMPT} ${idiomaInst}` }],
+  thinkingCfg: Record<string, unknown>
+): Promise<{ status: number | "timeout"; finishReason: string; text: string; rawBody?: string }> {
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+  try {
+    const resp = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": geminiKey,
       },
-      contents: [
-        {
-          role: "user",
-          parts: [{ text: `Datos JSON de la chacra:\n${JSON.stringify(datos)}` }],
+      signal: AbortSignal.timeout(GEMINI_TIMEOUT_MS),
+      body: JSON.stringify({
+        systemInstruction: {
+          parts: [{ text: `${SYSTEM_PROMPT} ${idiomaInst}` }],
         },
-      ],
-      generationConfig: {
-        temperature: 0.2,
-        maxOutputTokens: 1024,
-        thinkingConfig: thinkingCfg,
-      },
-    }),
-  });
+        contents: [
+          {
+            role: "user",
+            parts: [{ text: `Datos JSON de la chacra:\n${JSON.stringify(datos)}` }],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.2,
+          maxOutputTokens: 1024,
+          thinkingConfig: thinkingCfg,
+        },
+      }),
+    });
 
-  if (!resp.ok) {
-    const errText = await resp.text().catch(() => "");
-    return { status: resp.status, finishReason: "ERROR", text: "", rawBody: errText };
+    if (!resp.ok) {
+      const errText = await resp.text().catch(() => "");
+      return { status: resp.status, finishReason: "ERROR", text: "", rawBody: errText };
+    }
+
+    const json = await resp.json();
+    const cand = json?.candidates?.[0];
+    const finishReason = String(cand?.finishReason ?? "UNKNOWN");
+    const candidateText =
+      cand?.content?.parts
+        ?.map((pt: { text?: string }) => pt.text ?? "")
+        .join(" ")
+        .trim() ?? "";
+    return { status: resp.status, finishReason, text: candidateText };
+  } catch {
+    return { status: "timeout", finishReason: "TIMEOUT", text: "" };
   }
+}
 
-  const json = await resp.json();
-  const cand = json?.candidates?.[0];
-  const finishReason = String(cand?.finishReason ?? "UNKNOWN");
-  const candidateText =
-    cand?.content?.parts
-      ?.map((pt: { text?: string }) => pt.text ?? "")
-      .join(" ")
-      .trim() ?? "";
-  return { status: resp.status, finishReason, text: candidateText };
+async function intentarModeloConRetry(
+  model: string,
+  geminiKey: string,
+  idiomaInst: string,
+  datos: DatosChacraIA
+): Promise<{ status: number | "timeout"; finishReason: string; text: string; intentos: number }> {
+  let thinkingCfg: Record<string, unknown> =
+    model === "gemini-2.5-flash" ? { thinkingBudget: 0 } : { thinkingLevel: "low" };
+
+  let intentos = 0;
+  for (let round = 0; round < 2; round++) {
+    intentos++;
+    let res = await llamarGemini(model, geminiKey, idiomaInst, datos, thinkingCfg);
+    if (res.status === 400 && res.rawBody?.includes("thinkingLevel")) {
+      thinkingCfg = { thinkingBudget: 0 };
+      intentos++;
+      res = await llamarGemini(model, geminiKey, idiomaInst, datos, thinkingCfg);
+    }
+    const esTransitorio = res.status === 503 || res.status === 429 || res.status === "timeout";
+    if (!esTransitorio || round === 1) {
+      return { status: res.status, finishReason: res.finishReason, text: res.text, intentos };
+    }
+    await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+  }
+  return { status: "timeout", finishReason: "TIMEOUT", text: "", intentos };
 }
 
 Deno.serve(async (req: Request) => {
@@ -266,61 +303,51 @@ Deno.serve(async (req: Request) => {
     let textoFinal = plantilla;
     let modeloUsado = "plantilla_fija";
     let esPlantilla = true;
-    let motivoPlantilla: string | null = null;
+    let motivoPlantilla: string | null = "sin_respuesta";
+    let ultimoStatus: number | "timeout" = "timeout";
+    let ultimoFinish = "UNKNOWN";
+    let ultimoTextLen = 0;
 
-    try {
-      let gRes: { status: number; finishReason: string; text: string; rawBody?: string };
-      let thinkingUsado = "thinkingLevel:low";
-      try {
-        gRes = await llamarGemini(geminiKey, idiomaInst, datos, { thinkingLevel: "low" }, 8_000);
-      } catch {
-        thinkingUsado = "thinkingBudget:0(after_timeout)";
-        gRes = await llamarGemini(geminiKey, idiomaInst, datos, { thinkingBudget: 0 }, 15_000);
-      }
-      // Si el modelo rechaza thinkingLevel, reintentar con thinkingBudget: 0
-      if (gRes.status === 400 && gRes.rawBody?.includes("thinkingLevel")) {
-        thinkingUsado = "thinkingBudget:0(after_400)";
-        gRes = await llamarGemini(geminiKey, idiomaInst, datos, { thinkingBudget: 0 }, 15_000);
-      }
+    for (const model of GEMINI_MODELS) {
+      const gRes = await intentarModeloConRetry(model, geminiKey, idiomaInst, datos);
+      ultimoStatus = gRes.status;
+      ultimoFinish = gRes.finishReason;
+      ultimoTextLen = gRes.text.length;
 
+      if (gRes.status === "timeout") {
+        motivoPlantilla = "timeout";
+        continue;
+      }
       if (gRes.status !== 200) {
         motivoPlantilla = `gemini_http_${gRes.status}`;
-      } else if (!gRes.text) {
+        continue;
+      }
+      if (!gRes.text) {
         motivoPlantilla = "vacia";
-      } else {
-        const check = validarRespuestaIA(gRes.text, datos);
-        if (check.valida) {
-          textoFinal = gRes.text;
-          modeloUsado = GEMINI_MODEL;
-          esPlantilla = false;
-          motivoPlantilla = null;
-        } else {
-          motivoPlantilla = `validador:${check.motivo ?? "desconocido"}`;
-        }
+        continue;
       }
 
-      console.log("[explicar-chacra]", {
-        parcelaId,
-        thinkingUsado,
-        respStatus: gRes.status,
-        finishReason: gRes.finishReason,
-        textLen: gRes.text.length,
-        esPlantilla,
-        motivo: motivoPlantilla,
-      });
-    } catch (err) {
-      motivoPlantilla = "timeout";
-      console.log("[explicar-chacra]", {
-        parcelaId,
-        respStatus: "timeout",
-        finishReason: "TIMEOUT",
-        textLen: 0,
-        esPlantilla: true,
-        motivo: motivoPlantilla,
-        errName: err instanceof Error ? err.name : "unknown",
-        errMsg: err instanceof Error ? err.message : String(err),
-      });
+      const check = validarRespuestaIA(gRes.text, datos);
+      if (check.valida) {
+        textoFinal = gRes.text;
+        modeloUsado = model;
+        esPlantilla = false;
+        motivoPlantilla = null;
+        break;
+      }
+      motivoPlantilla = `validador:${check.motivo ?? "desconocido"}`;
     }
+
+    console.log("[explicar-chacra]", {
+      parcelaId,
+      idioma,
+      modeloRespondio: esPlantilla ? null : modeloUsado,
+      respStatus: ultimoStatus,
+      finishReason: ultimoFinish,
+      textLen: ultimoTextLen,
+      esPlantilla,
+      motivo: motivoPlantilla,
+    });
 
     // NO guardar en ia_explicaciones cuando es_plantilla sea true
     if (!esPlantilla) {

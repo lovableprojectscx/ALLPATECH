@@ -131,9 +131,9 @@ export function validarRespuestaIA(
 }
 
 const ESTRATEGIA_TEXTO_ES: Record<"A" | "B" | "C", string> = {
-  A: "la que busca mejor precio",
-  B: "la que reparte el riesgo (como la quinua)",
-  C: "la que cuida el suelo (como el tarwi)",
+  A: "la estrategia que busca mejor precio",
+  B: "la estrategia que reparte el riesgo (como la quinua)",
+  C: "la estrategia que cuida el suelo (como el tarwi)",
 };
 
 /**

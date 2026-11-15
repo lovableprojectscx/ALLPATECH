@@ -91,6 +91,8 @@ export function CalendarioChacra({
         padding: "12px 14px",
         background: "var(--blanco)",
         marginTop: 12,
+        minWidth: 0,
+        maxWidth: "100%",
       }}
     >
       <div

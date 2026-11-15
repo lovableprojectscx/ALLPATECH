@@ -551,7 +551,7 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     const plantilla = generarPlantillaFija(datos, "es");
     expect(plantilla).toContain("Quinua");
     expect(plantilla).toContain("Desde julio de 2025 hubo 16 noches de helada");
-    expect(plantilla).toContain("la que reparte el riesgo (como la quinua)");
+    expect(plantilla).toContain("la estrategia que reparte el riesgo (como la quinua)");
   });
 
   it("valida prueba1_tuna_huanta.json con gdd_tuna_jul1_a_dato_hasta y dato_hasta", () => {
