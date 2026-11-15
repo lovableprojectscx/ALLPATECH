@@ -784,6 +784,7 @@ def generar_oportunidades() -> Dict[str, Any]:
                     "titulo": op["titulo"],
                     "accion_positiva": op["accion_positiva"],
                     "por_que_corto": op["por_que_corto"],
+                    "accion_ficha": op["accion_ficha"],
                     "prioridad": idx,
                     "valores_json": op["valores_json"],
                     "fuente": op["fuente"],

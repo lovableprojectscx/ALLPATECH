@@ -51,8 +51,47 @@ export function formatValor(val: string | number | null | undefined, sufijo = ""
   return `${val}${sufijo}`;
 }
 
-async function fetchJsonLocal<T>(path: string): Promise<T> {
-  markLocalFallback(true);
+export function esErrorDeRedSupabase(error: unknown, status?: number): boolean {
+  if (typeof navigator !== "undefined" && navigator.onLine === false) {
+    return true;
+  }
+  if (typeof status === "number" && status >= 400) {
+    return false;
+  }
+  if (error && typeof error === "object") {
+    const errObj = error as { status?: unknown; statusCode?: unknown; code?: unknown; message?: unknown };
+    const errStatus =
+      typeof errObj.status === "number"
+        ? errObj.status
+        : typeof errObj.statusCode === "number"
+        ? errObj.statusCode
+        : undefined;
+    if (typeof errStatus === "number" && errStatus >= 400) {
+      return false;
+    }
+    const msg = typeof errObj.message === "string" ? errObj.message : "";
+    const code = typeof errObj.code === "string" ? errObj.code : "";
+    if (
+      /failed to fetch|networkerror|network request failed|load failed|fetch failed|econnrefused|etimedout|enotfound|err_internet|err_name_not_resolved|offline/i.test(
+        msg
+      )
+    ) {
+      return true;
+    }
+    if (code.length > 0) {
+      return false;
+    }
+    if (error instanceof Error) {
+      return true;
+    }
+  }
+  return error !== null && error !== undefined && status === 0;
+}
+
+async function fetchJsonLocal<T>(path: string, notifyOffline = false): Promise<T> {
+  if (notifyOffline) {
+    markLocalFallback(true);
+  }
   const resp = await fetch(path);
   if (!resp.ok) {
     throw new Error(`No se pudo cargar respaldo local ${path} (${resp.status})`);
@@ -61,9 +100,10 @@ async function fetchJsonLocal<T>(path: string): Promise<T> {
 }
 
 export async function getParcelas(client: SupabaseClient | null = getSupabaseClient()): Promise<Parcela[]> {
+  let redError = false;
   if (client) {
     try {
-      const { data, error } = await client.from("parcelas").select("*").order("id");
+      const { data, error, status } = await client.from("parcelas").select("*").order("id");
       if (!error && data && data.length > 0) {
         const mapped = data.map((row: Record<string, unknown>) => ({
           id: row.id,
@@ -79,12 +119,13 @@ export async function getParcelas(client: SupabaseClient | null = getSupabaseCli
         }));
         return ParcelasResponseSchema.parse(mapped);
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError = esErrorDeRedSupabase(error, status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
-  const raw = await fetchJsonLocal<{ parcelas: Array<Record<string, unknown>> }>("/data/parcelas_demo.json");
+  const raw = await fetchJsonLocal<{ parcelas: Array<Record<string, unknown>> }>("/data/parcelas_demo.json", redError);
   const mapped = raw.parcelas.map((p) => ({
     ...p,
     estado: p.estado_elevacion ?? "estimado",
@@ -95,6 +136,7 @@ export async function getParcelas(client: SupabaseClient | null = getSupabaseCli
 export async function getPlanRotacion(
   client: SupabaseClient | null = getSupabaseClient()
 ): Promise<PlanRotacionContract> {
+  let redError = false;
   if (client) {
     try {
       const [planRes, estRes, parRes] = await Promise.all([
@@ -151,15 +193,19 @@ export async function getPlanRotacion(
           comparador: Array.from(porParcela.values()),
         });
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError =
+        esErrorDeRedSupabase(planRes.error, planRes.status) ||
+        esErrorDeRedSupabase(estRes.error, estRes.status) ||
+        esErrorDeRedSupabase(parRes.error, parRes.status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
   const raw = await fetchJsonLocal<{
     plan_rotacion_10_parcelas: unknown[];
     comparador_abc_por_parcela: unknown[];
-  }>("/data/plan_rotacion_demo.json");
+  }>("/data/plan_rotacion_demo.json", redError);
 
   return PlanRotacionContractSchema.parse({
     plan: raw.plan_rotacion_10_parcelas,
@@ -168,21 +214,23 @@ export async function getPlanRotacion(
 }
 
 export async function getImergMensual(client: SupabaseClient | null = getSupabaseClient()): Promise<ImergMes[]> {
+  let redError = false;
   if (client) {
     try {
-      const { data, error } = await client.from("lluvia_imerg_mensual").select("*").order("mes_num");
+      const { data, error, status } = await client.from("lluvia_imerg_mensual").select("*").order("mes_num");
       if (!error && data && data.length > 0) {
         return ImergResponseSchema.parse(data);
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError = esErrorDeRedSupabase(error, status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
   const raw = await fetchJsonLocal<{
     _metadata: { nota_escala: string };
     meses_jul_oct: Array<Record<string, unknown>>;
-  }>("/data/imerg_mensual.json");
+  }>("/data/imerg_mensual.json", redError);
 
   const mapped = raw.meses_jul_oct.map((m) => ({
     ...m,
@@ -194,9 +242,10 @@ export async function getImergMensual(client: SupabaseClient | null = getSupabas
 export async function getClimaMensual(
   client: SupabaseClient | null = getSupabaseClient()
 ): Promise<ClimaMensualRegistro[]> {
+  let redError = false;
   if (client) {
     try {
-      const { data, error } = await client
+      const { data, error, status } = await client
         .from("clima_mensual")
         .select("cell_key,anio,mes,t2m_media_c,anomalia_t2m_c,puesto_calor,humedad_suelo_raiz,estado,dato_hasta")
         .eq("anio", 2026)
@@ -204,14 +253,15 @@ export async function getClimaMensual(
       if (!error && data && data.length > 0) {
         return ClimaMensualResponseSchema.parse(data);
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError = esErrorDeRedSupabase(error, status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
   const raw = await fetchJsonLocal<{
     celdas: Record<string, { registros: Array<Record<string, unknown>> }>;
-  }>("/data/clima_mensual.json");
+  }>("/data/clima_mensual.json", redError);
 
   const out: Array<Record<string, unknown>> = [];
   for (const [cellKey, info] of Object.entries(raw.celdas)) {
@@ -225,9 +275,10 @@ export async function getClimaMensual(
 }
 
 export async function getMercadoPapa(client: SupabaseClient | null = getSupabaseClient()): Promise<MercadoMes[]> {
+  let redError = false;
   if (client) {
     try {
-      const { data, error } = await client
+      const { data, error, status } = await client
         .from("mercado_papa_mensual")
         .select("*")
         .order("anio")
@@ -235,24 +286,30 @@ export async function getMercadoPapa(client: SupabaseClient | null = getSupabase
       if (!error && data && data.length > 0) {
         return MercadoResponseSchema.parse(data);
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError = esErrorDeRedSupabase(error, status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
-  const raw = await fetchJsonLocal<{ mercado_papa_mensual: unknown[] }>("/data/mercado_resumen.json");
+  const raw = await fetchJsonLocal<{ mercado_papa_mensual: unknown[] }>("/data/mercado_resumen.json", redError);
   return MercadoResponseSchema.parse(raw.mercado_papa_mensual);
 }
 
 export async function getFuentes(client: SupabaseClient | null = getSupabaseClient()): Promise<Fuente[]> {
   if (client) {
     try {
-      const { data, error } = await client.from("fuentes").select("*").order("id");
+      const { data, error, status } = await client.from("fuentes").select("*").order("id");
       if (!error && data && data.length > 0) {
         return FuentesResponseSchema.parse(data);
       }
-    } catch {
-      // Conmuta a respaldo local
+      if (esErrorDeRedSupabase(error, status)) {
+        markLocalFallback(true);
+      }
+    } catch (err) {
+      if (esErrorDeRedSupabase(err)) {
+        markLocalFallback(true);
+      }
     }
   }
 
@@ -287,9 +344,10 @@ export async function getFuentes(client: SupabaseClient | null = getSupabaseClie
 export async function getNdviParcelas(
   client: SupabaseClient | null = getSupabaseClient()
 ): Promise<NdviParcela[]> {
+  let redError = false;
   if (client) {
     try {
-      const { data, error } = await client
+      const { data, error, status } = await client
         .from("ndvi_parcelas")
         .select("parcela_id,calendar_date,ndvi,estado,dato_hasta")
         .order("calendar_date");
@@ -315,13 +373,14 @@ export async function getNdviParcelas(
         }
         return NdviResponseSchema.parse(Array.from(grouped.values()));
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError = esErrorDeRedSupabase(error, status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
   try {
-    const raw = await fetchJsonLocal<{ parcelas: NdviParcela[] }>("/data/ndvi_parcelas.json");
+    const raw = await fetchJsonLocal<{ parcelas: NdviParcela[] }>("/data/ndvi_parcelas.json", redError);
     return NdviResponseSchema.parse(raw.parcelas ?? []);
   } catch {
     return [];

@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart3, Calendar, Globe, Sprout, User, WifiOff } from "lucide-react";
 import { MuyuLogo } from "./components/MuyuLogo";
-import { getFechasResumen, subscribeLocalFallback } from "./data/api";
+import { getFechasResumen, markLocalFallback, subscribeLocalFallback } from "./data/api";
 import { DICTIONARY, I18nContext, type Lang } from "./i18n";
 
 const CooperativaView = lazy(() => import("./views/CooperativaView"));
@@ -70,7 +70,13 @@ export default function App() {
   }, [fechasResumen, lang]);
 
   useEffect(() => {
-    return subscribeLocalFallback(setOfflineFallback);
+    const unsub = subscribeLocalFallback(setOfflineFallback);
+    const onOffline = () => markLocalFallback(true);
+    window.addEventListener("offline", onOffline);
+    return () => {
+      unsub();
+      window.removeEventListener("offline", onOffline);
+    };
   }, []);
 
   const elegirPerfil = (nuevo: Perfil | null) => {

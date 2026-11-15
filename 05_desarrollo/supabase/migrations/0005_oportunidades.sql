@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS public.oportunidades (
   titulo TEXT NOT NULL,
   accion_positiva TEXT NOT NULL,
   por_que_corto TEXT NOT NULL,
+  accion_ficha TEXT NOT NULL DEFAULT '',
   prioridad INTEGER NOT NULL,
   valores_json JSONB NOT NULL DEFAULT '{}'::jsonb,
   fuente TEXT NOT NULL,
