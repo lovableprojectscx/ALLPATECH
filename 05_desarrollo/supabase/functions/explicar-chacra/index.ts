@@ -17,7 +17,7 @@ const GEMINI_MODELS = [
 const GEMINI_TIMEOUT_MS = 25_000;
 const RETRY_DELAY_MS = 2_000;
 const SYSTEM_PROMPT =
-  "Eres un técnico agrario de Ayacucho. Explica en 3 frases cortas (máximo 15 palabras cada una), en palabras simples, qué hacer en esta chacra y por qué, usando SOLO los datos JSON dados. No agregues números, porcentajes, fechas ni cultivos que no estén en los datos. No prometas precios ni cosechas. Si un dato dice no_disponible, no lo menciones.";
+  "Eres un técnico agrario de Ayacucho. Explica en 3 frases cortas (máximo 15 palabras cada una), en palabras simples, qué hacer en esta chacra y por qué. Usa solo los datos dados. No hagas juicios agronómicos ('adecuada para sembrar', 'buena acidez', 'buen momento'). Si dias_helada > 0, menciónalo siempre. Cita al menos un dato con su número. Si mencionas el pH, di solo 'pH {valor}' sin calificarlo. Habla de tú, en frases cortas. No agregues números, porcentajes, fechas ni cultivos que no estén en los datos. No prometas precios ni cosechas ni menciones rancha. Si un dato dice no disponible, no lo menciones.";
 
 function isAllowedOrigin(origin: string | null): boolean {
   if (!origin) return false;
@@ -81,7 +81,7 @@ async function llamarGemini(
         ],
         generationConfig: {
           temperature: 0.2,
-          maxOutputTokens: 1024,
+          maxOutputTokens: 2048,
           thinkingConfig: thinkingCfg,
         },
       }),
@@ -162,7 +162,7 @@ Deno.serve(async (req: Request) => {
 
     const sb = createClient(supabaseUrl, serviceKey);
 
-    const [parRes, planRes, imergRes, enisRes, ndviRes] = await Promise.all([
+    const [parRes, planRes, imergRes, enisRes, ndviRes, opRes] = await Promise.all([
       sb.from("parcelas").select("*").eq("id", parcelaId).maybeSingle(),
       sb.from("plan_rotacion").select("*").eq("parcela_id", parcelaId).maybeSingle(),
       sb.from("lluvia_imerg_mensual").select("mes_num,anomalia_pct").eq("mes_num", 10).maybeSingle(),
@@ -175,6 +175,11 @@ Deno.serve(async (req: Request) => {
         .order("calendar_date", { ascending: false })
         .limit(1)
         .maybeSingle(),
+      sb
+        .from("oportunidades")
+        .select("codigo,titulo,accion_positiva,por_que_corto,valores_json,estado,nota,prioridad")
+        .eq("parcela_id", parcelaId)
+        .order("prioridad"),
     ]);
 
     if (parRes.error || !parRes.data || planRes.error || !planRes.data) {
@@ -199,6 +204,23 @@ Deno.serve(async (req: Request) => {
     const humedadPct =
       typeof gwRaw === "number" ? Math.round(gwRaw * 100) : "no disponible";
 
+    const oportunidadesIA =
+      !opRes.error && Array.isArray(opRes.data)
+        ? opRes.data.map((row: Record<string, unknown>) => {
+            const valObj = (row.valores_json ?? {}) as Record<string, unknown>;
+            const { meses: _omitMeses, ...valoresCompactos } = valObj;
+            return {
+              codigo: String(row.codigo ?? ""),
+              titulo: String(row.titulo ?? ""),
+              accion_positiva: String(row.accion_positiva ?? ""),
+              por_que_corto: String(row.por_que_corto ?? ""),
+              estado: String(row.estado ?? ""),
+              nota: String(row.nota ?? ""),
+              valores: valoresCompactos,
+            };
+          })
+        : [];
+
     const datos: DatosChacraIA = {
       parcela_id: parcelaId,
       distrito: formatearDistrito(String(p.distrito ?? "")),
@@ -218,6 +240,7 @@ Deno.serve(async (req: Request) => {
         typeof imergRes.data?.anomalia_pct === "number"
           ? Number(imergRes.data.anomalia_pct)
           : "no disponible",
+      oportunidades: oportunidadesIA,
     };
 
     const dataHash = await sha256Hex(JSON.stringify({ datos, idioma }));
@@ -324,6 +347,10 @@ Deno.serve(async (req: Request) => {
       }
       if (!gRes.text) {
         motivoPlantilla = "vacia";
+        continue;
+      }
+      if (gRes.finishReason === "MAX_TOKENS") {
+        motivoPlantilla = "max_tokens";
         continue;
       }
 

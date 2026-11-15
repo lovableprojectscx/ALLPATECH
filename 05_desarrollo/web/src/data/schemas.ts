@@ -249,6 +249,25 @@ export const SemaforoRegionalSchema = z.object({
   dato_hasta: z.string(),
 });
 
+export const VigilanciaRanchaSchema = z.object({
+  cultivos_aplica: z.array(z.string()),
+  ventana_inicio: z.string(),
+  ventana_fin: z.string(),
+  dato_hasta: z.string(),
+  umbral_mm_dia: z.number(),
+  dias_lluvia_7d: z.number(),
+  normal_mediana_7d: z.number(),
+  n_anios_referencia: z.number(),
+  nivel: z.enum(["pocos", "varios", "frecuentes"]),
+  titulo: z.string(),
+  mensaje: z.string(),
+  etiqueta_fuente: z.string(),
+  estado: EstadoSchema,
+  fuente: z.string(),
+  enlace_senamhi: z.string(),
+  enlace_senamhi_texto: z.string(),
+});
+
 export const OportunidadesContractSchema = z.object({
   global_o1_lluvias: z.record(z.unknown()).optional(),
   global_o4_precios_papa: z.object({
@@ -306,3 +325,4 @@ export type CalendarioChacra = z.infer<typeof CalendarioChacraSchema>;
 export type OportunidadesParcela = z.infer<typeof OportunidadesParcelaSchema>;
 export type SemaforoRegional = z.infer<typeof SemaforoRegionalSchema>;
 export type OportunidadesContract = z.infer<typeof OportunidadesContractSchema>;
+export type VigilanciaRancha = z.infer<typeof VigilanciaRanchaSchema>;

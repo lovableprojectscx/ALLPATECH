@@ -9,6 +9,7 @@ import {
   OportunidadesContractSchema,
   ParcelasResponseSchema,
   PlanRotacionContractSchema,
+  VigilanciaRanchaSchema,
   type ClimaMensualRegistro,
   type Fuente,
   type ImergMes,
@@ -18,6 +19,7 @@ import {
   type OportunidadesContract,
   type Parcela,
   type PlanRotacionContract,
+  type VigilanciaRancha,
 } from "./schemas";
 
 let localFallbackActive = false;
@@ -420,6 +422,14 @@ export async function getOportunidades(
   return OportunidadesContractSchema.parse(raw);
 }
 
+export async function getVigilanciaRancha(): Promise<VigilanciaRancha> {
+  const resp = await fetch("/data/vigilancia_rancha.json");
+  if (!resp.ok) {
+    throw new Error(`No se pudo cargar vigilancia_rancha.json (${resp.status})`);
+  }
+  return VigilanciaRanchaSchema.parse(await resp.json());
+}
+
 export async function explicarChacra(
   parcela: Parcela,
   planItem: { estrategia_elegida: string; cultivo_asignado: string } | undefined,
@@ -518,7 +528,7 @@ export async function explicarChacra(
     es_plantilla: true,
     motivo_plantilla: "sin_key",
     usado_cache: false,
-    etiqueta_quechua: idioma === "qu" ? "Borrador automático en quechua — debe revisarlo un hablante" : null,
+    etiqueta_quechua: idioma === "qu" ? "Borrador de IA en quechua, sin revisar por un hablante nativo" : null,
     datos_usados: {
       parcela_id: parcela.id,
       distrito: distNombre,

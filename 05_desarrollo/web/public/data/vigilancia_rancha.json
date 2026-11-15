@@ -1,0 +1,20 @@
+{
+  "cultivos_aplica": [
+    "papa"
+  ],
+  "ventana_inicio": "2026-10-25",
+  "ventana_fin": "2026-10-31",
+  "dato_hasta": "2026-10-31",
+  "umbral_mm_dia": 1.0,
+  "dias_lluvia_7d": 4,
+  "normal_mediana_7d": 4,
+  "n_anios_referencia": 25,
+  "nivel": "varios",
+  "titulo": "Revisa tu papa",
+  "mensaje": "En la semana al 31 de octubre llovió 4 de 7 días en tu zona (lo normal: 4). Con lluvia seguida, la rancha avanza rápido. Revisa el envés de las hojas de tu papa.",
+  "etiqueta_fuente": "Medido · NASA IMERG · Dato hasta el 31 de octubre",
+  "estado": "observado",
+  "fuente": "NASA GPM IMERG Late V07 (2001–2026)",
+  "enlace_senamhi": "https://www.gob.pe/12431-pronosticos-agrometeorologicos-del-senamhi",
+  "enlace_senamhi_texto": "Boletín agrometeorológico de SENAMHI"
+}

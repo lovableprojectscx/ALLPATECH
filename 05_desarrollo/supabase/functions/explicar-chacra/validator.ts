@@ -26,7 +26,7 @@ export interface DatosChacraIA {
 }
 
 export const ETIQUETA_QUECHUA =
-  "Borrador automático en quechua — debe revisarlo un hablante";
+  "Borrador de IA en quechua, sin revisar por un hablante nativo";
 
 const DISTRITOS_NOMBRES: Record<string, string> = {
   huanta: "Huanta",
@@ -100,14 +100,20 @@ export function validarRespuestaIA(
   for (const n of Array.from(numerosPermitidos)) {
     const num = Number(n);
     if (!Number.isNaN(num)) {
+      const absNum = Math.abs(num);
       numerosPermitidos.add(String(Math.round(num)));
-      numerosPermitidos.add(String(Math.abs(Math.round(num))));
+      numerosPermitidos.add(String(Math.round(absNum)));
       numerosPermitidos.add(num.toFixed(1));
+      numerosPermitidos.add(absNum.toFixed(1));
       numerosPermitidos.add(num.toFixed(2));
+      numerosPermitidos.add(absNum.toFixed(2));
     }
   }
 
   const numerosEnRespuesta = extraerNumerosNormalizados(limpio);
+  if (numerosEnRespuesta.length === 0) {
+    return { valida: false, motivo: "sin_numero_de_datos" };
+  }
   for (const numResp of numerosEnRespuesta) {
     const absNorm = numResp.startsWith("-") ? numResp.slice(1) : numResp;
     if (!numerosPermitidos.has(numResp) && !numerosPermitidos.has(absNorm)) {
@@ -115,8 +121,44 @@ export function validarRespuestaIA(
     }
   }
 
-  // 2. Verificar que no mencione cultivos distintos al recomendado (o a sus oportunidades)
+  // 2. Verificar lista bloqueada de juicios agronómicos no sustentados
   const respNorm = normalizarTexto(limpio);
+  const FRASES_BLOQUEADAS = [
+    "adecuad",
+    "acidez",
+    "buen momento",
+    "garantiza",
+    "seguro que",
+    "rancha",
+  ];
+  for (const bloq of FRASES_BLOQUEADAS) {
+    if (respNorm.includes(bloq)) {
+      return { valida: false, motivo: `frase_bloqueada:${bloq}` };
+    }
+  }
+
+  // 3. Si dias_helada > 0, debe mencionar la helada (es/en/qu)
+  if (datos.dias_helada > 0 && !/(helad|frost|qasa)/i.test(respNorm)) {
+    return { valida: false, motivo: "falta_mencion_helada" };
+  }
+
+  // 4. Si menciona pH, solo puede decir "pH {valor}" sin calificarlo
+  if (/\bph\b/i.test(respNorm)) {
+    if (typeof datos.ph_suelo !== "number") {
+      return { valida: false, motivo: "ph_no_disponible" };
+    }
+    const phStr = String(datos.ph_suelo);
+    const phAlt = Number.isInteger(datos.ph_suelo) ? String(datos.ph_suelo) : phStr;
+    const phRegex = new RegExp(
+      `\\bph\\s*(?:de|es|is|of|:)?\\s*(?:${phStr.replace(".", "\\.")}|${phAlt.replace(".", "\\.")})\\b`,
+      "i"
+    );
+    if (!phRegex.test(respNorm)) {
+      return { valida: false, motivo: "ph_sin_valor_exacto" };
+    }
+  }
+
+  // 5. Verificar que no mencione cultivos distintos al recomendado (o a sus oportunidades)
   const recNorm = normalizarTexto(datos.cultivo_asignado);
   const opsNorm = normalizarTexto(JSON.stringify(datos.oportunidades ?? []));
   for (const cultivo of CULTIVOS_CONOCIDOS) {

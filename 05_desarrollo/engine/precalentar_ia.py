@@ -5,6 +5,7 @@ Precalienta la caché de `ia_explicaciones` llamando a la Edge Function
 con una pausa de 3 segundos entre llamadas.
 """
 
+import http.client
 import json
 import sys
 import time
@@ -76,7 +77,7 @@ def main() -> None:
                     celda = f"{modelo}{suf}"
                 else:
                     celda = f"plantilla ({motivo or 'desconocido'})"
-            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+            except (urllib.error.URLError, http.client.HTTPException, TimeoutError, json.JSONDecodeError) as exc:
                 celda = f"error ({type(exc).__name__})"
 
             resultados[p][idi] = celda
@@ -86,11 +87,11 @@ def main() -> None:
                 time.sleep(PAUSA_SEG)
 
     print("\n### Tabla de precalentamiento (chacra x idioma)\n")
-    print("| Chacra | es | en | qu |")
-    print("| :--- | :--- | :--- | :--- |")
+    print("| Chacra | " + " | ".join(IDIOMAS) + " |")
+    print("| :--- | " + " | ".join([":---"] * len(IDIOMAS)) + " |")
     for p in PARCELAS:
         row = [resultados[p].get(idi, "-") for idi in IDIOMAS]
-        print(f"| {p} | {row[0]} | {row[1]} | {row[2]} |")
+        print(f"| {p} | " + " | ".join(row) + " |")
 
     print(f"\nTotal con es_plantilla=false: {ia_ok}/{total}")
     if ia_ok == 0:

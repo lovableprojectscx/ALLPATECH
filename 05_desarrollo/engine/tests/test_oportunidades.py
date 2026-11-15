@@ -180,3 +180,20 @@ def test_etl_incluye_oportunidades():
     contenido = Path(etl_supabase.__file__).read_text(encoding="utf-8")
     assert '"oportunidades"' in contenido
     assert "parcela_id,codigo" in contenido
+
+
+def test_vigilancia_rancha_4_de_7_normal_4():
+    import vigilancia_rancha
+
+    res = vigilancia_rancha.calcular_vigilancia_rancha()
+    assert res["dato_hasta"] == "2026-10-31"
+    assert res["dias_lluvia_7d"] == 4
+    assert res["normal_mediana_7d"] == 4
+    assert res["nivel"] == "varios"
+    assert res["cultivos_aplica"] == ["papa"]
+    ruta_web = ROOT_DIR / "web" / "public" / "data" / "vigilancia_rancha.json"
+    assert ruta_web.exists()
+    cargado = json.loads(ruta_web.read_text(encoding="utf-8"))
+    assert cargado["dias_lluvia_7d"] == 4
+    assert cargado["normal_mediana_7d"] == 4
+    assert cargado["nivel"] == "varios"
