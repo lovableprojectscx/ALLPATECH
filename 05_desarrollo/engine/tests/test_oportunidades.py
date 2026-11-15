@@ -171,6 +171,7 @@ def test_calendario_mensual_y_textos_prohibidos():
     # Regla de la tabla cooperativa / Supabase
     total_esperado = sum(len(p["oportunidades_aplicables"]) for p in data["por_parcela"])
     assert len(data["filas_supabase"]) == total_esperado == 30
+    assert all(isinstance(f.get("accion_ficha"), str) and f["accion_ficha"].strip() for f in data["filas_supabase"])
 
 
 def test_etl_incluye_oportunidades():

@@ -9,7 +9,13 @@ import { ComparadorABC } from "../components/ComparadorABC";
 import { EstadoBadge } from "../components/EstadoBadge";
 import { ExplicacionIA } from "../components/ExplicacionIA";
 import { MercadoSection } from "../components/MercadoSection";
-import { formatValor, getImergMensual, markLocalFallback } from "../data/api";
+import {
+  formatValor,
+  getImergMensual,
+  getOportunidades,
+  isLocalFallbackActive,
+  markLocalFallback,
+} from "../data/api";
 import { ParcelaSchema, Prueba1TunaSchema } from "../data/schemas";
 import { DICTIONARY } from "../i18n";
 import CooperativaView, { construirResumenHelada } from "../views/CooperativaView";
@@ -870,5 +876,70 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     const globalCss = fs.readFileSync(path.resolve(__dirname, "../styles/global.css"), "utf-8");
     expect(globalCss).toContain("grid-template-columns: repeat(3, minmax(0, 1fr))");
     expect(globalCss).toContain("-webkit-line-clamp: 2");
+  });
+
+  it("un error 400 de Supabase no muestra 'Sin conexión' en App; solo un error de red", async () => {
+    markLocalFallback(false);
+    window.localStorage.clear();
+
+    const opJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+    const fakeFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => opJson,
+    });
+    vi.stubGlobal("fetch", fakeFetch);
+
+    // Simular respuesta HTTP 400 de PostgREST/Supabase (e.g. columna faltante)
+    const fakeSupabase400 = {
+      from: () => ({
+        select: () => ({
+          order: () => ({
+            order: async () => ({
+              data: null,
+              error: { code: "42703", message: "column oportunidades.accion_ficha does not exist" },
+              status: 400,
+            }),
+          }),
+        }),
+      }),
+    } as unknown as Parameters<typeof getOportunidades>[0];
+
+    const res400 = await getOportunidades(fakeSupabase400);
+    expect(res400.por_parcela.length).toBeGreaterThan(0);
+    expect(isLocalFallbackActive()).toBe(false);
+
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    render(
+      <QueryClientProvider client={qc}>
+        <App />
+      </QueryClientProvider>
+    );
+    expect(screen.queryByText(/Sin conexión: mostrando la última copia guardada/i)).not.toBeInTheDocument();
+
+    // Simular error de red real (status 0 / Failed to fetch)
+    const fakeSupabaseRed = {
+      from: () => ({
+        select: () => ({
+          order: () => ({
+            order: async () => ({
+              data: null,
+              error: { code: "", message: "TypeError: Failed to fetch" },
+              status: 0,
+            }),
+          }),
+        }),
+      }),
+    } as unknown as Parameters<typeof getOportunidades>[0];
+
+    await getOportunidades(fakeSupabaseRed);
+    expect(isLocalFallbackActive()).toBe(true);
+    await waitFor(() => {
+      expect(screen.getByText(/Sin conexión: mostrando la última copia guardada/i)).toBeInTheDocument();
+    });
+
+    markLocalFallback(false);
+    vi.unstubAllGlobals();
   });
 });

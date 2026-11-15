@@ -3252,6 +3252,7 @@
       "titulo": "Fecha estimada de cosecha de tuna",
       "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
       "por_que_corto": "Acumula 2047 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 9 de enero).",
+      "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
       "prioridad": 1,
       "valores_json": {
         "t_base_c": 0.0,
@@ -3278,6 +3279,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 2,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3295,6 +3297,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 3,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3317,6 +3320,7 @@
       "titulo": "Ventana segura contra la helada",
       "accion_positiva": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
       "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 25 de agosto y en 2 de cada 10 años volvió desde el 9 de junio. Esta campaña hubo 2 noches con helada.",
+      "accion_ficha": "Tu ventana segura es de noviembre a mayo: siembra después de la última helada y cosecha antes de junio.",
       "prioridad": 1,
       "valores_json": {
         "ajuste_termico_c": 1.39,
@@ -3361,6 +3365,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 2,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3383,6 +3388,7 @@
       "titulo": "Fecha estimada de cosecha de tuna",
       "accion_positiva": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
       "por_que_corto": "Acumula 1940 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 20 de enero).",
+      "accion_ficha": "Tu tuna estaría lista alrededor del 9 de enero, unos 11 días antes de lo normal: busca comprador desde ya.",
       "prioridad": 1,
       "valores_json": {
         "t_base_c": 0.0,
@@ -3409,6 +3415,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 2,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3426,6 +3433,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 3,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3448,6 +3456,7 @@
       "titulo": "Fecha estimada de cosecha de tuna",
       "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
       "por_que_corto": "Acumula 2093 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 5 de enero).",
+      "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 25 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
       "prioridad": 1,
       "valores_json": {
         "t_base_c": 0.0,
@@ -3474,6 +3483,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 2,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3491,6 +3501,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 3,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3513,6 +3524,7 @@
       "titulo": "Ventana segura contra la helada",
       "accion_positiva": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
       "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 31 de octubre y en 2 de cada 10 años volvió desde el 30 de marzo. Esta campaña hubo 16 noches con helada.",
+      "accion_ficha": "Tu ventana segura es de noviembre a marzo: siembra después de la última helada y cosecha antes de abril.",
       "prioridad": 1,
       "valores_json": {
         "ajuste_termico_c": 0.81,
@@ -3559,6 +3571,7 @@
       "titulo": "Transformar en vez de malvender: chuño y tunta",
       "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
       "por_que_corto": "Está a 3682 m con 16 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "accion_ficha": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
       "prioridad": 2,
       "valores_json": {
         "elev_dem_m": 3682,
@@ -3579,6 +3592,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 3,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3596,6 +3610,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 4,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3618,6 +3633,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 1,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3640,6 +3656,7 @@
       "titulo": "Ventana segura contra la helada",
       "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
       "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+      "accion_ficha": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
       "prioridad": 1,
       "valores_json": {
         "ajuste_termico_c": 1.24,
@@ -3685,6 +3702,7 @@
       "titulo": "Transformar en vez de malvender: chuño y tunta",
       "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
       "por_que_corto": "Está a 3584 m con 13 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "accion_ficha": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
       "prioridad": 2,
       "valores_json": {
         "elev_dem_m": 3584,
@@ -3705,6 +3723,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 3,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3722,6 +3741,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 4,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3744,6 +3764,7 @@
       "titulo": "Ventana segura contra la helada",
       "accion_positiva": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
       "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 12 de septiembre y en 2 de cada 10 años volvió desde el 27 de abril. Esta campaña hubo 13 noches con helada.",
+      "accion_ficha": "Tu ventana segura es de noviembre a abril: siembra después de la última helada y cosecha antes de mayo.",
       "prioridad": 1,
       "valores_json": {
         "ajuste_termico_c": 1.21,
@@ -3789,6 +3810,7 @@
       "titulo": "Transformar en vez de malvender: chuño y tunta",
       "accion_positiva": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
       "por_que_corto": "Está a 3589 m con 13 noches de helada esta campaña y Ayacucho proyecta +19.3 % de área de papa.",
+      "accion_ficha": "Tu chacra es apta para hacer chuño o tunta: si sobra papa, transfórmala; se guarda y se vende después.",
       "prioridad": 2,
       "valores_json": {
         "elev_dem_m": 3589,
@@ -3809,6 +3831,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 3,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3826,6 +3849,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 4,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3848,6 +3872,7 @@
       "titulo": "Fecha estimada de cosecha de tuna",
       "accion_positiva": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
       "por_que_corto": "Acumula 2152 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 31 de diciembre).",
+      "accion_ficha": "Tu tuna estaría lista a fin de año (alrededor del 20 de diciembre), unos 11 días antes de lo normal: busca comprador desde ya.",
       "prioridad": 1,
       "valores_json": {
         "t_base_c": 0.0,
@@ -3874,6 +3899,7 @@
       "titulo": "Siembra lo que pocos siembran",
       "accion_positiva": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "por_que_corto": "En Ayacucho la intención de siembra de papa sube +19.3 % según la encuesta ENIS.",
+      "accion_ficha": "Este año mucha gente sembrará papa. El tarwi o el haba tendrán menos competencia y además recuperan tu suelo.",
       "prioridad": 2,
       "valores_json": {
         "enis_papa_ayacucho_pct": 19.3,
@@ -3891,6 +3917,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 3,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,
@@ -3913,6 +3940,7 @@
       "titulo": "Cuándo vender: calendario de precios de la papa",
       "accion_positiva": "La papa suele pagarse menos de febrero a mayo (~S/ 0.90 por kilo) y más de julio a septiembre (~S/ 1.30–1.50). Si puedes, guarda una parte y vende escalonado.",
       "por_que_corto": "Referencia de años anteriores en Lima, no pronóstico. Varía mucho (en marzo de 2026 llegó a S/ 1.81).",
+      "accion_ficha": "La papa suele pagarse mejor entre julio y septiembre que entre febrero y mayo: si puedes, guarda una parte y vende escalonado.",
       "prioridad": 1,
       "valores_json": {
         "meses": [
@@ -4038,6 +4066,7 @@
       "titulo": "Ventana segura contra la helada",
       "accion_positiva": "Tu ventana segura es de noviembre a junio: siembra después de la última helada y cosecha antes de julio.",
       "por_que_corto": "En 8 de cada 10 años la última helada terminó hacia el 7 de octubre y en 2 de cada 10 años volvió desde el 2 de julio. Esta campaña hubo 1 noches con helada.",
+      "accion_ficha": "Tu ventana segura es de noviembre a junio: siembra después de la última helada y cosecha antes de julio.",
       "prioridad": 2,
       "valores_json": {
         "ajuste_termico_c": -0.75,
@@ -4083,6 +4112,7 @@
       "titulo": "Cuándo sembrar: inicio real de las lluvias",
       "accion_positiva": "Este año las lluvias aún no se asientan (normalmente empiezan a fines de octubre). Siembra cuando se establezcan, no por la fecha de siempre.",
       "por_que_corto": "En 24 años de registro (2001–2025) las lluvias se asentaron hacia fines de octubre; en 2026 todavía no se establecen al 31 de octubre.",
+      "accion_ficha": "Espera a que se asienten las lluvias antes de sembrar (normalmente a fines de octubre).",
       "prioridad": 3,
       "valores_json": {
         "mediana_dias_desde_sep1": 56.5,

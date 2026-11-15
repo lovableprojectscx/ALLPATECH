@@ -432,9 +432,10 @@ export interface ExplicacionIAResponse {
 export async function getOportunidades(
   client: SupabaseClient | null = getSupabaseClient()
 ): Promise<OportunidadesContract> {
+  let redError = false;
   if (client) {
     try {
-      const { data, error } = await client
+      const { data, error, status } = await client
         .from("oportunidades")
         .select(
           "parcela_id,codigo,titulo,accion_positiva,por_que_corto,accion_ficha,valores_json,fuente,escala,estado,nota,dato_hasta,prioridad"
@@ -472,12 +473,13 @@ export async function getOportunidades(
           return base;
         }
       }
-    } catch {
-      // Conmuta a respaldo local
+      redError = esErrorDeRedSupabase(error, status);
+    } catch (err) {
+      redError = esErrorDeRedSupabase(err);
     }
   }
 
-  const raw = await fetchJsonLocal<unknown>("/data/oportunidades.json");
+  const raw = await fetchJsonLocal<unknown>("/data/oportunidades.json", redError);
   return OportunidadesContractSchema.parse(raw);
 }
 
