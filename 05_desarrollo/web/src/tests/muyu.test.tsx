@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import App from "../App";
+import { CalendarioChacra } from "../components/CalendarioChacra";
 import { ComparadorABC } from "../components/ComparadorABC";
 import { EstadoBadge } from "../components/EstadoBadge";
 import { ExplicacionIA } from "../components/ExplicacionIA";
@@ -12,6 +13,7 @@ import { formatValor, getImergMensual, markLocalFallback } from "../data/api";
 import { ParcelaSchema, Prueba1TunaSchema } from "../data/schemas";
 import { DICTIONARY } from "../i18n";
 import CooperativaView, { construirResumenHelada } from "../views/CooperativaView";
+import DraView from "../views/DraView";
 import FichaView from "../views/FichaView";
 import {
   generarPlantillaFija,
@@ -125,6 +127,9 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     const climaJson = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "../../public/data/clima_mensual.json"), "utf-8")
     );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
 
     vi.stubGlobal(
       "fetch",
@@ -132,6 +137,7 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
         if (url.includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
         if (url.includes("plan_rotacion_demo")) return { ok: true, json: async () => planJson };
         if (url.includes("clima_mensual")) return { ok: true, json: async () => climaJson };
+        if (url.includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
         return { ok: true, json: async () => ({ parcelas: [] }) };
       })
     );
@@ -143,7 +149,7 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
       </QueryClientProvider>
     );
 
-    await waitFor(() => expect(screen.getByText("Esta campaña")).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText("Oportunidades de esta campaña")).toBeInTheDocument());
     const text = container.textContent ?? "";
     expect(text.toLowerCase()).not.toContain("anomalía");
     expect(text).not.toContain("NDVI");
@@ -161,11 +167,15 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     const planJson = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "../../public/data/plan_rotacion_demo.json"), "utf-8")
     );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
 
     vi.stubGlobal(
       "fetch",
       vi.fn(async (url: string) => {
-        if (url.includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
         return { ok: true, json: async () => planJson };
       })
     );
@@ -346,6 +356,9 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     const mercadoJson = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "../../public/data/mercado_resumen.json"), "utf-8")
     );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
 
     vi.stubGlobal(
       "fetch",
@@ -355,6 +368,7 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
         if (String(url).includes("clima_mensual")) return { ok: true, json: async () => climaJson };
         if (String(url).includes("imerg_mensual")) return { ok: true, json: async () => imergJson };
         if (String(url).includes("mercado_resumen")) return { ok: true, json: async () => mercadoJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
         return { ok: true, json: async () => ({ parcelas: [], fuentes: [] }) };
       })
     );
@@ -381,7 +395,9 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     checkNoMuyuVisible();
     // 2. Cooperativa (ES)
     fireEvent.click(screen.getByRole("button", { name: /Trabajo en una cooperativa/i }));
-    await waitFor(() => expect(screen.getByRole("heading", { name: /Esta campaña/i })).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { name: /Oportunidades de esta campaña/i })).toBeInTheDocument()
+    );
     checkNoMuyuVisible();
     // 3. DRA (ES)
     fireEvent.click(screen.getByRole("button", { name: /Cambiar de perfil/i }));
@@ -434,6 +450,25 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     expect(conHelada).not.toBeNull();
     expect(conHelada?.resumenCorto).toContain("16");
 
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+    const parcelasJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/parcelas_demo.json"), "utf-8")
+    );
+    const planJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/plan_rotacion_demo.json"), "utf-8")
+    );
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        if (String(url).includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("plan_rotacion_demo")) return { ok: true, json: async () => planJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
+        return { ok: true, json: async () => ({ parcelas: [], celdas: {} }) };
+      })
+    );
+
     const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
     render(
       <QueryClientProvider client={qc}>
@@ -443,10 +478,11 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
 
     await waitFor(
       () => {
-        expect(screen.getByLabelText("Alerta de helada")).toBeInTheDocument();
+        expect(screen.getByLabelText("Oportunidad de helada")).toBeInTheDocument();
       },
       { timeout: 4000 }
     );
+    vi.unstubAllGlobals();
   });
 
   it("el botón 'Explícamelo simple' muestra insignia IA, no tiene chat y usa plantilla si falla la red", async () => {
@@ -483,7 +519,7 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     await waitFor(() => {
       expect(screen.getByText("Redactado por IA con estos datos")).toBeInTheDocument();
     });
-    expect(container.textContent).toContain("Siembra Quinua en tu chacra P05");
+    expect(container.textContent).toContain("Siembra Quinua en tu chacra de Chiara");
     expect(container.textContent?.toLowerCase()).not.toContain("network fail");
     fetchMock.mockRestore();
   });
@@ -527,5 +563,178 @@ describe("Contratos, UI/UX y honestidad MUYU (Vitest)", () => {
     if (parsed.success) {
       expect(parsed.data.gdd_tuna_jul1_a_dato_hasta.dato_hasta).toBe(parsed.data._metadata.dato_hasta);
     }
+  });
+
+  it("Cooperativa muestra máximo 3 oportunidades iniciales, 'Ver más' expande a todas y sin frases prohibidas", async () => {
+    const parcelasJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/parcelas_demo.json"), "utf-8")
+    );
+    const planJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/plan_rotacion_demo.json"), "utf-8")
+    );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        if (String(url).includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("plan_rotacion_demo")) return { ok: true, json: async () => planJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
+        return { ok: true, json: async () => ({ parcelas: [], celdas: {} }) };
+      })
+    );
+
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    const { container } = render(
+      <QueryClientProvider client={qc}>
+        <CooperativaView />
+      </QueryClientProvider>
+    );
+
+    const sec = await waitFor(() =>
+      screen.getByRole("region", { name: /Oportunidades de esta campaña/i })
+    );
+    expect(sec.querySelectorAll("article.muyu-alert-card")).toHaveLength(3);
+
+    const btnVerMas = screen.getByRole("button", { name: /Ver más/i });
+    fireEvent.click(btnVerMas);
+    expect(sec.querySelectorAll("article.muyu-alert-card")).toHaveLength(6);
+
+    const fullText = (container.textContent ?? "").toLowerCase();
+    for (const bad of ["pronóstico de precio", "el precio será", "rendimiento garantizado", "78/100"]) {
+      expect(fullText).not.toContain(bad);
+    }
+    vi.unstubAllGlobals();
+  });
+
+  it("CalendarioChacra tiene SVG role='img', aria-label accesible y frase resumen", () => {
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+    const calP05 = oportunidadesJson.por_parcela.find((p: { parcela_id: string }) => p.parcela_id === "P05").calendario;
+    const { container } = render(<CalendarioChacra calendario={calP05} modo="completa" />);
+
+    const img = screen.getByRole("img", { name: /Calendario agrícola agosto a julio para P05/i });
+    expect(img).toBeInTheDocument();
+    expect(img.tagName.toLowerCase()).toBe("svg");
+    const resumen = container.querySelector("[data-calendario-resumen]");
+    expect(resumen?.textContent).toContain("noviembre");
+  });
+
+  it("Ficha del agricultor muestra exactamente 1 oportunidad + calendario simple y sin decimales", async () => {
+    const parcelasJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/parcelas_demo.json"), "utf-8")
+    );
+    const planJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/plan_rotacion_demo.json"), "utf-8")
+    );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        if (String(url).includes("parcelas_demo")) return { ok: true, json: async () => parcelasJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
+        return { ok: true, json: async () => planJson };
+      })
+    );
+
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    const { container } = render(
+      <QueryClientProvider client={qc}>
+        <FichaView parcelaId="P10" />
+      </QueryClientProvider>
+    );
+
+    const ficha = await waitFor(() => screen.getByRole("article", { name: "Ficha del agricultor" }));
+    const opsFicha = container.querySelectorAll("[data-ficha-oportunidad]");
+    expect(opsFicha).toHaveLength(1);
+    expect(opsFicha[0].getAttribute("data-ficha-oportunidad")).toBe("O4");
+    expect(ficha.querySelector("svg[role='img']")).toBeInTheDocument();
+    expect(ficha.textContent ?? "").not.toMatch(/\d+\.\d+/);
+    vi.unstubAllGlobals();
+  });
+
+  it("Vista Región (DRA) muestra la línea del semáforo regional y su nota de siguiente fase", async () => {
+    const climaJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/clima_mensual.json"), "utf-8")
+    );
+    const imergJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/imerg_mensual.json"), "utf-8")
+    );
+    const mercadoJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/mercado_resumen.json"), "utf-8")
+    );
+    const oportunidadesJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../../public/data/oportunidades.json"), "utf-8")
+    );
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        if (String(url).includes("clima_mensual")) return { ok: true, json: async () => climaJson };
+        if (String(url).includes("imerg_mensual")) return { ok: true, json: async () => imergJson };
+        if (String(url).includes("mercado_resumen")) return { ok: true, json: async () => mercadoJson };
+        if (String(url).includes("oportunidades")) return { ok: true, json: async () => oportunidadesJson };
+        return { ok: true, json: async () => ({ fuentes: [] }) };
+      })
+    );
+
+    const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    render(
+      <QueryClientProvider client={qc}>
+        <DraView />
+      </QueryClientProvider>
+    );
+
+    await waitFor(() =>
+      expect(
+        screen.getByText("Si estas 10 chacras siguen la recomendación: 7 tarwi o haba, 2 quinua y 1 papa.")
+      ).toBeInTheDocument()
+    );
+    expect(screen.getByText(/Siguiente fase: con las siembras registradas por cooperativa/i)).toBeInTheDocument();
+    vi.unstubAllGlobals();
+  });
+
+  it("validator de explicar-chacra acepta números de oportunidades y las incluye en plantilla fija", () => {
+    const datosConOps = {
+      parcela_id: "P01",
+      distrito: "huanta",
+      elev_dem_m: 2667,
+      estrategia_elegida: "C" as const,
+      cultivo_asignado: "tarwi o haba",
+      dias_helada: 0,
+      humedad_suelo_pct: 58,
+      ph_suelo: 6.2,
+      ndvi_ultimo: 0.42,
+      enis_papa_ayacucho_pct: 19.3,
+      lluvia_oct_anomalia_pct: -44.3,
+      oportunidades: [
+        {
+          codigo: "O3",
+          titulo: "Fecha estimada de cosecha de tuna",
+          accion_positiva:
+            "Tu tuna estaría lista a fin de año (alrededor del 30 de diciembre), unos 10 días antes de lo normal: busca comprador desde ya.",
+          por_que_corto:
+            "Acumula 2047 grados-día desde el 1 de julio frente a una meta de 2,751 grados-día (normal: 9 de enero).",
+          estado: "estimado",
+          nota: "Supone brotamiento 1 de julio",
+          valores: { adelanto_dias: 10 },
+        },
+      ],
+    };
+
+    const ok = validarRespuestaIA(
+      "En tu chacra P01 conviene tarwi o haba y tu tuna estaría lista alrededor del 30 de diciembre (10 días antes).",
+      datosConOps
+    );
+    expect(ok.valida).toBe(true);
+
+    const plantilla = generarPlantillaFija(datosConOps, "es");
+    expect(plantilla).toContain("30 de diciembre");
   });
 });

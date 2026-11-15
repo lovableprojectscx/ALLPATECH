@@ -2,6 +2,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import {
   ETIQUETA_QUECHUA,
+  formatearDistrito,
   generarPlantillaFija,
   validarRespuestaIA,
   type DatosChacraIA,
@@ -47,6 +48,54 @@ async function sha256Hex(text: string): Promise<string> {
     .join("");
 }
 
+async function llamarGemini(
+  geminiKey: string,
+  idiomaInst: string,
+  datos: DatosChacraIA,
+  thinkingCfg: Record<string, unknown>,
+  timeoutMs = 15_000
+): Promise<{ status: number; finishReason: string; text: string; rawBody?: string }> {
+  const resp = await fetch(GEMINI_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-goog-api-key": geminiKey,
+    },
+    signal: AbortSignal.timeout(timeoutMs),
+    body: JSON.stringify({
+      systemInstruction: {
+        parts: [{ text: `${SYSTEM_PROMPT} ${idiomaInst}` }],
+      },
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: `Datos JSON de la chacra:\n${JSON.stringify(datos)}` }],
+        },
+      ],
+      generationConfig: {
+        temperature: 0.2,
+        maxOutputTokens: 1024,
+        thinkingConfig: thinkingCfg,
+      },
+    }),
+  });
+
+  if (!resp.ok) {
+    const errText = await resp.text().catch(() => "");
+    return { status: resp.status, finishReason: "ERROR", text: "", rawBody: errText };
+  }
+
+  const json = await resp.json();
+  const cand = json?.candidates?.[0];
+  const finishReason = String(cand?.finishReason ?? "UNKNOWN");
+  const candidateText =
+    cand?.content?.parts
+      ?.map((pt: { text?: string }) => pt.text ?? "")
+      .join(" ")
+      .trim() ?? "";
+  return { status: resp.status, finishReason, text: candidateText };
+}
+
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin");
   const headers = { ...corsHeaders(origin), "Content-Type": "application/json" };
@@ -76,8 +125,7 @@ Deno.serve(async (req: Request) => {
 
     const sb = createClient(supabaseUrl, serviceKey);
 
-    // 1. Leer datos reales de la chacra desde Supabase en el servidor
-    const [parRes, planRes, imergRes, enisRes, ndviRes, opRes] = await Promise.all([
+    const [parRes, planRes, imergRes, enisRes, ndviRes] = await Promise.all([
       sb.from("parcelas").select("*").eq("id", parcelaId).maybeSingle(),
       sb.from("plan_rotacion").select("*").eq("parcela_id", parcelaId).maybeSingle(),
       sb.from("lluvia_imerg_mensual").select("mes_num,anomalia_pct").eq("mes_num", 10).maybeSingle(),
@@ -90,11 +138,6 @@ Deno.serve(async (req: Request) => {
         .order("calendar_date", { ascending: false })
         .limit(1)
         .maybeSingle(),
-      sb
-        .from("oportunidades")
-        .select("codigo,titulo,accion_positiva,por_que_corto,valores_json,estado,nota,prioridad")
-        .eq("parcela_id", parcelaId)
-        .order("prioridad"),
     ]);
 
     if (parRes.error || !parRes.data || planRes.error || !planRes.data) {
@@ -119,25 +162,9 @@ Deno.serve(async (req: Request) => {
     const humedadPct =
       typeof gwRaw === "number" ? Math.round(gwRaw * 100) : "no disponible";
 
-    const oportunidadesIA = !opRes.error && Array.isArray(opRes.data)
-      ? opRes.data.map((row: Record<string, unknown>) => {
-          const valObj = (row.valores_json ?? {}) as Record<string, unknown>;
-          const { meses: _omitMeses, ...valoresCompactos } = valObj;
-          return {
-            codigo: String(row.codigo ?? ""),
-            titulo: String(row.titulo ?? ""),
-            accion_positiva: String(row.accion_positiva ?? ""),
-            por_que_corto: String(row.por_que_corto ?? ""),
-            estado: String(row.estado ?? ""),
-            nota: String(row.nota ?? ""),
-            valores: valoresCompactos,
-          };
-        })
-      : [];
-
     const datos: DatosChacraIA = {
       parcela_id: parcelaId,
-      distrito: String(p.distrito ?? ""),
+      distrito: formatearDistrito(String(p.distrito ?? "")),
       elev_dem_m: Math.round(Number(p.elev_dem_m ?? 0)),
       estrategia_elegida: (String(pl.estrategia_elegida ?? "B") as "A" | "B" | "C"),
       cultivo_asignado: String(pl.cultivo_asignado ?? ""),
@@ -154,12 +181,11 @@ Deno.serve(async (req: Request) => {
         typeof imergRes.data?.anomalia_pct === "number"
           ? Number(imergRes.data.anomalia_pct)
           : "no disponible",
-      oportunidades: oportunidadesIA,
     };
 
     const dataHash = await sha256Hex(JSON.stringify({ datos, idioma }));
 
-    // 2. Revisar caché en ia_explicaciones
+    // Solo devolver caché si no es plantilla_fija
     const cacheRes = await sb
       .from("ia_explicaciones")
       .select("texto,modelo,creado_en,data_hash")
@@ -167,12 +193,18 @@ Deno.serve(async (req: Request) => {
       .eq("idioma", idioma)
       .maybeSingle();
 
-    if (!cacheRes.error && cacheRes.data && cacheRes.data.data_hash === dataHash) {
+    if (
+      !cacheRes.error &&
+      cacheRes.data &&
+      cacheRes.data.data_hash === dataHash &&
+      cacheRes.data.modelo !== "plantilla_fija"
+    ) {
       return new Response(
         JSON.stringify({
           texto: cacheRes.data.texto,
           modelo: cacheRes.data.modelo,
-          es_plantilla: cacheRes.data.modelo === "plantilla_fija",
+          es_plantilla: false,
+          motivo_plantilla: null,
           usado_cache: true,
           etiqueta_quechua: idioma === "qu" ? ETIQUETA_QUECHUA : null,
           datos_usados: datos,
@@ -181,16 +213,17 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    // 3. Verificar secreto GEMINI_API_KEY; si falta, devolver plantilla
     const geminiKey = Deno.env.get("GEMINI_API_KEY");
     const plantilla = generarPlantillaFija(datos, idioma);
 
     if (!geminiKey) {
+      console.log("[explicar-chacra]", { parcelaId, status: "skip", finishReason: "no_key", textLen: 0, motivo: "sin_key" });
       return new Response(
         JSON.stringify({
           texto: plantilla,
           modelo: "plantilla_fija",
           es_plantilla: true,
+          motivo_plantilla: "sin_key",
           usado_cache: false,
           etiqueta_quechua: idioma === "qu" ? ETIQUETA_QUECHUA : null,
           datos_usados: datos,
@@ -199,7 +232,6 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    // 4. Límite global de 30 llamadas/minuto
     const haceUnMin = new Date(Date.now() - 60_000).toISOString();
     const { count } = await sb
       .from("ia_llamadas")
@@ -207,11 +239,13 @@ Deno.serve(async (req: Request) => {
       .gte("creado_en", haceUnMin);
 
     if ((count ?? 0) >= 30) {
+      console.log("[explicar-chacra]", { parcelaId, status: 429, finishReason: "rate_limit", textLen: 0, motivo: "rate_limit" });
       return new Response(
         JSON.stringify({
           texto: plantilla,
           modelo: "plantilla_fija",
           es_plantilla: true,
+          motivo_plantilla: "rate_limit",
           usado_cache: false,
           etiqueta_quechua: idioma === "qu" ? ETIQUETA_QUECHUA : null,
           datos_usados: datos,
@@ -222,7 +256,6 @@ Deno.serve(async (req: Request) => {
 
     await sb.from("ia_llamadas").insert({});
 
-    // 5. Llamar a Gemini Flash con timeout de 10 s
     const idiomaInst =
       idioma === "en"
         ? "Responde en inglés simple."
@@ -233,69 +266,83 @@ Deno.serve(async (req: Request) => {
     let textoFinal = plantilla;
     let modeloUsado = "plantilla_fija";
     let esPlantilla = true;
+    let motivoPlantilla: string | null = null;
 
     try {
-      const resp = await fetch(GEMINI_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": geminiKey,
-        },
-        signal: AbortSignal.timeout(10_000),
-        body: JSON.stringify({
-          systemInstruction: {
-            parts: [{ text: `${SYSTEM_PROMPT} ${idiomaInst}` }],
-          },
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: `Datos JSON de la chacra:\n${JSON.stringify(datos)}` }],
-            },
-          ],
-          generationConfig: {
-            temperature: 0.2,
-            maxOutputTokens: 180,
-          },
-        }),
-      });
+      let gRes: { status: number; finishReason: string; text: string; rawBody?: string };
+      let thinkingUsado = "thinkingLevel:low";
+      try {
+        gRes = await llamarGemini(geminiKey, idiomaInst, datos, { thinkingLevel: "low" }, 8_000);
+      } catch {
+        thinkingUsado = "thinkingBudget:0(after_timeout)";
+        gRes = await llamarGemini(geminiKey, idiomaInst, datos, { thinkingBudget: 0 }, 15_000);
+      }
+      // Si el modelo rechaza thinkingLevel, reintentar con thinkingBudget: 0
+      if (gRes.status === 400 && gRes.rawBody?.includes("thinkingLevel")) {
+        thinkingUsado = "thinkingBudget:0(after_400)";
+        gRes = await llamarGemini(geminiKey, idiomaInst, datos, { thinkingBudget: 0 }, 15_000);
+      }
 
-      if (resp.ok) {
-        const json = await resp.json();
-        const candidateText =
-          json?.candidates?.[0]?.content?.parts
-            ?.map((pt: { text?: string }) => pt.text ?? "")
-            .join(" ")
-            .trim() ?? "";
-
-        const check = validarRespuestaIA(candidateText, datos);
+      if (gRes.status !== 200) {
+        motivoPlantilla = `gemini_http_${gRes.status}`;
+      } else if (!gRes.text) {
+        motivoPlantilla = "vacia";
+      } else {
+        const check = validarRespuestaIA(gRes.text, datos);
         if (check.valida) {
-          textoFinal = candidateText;
+          textoFinal = gRes.text;
           modeloUsado = GEMINI_MODEL;
           esPlantilla = false;
+          motivoPlantilla = null;
+        } else {
+          motivoPlantilla = `validador:${check.motivo ?? "desconocido"}`;
         }
       }
-    } catch {
-      // Timeout o fallo de red -> devuelve plantilla fija
+
+      console.log("[explicar-chacra]", {
+        parcelaId,
+        thinkingUsado,
+        respStatus: gRes.status,
+        finishReason: gRes.finishReason,
+        textLen: gRes.text.length,
+        esPlantilla,
+        motivo: motivoPlantilla,
+      });
+    } catch (err) {
+      motivoPlantilla = "timeout";
+      console.log("[explicar-chacra]", {
+        parcelaId,
+        respStatus: "timeout",
+        finishReason: "TIMEOUT",
+        textLen: 0,
+        esPlantilla: true,
+        motivo: motivoPlantilla,
+        errName: err instanceof Error ? err.name : "unknown",
+        errMsg: err instanceof Error ? err.message : String(err),
+      });
     }
 
-    // 6. Guardar en caché solo si fue generado por Gemini (o guardar ambos)
-    await sb.from("ia_explicaciones").upsert(
-      {
-        parcela_id: parcelaId,
-        idioma,
-        texto: textoFinal,
-        modelo: modeloUsado,
-        data_hash: dataHash,
-        creado_en: new Date().toISOString(),
-      },
-      { onConflict: "parcela_id,idioma" }
-    );
+    // NO guardar en ia_explicaciones cuando es_plantilla sea true
+    if (!esPlantilla) {
+      await sb.from("ia_explicaciones").upsert(
+        {
+          parcela_id: parcelaId,
+          idioma,
+          texto: textoFinal,
+          modelo: modeloUsado,
+          data_hash: dataHash,
+          creado_en: new Date().toISOString(),
+        },
+        { onConflict: "parcela_id,idioma" }
+      );
+    }
 
     return new Response(
       JSON.stringify({
         texto: textoFinal,
         modelo: modeloUsado,
         es_plantilla: esPlantilla,
+        motivo_plantilla: motivoPlantilla,
         usado_cache: false,
         etiqueta_quechua: idioma === "qu" ? ETIQUETA_QUECHUA : null,
         datos_usados: datos,

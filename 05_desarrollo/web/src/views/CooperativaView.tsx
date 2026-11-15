@@ -2,8 +2,20 @@ import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { ArrowLeft, ChevronDown, ChevronUp, FileText, Map as MapIcon, Snowflake } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronDown,
+  ChevronUp,
+  CloudRain,
+  FileText,
+  Map as MapIcon,
+  Snowflake,
+  Sprout,
+  Sun,
+  TrendingUp,
+} from "lucide-react";
 import "leaflet/dist/leaflet.css";
+import { CalendarioChacra } from "../components/CalendarioChacra";
 import { ComparadorABC } from "../components/ComparadorABC";
 import { EstadoBadge } from "../components/EstadoBadge";
 import { ExplicacionIA } from "../components/ExplicacionIA";
@@ -12,6 +24,7 @@ import {
   formatValor,
   getClimaMensual,
   getNdviParcelas,
+  getOportunidades,
   getParcelas,
   getPlanRotacion,
 } from "../data/api";
@@ -82,16 +95,20 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
   const [detalleId, setDetalleId] = useState<string | null>(null);
   const [showMap, setShowMap] = useState(false);
   const [showAllPlots, setShowAllPlots] = useState(false);
+  const [showAllOps, setShowAllOps] = useState(false);
   const [showComparator, setShowComparator] = useState(false);
 
   const parcelasQ = useQuery({ queryKey: ["parcelas"], queryFn: () => getParcelas() });
   const planQ = useQuery({ queryKey: ["plan-rotacion"], queryFn: () => getPlanRotacion() });
   const climaQ = useQuery({ queryKey: ["clima-mensual"], queryFn: () => getClimaMensual() });
   const ndviQ = useQuery({ queryKey: ["ndvi-parcelas"], queryFn: () => getNdviParcelas() });
+  const oportunidadesQ = useQuery({ queryKey: ["oportunidades"], queryFn: () => getOportunidades() });
 
   const parcelas = parcelasQ.data ?? [];
   const plan = planQ.data?.plan ?? [];
   const comparador = planQ.data?.comparador ?? [];
+  const opsCoop = oportunidadesQ.data?.oportunidades_cooperativa ?? [];
+  const opsPorParcela = oportunidadesQ.data?.por_parcela ?? [];
 
   const parcelaActiva = useMemo(
     () => (detalleId ? parcelas.find((p) => p.id === detalleId) ?? null : null),
@@ -135,6 +152,7 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
     const ndviParcela = (ndviQ.data ?? []).find((n) => n.parcela_id === parcelaActiva.id);
     const ndviValidos = (ndviParcela?.registros ?? []).filter((r) => typeof r.ndvi === "number");
     const ultimoNdvi = ndviValidos[ndviValidos.length - 1];
+    const parcelaOps = opsPorParcela.find((o) => o.parcela_id === parcelaActiva.id);
 
     return (
       <div style={{ display: "grid", gap: "24px" }}>
@@ -237,7 +255,60 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
             }
           />
 
-          <ExplicacionIA parcela={parcelaActiva} planItem={planActivo} />
+          <ExplicacionIA
+            parcela={parcelaActiva}
+            planItem={planActivo}
+            oportunidades={parcelaOps?.oportunidades ?? []}
+          />
+
+          {parcelaOps?.calendario ? (
+            <div style={{ marginTop: "18px" }}>
+              <CalendarioChacra calendario={parcelaOps.calendario} modo="completa" />
+            </div>
+          ) : null}
+
+          {parcelaOps && parcelaOps.oportunidades.length > 0 ? (
+            <section
+              aria-label={t("plotOpportunitiesHeading")}
+              style={{ marginTop: "18px", display: "grid", gap: "10px" }}
+            >
+              <h3 style={{ margin: 0, fontSize: "1.12rem" }}>{t("plotOpportunitiesHeading")}</h3>
+              <div style={{ display: "grid", gap: "10px" }}>
+                {parcelaOps.oportunidades.map((op) => {
+                  const esHelada = op.codigo === "O2";
+                  return (
+                    <article
+                      key={op.codigo}
+                      className="muyu-alert-card"
+                      style={{
+                        borderColor: esHelada ? "var(--noche)" : "var(--est-c)",
+                        backgroundColor: esHelada ? "var(--hielo)" : "var(--blanco)",
+                      }}
+                    >
+                      <div style={{ display: "grid", gap: "6px" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
+                          <span style={{ fontWeight: 700, color: "var(--noche)" }}>{op.titulo}</span>
+                          <EstadoBadge estado={op.estado} />
+                        </div>
+                        <p style={{ margin: 0, fontWeight: 700, color: "var(--noche)" }}>
+                          {op.accion_positiva}
+                        </p>
+                        <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.93rem" }}>
+                          {op.por_que_corto}
+                        </p>
+                      </div>
+                      <FuenteDisclosure
+                        fuente={op.fuente}
+                        escala={op.escala}
+                        fecha={op.dato_hasta}
+                        detalleTecnico={op.nota}
+                      />
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
 
           {parcelaComp ? (
             <div style={{ marginTop: "20px" }}>
@@ -264,95 +335,103 @@ export default function CooperativaView({ onOpenFicha }: CooperativaViewProps) {
   }
 
   const visibles = showAllPlots ? parcelas : parcelas.slice(0, 6);
+  const opsVisibles = showAllOps ? opsCoop : opsCoop.slice(0, 3);
+
+  const iconoPorCodigo = (codigo: string) => {
+    switch (codigo) {
+      case "O1":
+        return <CloudRain size={16} aria-hidden="true" color="#003F6E" />;
+      case "O2":
+        return <Snowflake size={16} aria-hidden="true" color="#14303A" />;
+      case "O3":
+        return <Sun size={16} aria-hidden="true" color="#B83A00" />;
+      case "O4":
+        return <TrendingUp size={16} aria-hidden="true" color="#A3325F" />;
+      default:
+        return <Sprout size={16} aria-hidden="true" color="#007755" />;
+    }
+  };
+
+  const bordePorCodigo = (codigo: string) => {
+    if (codigo === "O2") return "var(--noche)";
+    if (codigo === "O3" || codigo === "O5") return "var(--est-a)";
+    if (codigo === "O4") return "var(--quinua)";
+    if (codigo === "O1") return "var(--est-b)";
+    return "var(--est-c)";
+  };
 
   return (
     <div style={{ display: "grid", gap: "28px" }}>
-      {/* Bloque 1: Esta campaña */}
-      <section aria-label={t("campaignHeading")}>
-        <h2 style={{ marginBottom: "14px", fontSize: "1.4rem" }}>{t("campaignHeading")}</h2>
+      {/* Bloque 1: Oportunidades de esta campaña (máx 3 visibles + Ver más) */}
+      <section aria-label={t("opportunitiesHeading")}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "12px",
+            marginBottom: "14px",
+          }}
+        >
+          <h2 style={{ margin: 0, fontSize: "1.4rem" }}>{t("opportunitiesHeading")}</h2>
+          {opsCoop.length > 3 ? (
+            <button
+              type="button"
+              className="muyu-btn-secondary"
+              aria-expanded={showAllOps}
+              onClick={() => setShowAllOps((v) => !v)}
+            >
+              {showAllOps ? <ChevronUp size={16} aria-hidden="true" /> : <ChevronDown size={16} aria-hidden="true" />}
+              <span>{showAllOps ? t("showLessOps") : t("showMoreOps")}</span>
+            </button>
+          ) : null}
+        </div>
         <div className="muyu-alerts-grid">
-          <article className="muyu-alert-card" style={{ borderColor: "var(--est-a)" }}>
-            <div style={{ display: "grid", gap: "6px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontWeight: 700, color: "var(--est-a)" }}>{t("whatToDoLabel")}</span>
-                <EstadoBadge estado="estimado" />
-              </div>
-              <p style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700 }}>{t("alert1Action")}</p>
-              <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.95rem" }}>{t("alert1Short")}</p>
-            </div>
-            <FuenteDisclosure
-              fuente="Tesis UNSCH + NASA POWER"
-              escala="~50 km (Huanta)"
-              fecha="octubre de 2026"
-              detalleTecnico={t("alert1Tech")}
-            />
-          </article>
-
-          <article className="muyu-alert-card" style={{ borderColor: "var(--est-b)" }}>
-            <div style={{ display: "grid", gap: "6px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontWeight: 700, color: "var(--est-b)" }}>{t("whatToDoLabel")}</span>
-                <EstadoBadge estado="observado" />
-              </div>
-              <p style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700 }}>{t("alert2Action")}</p>
-              <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.95rem" }}>{t("alert2Short")}</p>
-            </div>
-            <FuenteDisclosure
-              fuente="NASA GPM IMERG Late V07"
-              escala="0.1° (~10 km)"
-              fecha="octubre de 2026"
-              detalleTecnico={t("alert2Tech")}
-            />
-          </article>
-
-          <article className="muyu-alert-card" style={{ borderColor: "var(--quinua)" }}>
-            <div style={{ display: "grid", gap: "6px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontWeight: 700, color: "var(--quinua)" }}>{t("whatToDoLabel")}</span>
-                <EstadoBadge estado="observado" />
-              </div>
-              <p style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700 }}>{t("alert3Action")}</p>
-              <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.95rem" }}>{t("alert3Short")}</p>
-            </div>
-            <FuenteDisclosure
-              fuente="ENIS MIDAGRI / EMMSA"
-              escala="Ayacucho / Mercado Lima"
-              fecha="noviembre de 2026"
-              detalleTecnico={t("alert3Tech")}
-            />
-          </article>
-
-          {(() => {
-            const heladaInfo = construirResumenHelada(parcelas, lang);
-            if (!heladaInfo) return null;
+          {opsVisibles.map((op) => {
+            const esO2 = op.codigo === "O2";
             return (
               <article
+                key={op.codigo}
                 className="muyu-alert-card"
-                aria-label="Alerta de helada"
-                style={{ borderColor: "var(--noche)", backgroundColor: "var(--hielo)" }}
+                aria-label={esO2 ? "Oportunidad de helada" : op.titulo}
+                style={{
+                  borderColor: bordePorCodigo(op.codigo),
+                  backgroundColor: esO2 ? "var(--hielo)" : undefined,
+                }}
               >
                 <div style={{ display: "grid", gap: "6px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-                    <span style={{ fontWeight: 700, color: "var(--noche)", display: "inline-flex", alignItems: "center", gap: "6px" }}>
-                      <Snowflake size={16} aria-hidden="true" />
-                      {t("whatToDoLabel")}
+                    <span
+                      style={{
+                        fontWeight: 700,
+                        color: "var(--noche)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      {iconoPorCodigo(op.codigo)}
+                      <span>{op.titulo}</span>
                     </span>
-                    <EstadoBadge estado="estimado" />
+                    <EstadoBadge estado={op.estado} />
                   </div>
-                  <p style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700, color: "var(--noche)" }}>
-                    {t("alert4Action")}
+                  <p style={{ margin: 0, fontSize: "1.06rem", fontWeight: 700, color: "var(--noche)" }}>
+                    {op.accion_positiva}
                   </p>
-                  <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.95rem" }}>{heladaInfo.resumenCorto}</p>
+                  <p style={{ margin: 0, color: "var(--noche-suave)", fontSize: "0.94rem" }}>
+                    {op.por_que_corto}
+                  </p>
                 </div>
                 <FuenteDisclosure
-                  fuente="NASA POWER + ajuste por altura"
-                  escala="~50 km + DEM 30 m"
-                  fecha={heladaInfo.fecha}
-                  detalleTecnico={heladaInfo.detalle}
+                  fuente={op.fuente}
+                  escala={op.escala}
+                  fecha={op.dato_hasta}
+                  detalleTecnico={op.nota}
                 />
               </article>
             );
-          })()}
+          })}
         </div>
       </section>
 

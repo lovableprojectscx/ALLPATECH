@@ -43,8 +43,19 @@ export const DICTIONARY = {
     backToPlots: "Volver a tus chacras",
     compareOptionsBtn: "Comparar opciones",
 
-    // Cooperativa — Esta campaña
-    campaignHeading: "Esta campaña",
+    // Cooperativa — Oportunidades de esta campaña
+    campaignHeading: "Oportunidades de esta campaña",
+    opportunitiesHeading: "Oportunidades de esta campaña",
+    showMoreOps: "Ver más",
+    showLessOps: "Ver menos",
+    plotOpportunitiesHeading: "Oportunidades de esta chacra",
+    calendarHeading: "Calendario de mi chacra",
+    calendarLegendRain: "Inicio normal de lluvias",
+    calendarLegendSafe: "Ventana segura (siembra y desarrollo)",
+    calendarLegendFrost: "Meses con riesgo de helada",
+    calendarLegendTuna: "Cosecha estimada de tuna",
+    calendarLegendPriceLow: "Precio de referencia papa bajo (EMMSA)",
+    calendarLegendPriceHigh: "Precio de referencia papa alto (EMMSA)",
     whatToDoLabel: "Qué hacer",
     alert1Action: "Tu tuna lleva unos 10 días de adelanto. Vigila el agua.",
     alert1Short: "Más calor de lo normal desde junio.",
@@ -106,9 +117,11 @@ export const DICTIONARY = {
     draMarketNote: "Cuando llega demasiada papa hay riesgo de que sobre en el mercado (no predice el precio).",
     draMarketPrueba2: "En enero de 2024 llegó más papa de lo normal y el precio bajó casi a la mitad (1.1 soles por kilo).",
     draMarketTech: "Ingresos mensuales en toneladas al GMML (EMMSA / MIDAGRI-SIEA). Noviembre 2026 es mes en curso (datos hasta el día 13). Enero 2024: I_m = 1.053 (+5.3 % ingreso, −48 % precio).",
+    draSemaforoTitle: "Semáforo regional de esta campaña",
 
     // Ficha del agricultor
     fichaCampaign: "Campaña 2026–2027",
+    fichaOpportunityTitle: "Oportunidad de esta campaña",
     fichaWhatToPlant: "Qué sembrar",
     fichaWhen: "Cuándo",
     fichaWhatToWatch: "Qué cuidar",
@@ -166,8 +179,19 @@ export const DICTIONARY = {
     backToPlots: "Back to your plots",
     compareOptionsBtn: "Compare options",
 
-    // Cooperative — This season
-    campaignHeading: "This season",
+    // Cooperative — This season's opportunities
+    campaignHeading: "This season's opportunities",
+    opportunitiesHeading: "This season's opportunities",
+    showMoreOps: "Show more",
+    showLessOps: "Show less",
+    plotOpportunitiesHeading: "Opportunities for this plot",
+    calendarHeading: "My plot's calendar",
+    calendarLegendRain: "Normal start of rains",
+    calendarLegendSafe: "Safe window (planting & growth)",
+    calendarLegendFrost: "Months with frost risk",
+    calendarLegendTuna: "Estimated prickly pear harvest",
+    calendarLegendPriceLow: "Lower reference potato price (EMMSA)",
+    calendarLegendPriceHigh: "Higher reference potato price (EMMSA)",
     whatToDoLabel: "What to do",
     alert1Action: "Your prickly pear is about 10 days ahead. Watch water.",
     alert1Short: "Warmer than normal since June.",
@@ -229,9 +253,11 @@ export const DICTIONARY = {
     draMarketNote: "When too many potatoes arrive, there is a risk of oversupply (does not forecast prices).",
     draMarketPrueba2: "In January 2024 more potatoes arrived than usual and prices dropped by nearly half (1.1 soles per kilo).",
     draMarketTech: "Monthly inflows in metric tons at GMML (EMMSA / MIDAGRI-SIEA). Nov 2026 is an in-progress month (through Nov 13). Jan 2024: I_m = 1.053 (+5.3 % inflow, −48 % price).",
+    draSemaforoTitle: "Regional traffic light this season",
 
     // Farmer Sheet
     fichaCampaign: "Season 2026–2027",
+    fichaOpportunityTitle: "This season's opportunity",
     fichaWhatToPlant: "What to plant",
     fichaWhen: "When",
     fichaWhatToWatch: "What to watch",

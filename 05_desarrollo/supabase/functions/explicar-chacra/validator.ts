@@ -1,11 +1,11 @@
 export type IdiomaIA = "es" | "en" | "qu";
 
-export interface OportunidadResumenIA {
+export interface OportunidadIA {
   codigo: string;
   titulo: string;
   accion_positiva: string;
   por_que_corto?: string;
-  estado: string;
+  estado?: string;
   nota?: string;
   valores?: Record<string, unknown>;
 }
@@ -22,11 +22,31 @@ export interface DatosChacraIA {
   ndvi_ultimo: number | "no disponible";
   enis_papa_ayacucho_pct: number | "no disponible";
   lluvia_oct_anomalia_pct: number | "no disponible";
-  oportunidades?: OportunidadResumenIA[];
+  oportunidades?: OportunidadIA[];
 }
 
 export const ETIQUETA_QUECHUA =
   "Borrador automático en quechua — debe revisarlo un hablante";
+
+const DISTRITOS_NOMBRES: Record<string, string> = {
+  huanta: "Huanta",
+  quinua: "Quinua",
+  acosvinchos: "Acosvinchos",
+  pacaycasa: "Pacaycasa",
+  chiara_alta_2: "Chiara",
+  chiara_alta_1: "Chiara",
+  acocro: "Acocro",
+  vinchos_alta_1: "Vinchos",
+  cangallo: "Cangallo",
+  vilcashuaman: "Vilcashuamán",
+};
+
+export function formatearDistrito(raw: string): string {
+  const key = raw.trim().toLowerCase();
+  if (DISTRITOS_NOMBRES[key]) return DISTRITOS_NOMBRES[key];
+  const base = key.replace(/_alta_\d+$/i, "").replace(/_/g, " ");
+  return base.charAt(0).toUpperCase() + base.slice(1);
+}
 
 const CULTIVOS_CONOCIDOS = [
   "papa",
@@ -46,7 +66,9 @@ const CULTIVOS_CONOCIDOS = [
 ];
 
 function extraerNumerosNormalizados(texto: string): string[] {
-  const matches = texto.match(/-?\d+(?:[.,]\d+)?/g) ?? [];
+  // Normalizar separadores de miles como 3,682 -> 3682 antes de extraer decimales
+  const sinMiles = texto.replace(/(\d),(\d{3})(?!\d)/g, "$1$2");
+  const matches = sinMiles.match(/-?\d+(?:[.,]\d+)?/g) ?? [];
   return matches.map((m) => m.replace(",", "."));
 }
 
@@ -69,10 +91,12 @@ export function validarRespuestaIA(
     return { valida: false, motivo: "respuesta_vacia" };
   }
 
-  // 1. Verificar que todo número en la respuesta exista en los datos de entrada
+  // 1. Verificar que todo número en la respuesta exista en los datos de entrada (o años 2025/2026)
   const datosSerializados = JSON.stringify(datos);
   const numerosPermitidos = new Set(extraerNumerosNormalizados(datosSerializados));
-  // También permitir enteros redondeados de los flotantes presentes en datos
+  numerosPermitidos.add("2025");
+  numerosPermitidos.add("2026");
+
   for (const n of Array.from(numerosPermitidos)) {
     const num = Number(n);
     if (!Number.isNaN(num)) {
@@ -91,7 +115,7 @@ export function validarRespuestaIA(
     }
   }
 
-  // 2. Verificar que no mencione cultivos distintos al recomendado o a las oportunidades reales
+  // 2. Verificar que no mencione cultivos distintos al recomendado (o a sus oportunidades)
   const respNorm = normalizarTexto(limpio);
   const recNorm = normalizarTexto(datos.cultivo_asignado);
   const opsNorm = normalizarTexto(JSON.stringify(datos.oportunidades ?? []));
@@ -119,12 +143,16 @@ export function generarPlantillaFija(
   datos: DatosChacraIA,
   idioma: IdiomaIA
 ): string {
+  const distritoNombre = formatearDistrito(datos.distrito);
+  const elevFmt = Math.round(datos.elev_dem_m).toLocaleString("en-US");
   const heladaEs =
     datos.dias_helada > 0
       ? `Desde julio de 2025 hubo ${datos.dias_helada} noches de helada.`
       : `Desde julio de 2025 no hubo noches de helada.`;
   const estTexto = ESTRATEGIA_TEXTO_ES[datos.estrategia_elegida] ?? ESTRATEGIA_TEXTO_ES.B;
-  const topOp = datos.oportunidades?.[0];
+  const opPrincipal = datos.oportunidades?.[0]?.accion_positiva;
+  const extraOpEs = opPrincipal ? ` Oportunidad clave: ${opPrincipal}` : "";
+  const extraOpEn = opPrincipal ? ` Key opportunity: ${opPrincipal}` : "";
 
   if (idioma === "en") {
     const frostEn =
@@ -137,14 +165,12 @@ export function generarPlantillaFija(
         : datos.estrategia_elegida === "C"
         ? "the option that cares for the soil (like tarwi)"
         : "the option that spreads risk (like quinoa)";
-    const cierreEn = topOp ? `${topOp.codigo}: ${topOp.accion_positiva}` : `Follow ${estEn}.`;
-    return `Plant ${datos.cultivo_asignado} on plot ${datos.parcela_id} (${datos.distrito}, ${Math.round(datos.elev_dem_m)} m). ${frostEn} ${cierreEn}`;
+    return `Plant ${datos.cultivo_asignado} on your plot in ${distritoNombre} (${elevFmt} m). ${frostEn} Follow ${estEn}.${extraOpEn}`;
   }
 
   if (idioma === "qu") {
-    return `${datos.parcela_id} chakrapi (${datos.distrito}, ${Math.round(datos.elev_dem_m)} m) ${datos.cultivo_asignado} tarpuy. Julio 2025 watamanta ${datos.dias_helada} tuta qasa karqan. ${datos.estrategia_elegida} ñanta qatiy allpata yakutapas waqaychanapaq.`;
+    return `${distritoNombre} llaqtapi (${elevFmt} m) chakrapi ${datos.cultivo_asignado} tarpuy. Julio 2025 watamanta ${datos.dias_helada} tuta qasa karqan. ${datos.estrategia_elegida} ñanta qatiy allpata yakutapas waqaychanapaq.${extraOpEs}`;
   }
 
-  const cierreEs = topOp ? topOp.accion_positiva : `Sigue ${estTexto}.`;
-  return `Siembra ${datos.cultivo_asignado} en tu chacra ${datos.parcela_id} (${datos.distrito}, ${Math.round(datos.elev_dem_m)} m). ${heladaEs} ${cierreEs}`;
+  return `Siembra ${datos.cultivo_asignado} en tu chacra de ${distritoNombre} (${elevFmt} m). ${heladaEs} Sigue ${estTexto}.${extraOpEs}`;
 }

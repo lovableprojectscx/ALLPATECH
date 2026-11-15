@@ -208,12 +208,13 @@ def test_actualizar_todo_orden_pasos():
     import actualizar_todo
 
     nombres = [n for n, _ in actualizar_todo.construir_pasos(dry_run=True)]
-    assert len(nombres) >= 8
+    assert len(nombres) == 9
     assert "POWER" in nombres[0]
     assert "MODIS" in nombres[1]
     assert "Mercado" in nombres[2]
-    assert "pytest" in nombres[-2]
-    assert "ETL" in nombres[-1]
+    assert "Oportunidades" in nombres[6]
+    assert "pytest" in nombres[7]
+    assert "ETL" in nombres[8]
 
 
 def test_alerta_helada_chacras_altas():

@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { explicarChacra, type ExplicacionIAResponse } from "../data/api";
-import type { Parcela, PlanRotacionContract } from "../data/schemas";
+import type { OportunidadItem, Parcela, PlanRotacionContract } from "../data/schemas";
 import { useI18n } from "../i18n";
 
 interface ExplicacionIAProps {
   parcela: Parcela;
   planItem?: PlanRotacionContract["plan"][number];
+  oportunidades?: OportunidadItem[];
 }
 
-export function ExplicacionIA({ parcela, planItem }: ExplicacionIAProps) {
+export function ExplicacionIA({ parcela, planItem, oportunidades = [] }: ExplicacionIAProps) {
   const { lang, t } = useI18n();
   const [loading, setLoading] = useState(false);
   const [resultado, setResultado] = useState<ExplicacionIAResponse | null>(null);
@@ -19,7 +20,7 @@ export function ExplicacionIA({ parcela, planItem }: ExplicacionIAProps) {
     setLoading(true);
     setIdiomaActivo(idioma);
     try {
-      const res = await explicarChacra(parcela, planItem, idioma);
+      const res = await explicarChacra(parcela, planItem, idioma, oportunidades);
       setResultado(res);
     } finally {
       setLoading(false);

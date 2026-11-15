@@ -17,7 +17,7 @@ import {
 import { EstadoBadge } from "../components/EstadoBadge";
 import { FuenteDisclosure } from "../components/FuenteDisclosure";
 import { MercadoSection } from "../components/MercadoSection";
-import { getClimaMensual, getFuentes, getImergMensual, getMercadoPapa } from "../data/api";
+import { getClimaMensual, getFuentes, getImergMensual, getMercadoPapa, getOportunidades } from "../data/api";
 import type { Fuente } from "../data/schemas";
 import { useI18n } from "../i18n";
 
@@ -30,6 +30,7 @@ export default function DraView() {
   const imergQ = useQuery({ queryKey: ["imerg-mensual"], queryFn: () => getImergMensual() });
   const mercadoQ = useQuery({ queryKey: ["mercado-papa"], queryFn: () => getMercadoPapa() });
   const fuentesQ = useQuery({ queryKey: ["fuentes"], queryFn: () => getFuentes() });
+  const oportunidadesQ = useQuery({ queryKey: ["oportunidades"], queryFn: () => getOportunidades() });
 
   if (climaQ.isLoading || imergQ.isLoading || mercadoQ.isLoading || fuentesQ.isLoading) {
     return (
@@ -68,6 +69,8 @@ export default function DraView() {
     mediana_mm: typeof m.mediana_2001_2025_mm === "number" ? Number(m.mediana_2001_2025_mm.toFixed(1)) : null,
   }));
 
+  const semaforo = oportunidadesQ.data?.semaforo_regional;
+
   return (
     <div style={{ display: "grid", gap: "24px" }}>
       <div
@@ -87,6 +90,30 @@ export default function DraView() {
           <span>{t("draPrintBtn")}</span>
         </button>
       </div>
+
+      {semaforo ? (
+        <section
+          className="muyu-card"
+          aria-label={t("draSemaforoTitle")}
+          style={{ borderLeft: "6px solid var(--est-c)", display: "grid", gap: "10px" }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+            <h3 style={{ margin: 0, fontSize: "1.2rem" }}>{t("draSemaforoTitle")}</h3>
+            <EstadoBadge estado={semaforo.estado} />
+          </div>
+          <p style={{ margin: 0, fontSize: "1.08rem", fontWeight: 700, color: "var(--noche)" }}>
+            {semaforo.linea}
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", fontSize: "0.94rem", fontWeight: 700 }}>
+            <span style={{ color: "var(--est-c)" }}>● {semaforo.conteo.tarwi_o_haba} tarwi o haba</span>
+            <span style={{ color: "var(--est-b)" }}>■ {semaforo.conteo.quinua} quinua</span>
+            <span style={{ color: "var(--est-a)" }}>▲ {semaforo.conteo.papa} papa</span>
+          </div>
+          <p className="muyu-muted" style={{ margin: 0, fontSize: "0.92rem" }}>
+            {semaforo.nota_siguiente_fase}
+          </p>
+        </section>
+      ) : null}
 
       {/* 1. Temperatura */}
       <section className="muyu-card">

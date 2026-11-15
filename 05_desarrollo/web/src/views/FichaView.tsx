@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { AlertTriangle, Calendar, Check, Copy, Printer, Sprout } from "lucide-react";
+import { AlertTriangle, Calendar, Check, Copy, Printer, Sparkles, Sprout } from "lucide-react";
+import { CalendarioChacra } from "../components/CalendarioChacra";
 import { ExplicacionIA } from "../components/ExplicacionIA";
 import { MuyuLogo } from "../components/MuyuLogo";
-import { getParcelas, getPlanRotacion } from "../data/api";
+import { getOportunidades, getParcelas, getPlanRotacion } from "../data/api";
 import { getParcelaNombre } from "../data/nombres";
 import { useI18n } from "../i18n";
 
@@ -30,6 +31,7 @@ export default function FichaView({
 
   const parcelasQ = useQuery({ queryKey: ["parcelas"], queryFn: () => getParcelas() });
   const planQ = useQuery({ queryKey: ["plan-rotacion"], queryFn: () => getPlanRotacion() });
+  const oportunidadesQ = useQuery({ queryKey: ["oportunidades"], queryFn: () => getOportunidades() });
 
   if (parcelasQ.isLoading || planQ.isLoading) {
     return (
@@ -49,6 +51,8 @@ export default function FichaView({
 
   const parcela = parcelasQ.data.find((p) => p.id === parcelaId) ?? parcelasQ.data[0];
   const planItem = planQ.data.plan.find((p) => p.parcela_id === parcela.id) ?? planQ.data.plan[0];
+  const parcelaOps = oportunidadesQ.data?.por_parcela.find((o) => o.parcela_id === parcela.id);
+  const oportunidadFicha = parcelaOps?.oportunidad_ficha;
   const nombreChacra = getParcelaNombre(parcela.id, parcela.distrito);
 
   const msgWhatToPlant = `${planItem.forma} ${t("recommendPrefix")} ${planItem.cultivo_asignado}`;
@@ -62,9 +66,12 @@ export default function FichaView({
     `1) ${t("fichaWhatToPlant")}: ${msgWhatToPlant}`,
     `2) ${t("fichaWhen")}: ${msgWhen}`,
     `3) ${t("fichaWhatToWatch")}: ${msgWhatToWatch}`,
+    oportunidadFicha ? `★ ${t("fichaOpportunityTitle")}: ${oportunidadFicha.accion_ficha}` : "",
     `${t("fichaQuechuaPending")}.`,
     `"${t("fichaClosing")}"`,
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   const handleCopy = async () => {
     try {
@@ -187,6 +194,36 @@ export default function FichaView({
           </div>
         </div>
 
+        {oportunidadFicha ? (
+          <div
+            data-ficha-oportunidad={oportunidadFicha.codigo}
+            style={{
+              marginTop: "20px",
+              padding: "14px 16px",
+              borderRadius: "var(--radius-md)",
+              border: "2px solid var(--est-c)",
+              backgroundColor: "#EEF7F2",
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "12px",
+            }}
+          >
+            <Sparkles size={26} color="#007755" aria-hidden="true" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div>
+              <div style={{ fontWeight: 700, color: "#005A40", fontSize: "0.95rem" }}>
+                {t("fichaOpportunityTitle")}
+              </div>
+              <div style={{ fontWeight: 700, fontSize: "1.12rem", color: "var(--noche)" }}>
+                {oportunidadFicha.accion_ficha}
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        {parcelaOps?.calendario ? (
+          <CalendarioChacra calendario={parcelaOps.calendario} modo="simple" />
+        ) : null}
+
         <footer style={{ marginTop: "24px", paddingTop: "14px", borderTop: "1px solid var(--borde)", display: "grid", gap: "8px" }}>
           <div style={{ fontSize: "1.05rem", color: "var(--noche-suave)" }}>
             {t("fichaQuechuaPending")}.
@@ -197,7 +234,11 @@ export default function FichaView({
         </footer>
       </article>
 
-      <ExplicacionIA parcela={parcela} planItem={planItem} />
+      <ExplicacionIA
+        parcela={parcela}
+        planItem={planItem}
+        oportunidades={parcelaOps?.oportunidades ?? []}
+      />
     </div>
   );
 }

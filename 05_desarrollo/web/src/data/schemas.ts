@@ -172,6 +172,107 @@ export const NdviParcelaSchema = z.object({
 
 export const NdviResponseSchema = z.array(NdviParcelaSchema);
 
+export const OportunidadItemSchema = z.object({
+  codigo: z.string(),
+  titulo: z.string(),
+  accion_positiva: z.string(),
+  por_que_corto: z.string(),
+  accion_ficha: z.string(),
+  valores_json: z.record(z.unknown()).optional(),
+  fuente: z.string(),
+  escala: z.string(),
+  estado: EstadoSchema,
+  nota: z.string(),
+  dato_hasta: z.string(),
+  prioridad: z.number().optional(),
+});
+
+export const OportunidadCooperativaSchema = z.object({
+  codigo: z.string(),
+  titulo: z.string(),
+  accion_positiva: z.string(),
+  por_que_corto: z.string(),
+  parcelas_aplican: z.array(z.string()),
+  parcela_referencia: z.string().optional(),
+  fuente: z.string(),
+  escala: z.string(),
+  estado: EstadoSchema,
+  nota: z.string(),
+  dato_hasta: z.string(),
+});
+
+export const CalendarioMesSchema = z.object({
+  mes_num: z.number(),
+  mes_corto: z.string(),
+  mes_largo: z.string(),
+  riesgo_helada: z.boolean(),
+  inicio_normal_lluvias: z.boolean(),
+  lluvias_2026_pendientes: z.boolean(),
+  ventana_segura: z.boolean(),
+  cosecha_tuna: z.boolean(),
+  precio_papa_bajo: z.boolean(),
+  precio_papa_alto: z.boolean(),
+});
+
+export const CalendarioChacraSchema = z.object({
+  parcela_id: z.string(),
+  cultivo_asignado: z.string(),
+  tiene_helada: z.boolean(),
+  tiene_tuna: z.boolean(),
+  tiene_papa_en_plan: z.boolean(),
+  frase_resumen: z.string(),
+  aria_label: z.string(),
+  meses: z.array(CalendarioMesSchema),
+});
+
+export const OportunidadesParcelaSchema = z.object({
+  parcela_id: z.string(),
+  distrito: z.string(),
+  elev_dem_m: z.number(),
+  cultivo_asignado: z.string(),
+  oportunidades_aplicables: z.array(z.string()),
+  oportunidad_ficha: OportunidadItemSchema,
+  oportunidades: z.array(OportunidadItemSchema),
+  calendario: CalendarioChacraSchema,
+});
+
+export const SemaforoRegionalSchema = z.object({
+  total_chacras: z.number(),
+  conteo: z.object({
+    tarwi_o_haba: z.number(),
+    quinua: z.number(),
+    papa: z.number(),
+  }),
+  linea: z.string(),
+  nota_siguiente_fase: z.string(),
+  estado: EstadoSchema,
+  dato_hasta: z.string(),
+});
+
+export const OportunidadesContractSchema = z.object({
+  global_o1_lluvias: z.record(z.unknown()).optional(),
+  global_o4_precios_papa: z.object({
+    advertencia: z.string(),
+    meses: z.array(
+      z.object({
+        mes: z.number(),
+        mes_nombre: z.string(),
+        mediana_soles_kg: z.number(),
+        min_soles_kg: z.number().optional(),
+        max_soles_kg: z.number().optional(),
+        n_anios: z.number().optional(),
+      })
+    ),
+    fuente: z.string().optional(),
+    estado: EstadoSchema.optional(),
+    dato_hasta: z.string().optional(),
+  }),
+  global_o6_enis: z.record(z.unknown()).optional(),
+  semaforo_regional: SemaforoRegionalSchema,
+  oportunidades_cooperativa: z.array(OportunidadCooperativaSchema),
+  por_parcela: z.array(OportunidadesParcelaSchema),
+});
+
 export const Prueba1TunaSchema = z.object({
   _metadata: z.object({
     dato_hasta: z.string().min(1),
@@ -198,3 +299,10 @@ export type ClimaMensualRegistro = z.infer<typeof ClimaMensualRegistroSchema>;
 export type MercadoMes = z.infer<typeof MercadoMesSchema>;
 export type Fuente = z.infer<typeof FuenteSchema>;
 export type NdviParcela = z.infer<typeof NdviParcelaSchema>;
+export type OportunidadItem = z.infer<typeof OportunidadItemSchema>;
+export type OportunidadCooperativa = z.infer<typeof OportunidadCooperativaSchema>;
+export type CalendarioMes = z.infer<typeof CalendarioMesSchema>;
+export type CalendarioChacra = z.infer<typeof CalendarioChacraSchema>;
+export type OportunidadesParcela = z.infer<typeof OportunidadesParcelaSchema>;
+export type SemaforoRegional = z.infer<typeof SemaforoRegionalSchema>;
+export type OportunidadesContract = z.infer<typeof OportunidadesContractSchema>;

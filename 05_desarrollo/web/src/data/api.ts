@@ -6,6 +6,7 @@ import {
   ImergResponseSchema,
   MercadoResponseSchema,
   NdviResponseSchema,
+  OportunidadesContractSchema,
   ParcelasResponseSchema,
   PlanRotacionContractSchema,
   type ClimaMensualRegistro,
@@ -13,6 +14,8 @@ import {
   type ImergMes,
   type MercadoMes,
   type NdviParcela,
+  type OportunidadItem,
+  type OportunidadesContract,
   type Parcela,
   type PlanRotacionContract,
 } from "./schemas";
@@ -364,10 +367,63 @@ export interface ExplicacionIAResponse {
   datos_usados: Record<string, unknown>;
 }
 
+export async function getOportunidades(
+  client: SupabaseClient | null = getSupabaseClient()
+): Promise<OportunidadesContract> {
+  if (client) {
+    try {
+      const { data, error } = await client
+        .from("oportunidades")
+        .select(
+          "parcela_id,codigo,titulo,accion_positiva,por_que_corto,accion_ficha,valores_json,fuente,escala,estado,nota,dato_hasta,prioridad"
+        )
+        .order("parcela_id")
+        .order("prioridad");
+      if (!error && data && data.length > 0) {
+        const resp = await fetch("/data/oportunidades.json");
+        if (resp.ok) {
+          const base = OportunidadesContractSchema.parse(await resp.json());
+          const porParcelaMap = new Map<string, OportunidadItem[]>();
+          for (const row of data) {
+            const pid = String(row.parcela_id);
+            const list = porParcelaMap.get(pid) ?? [];
+            list.push({
+              codigo: String(row.codigo),
+              titulo: String(row.titulo),
+              accion_positiva: String(row.accion_positiva),
+              por_que_corto: String(row.por_que_corto),
+              accion_ficha: String(row.accion_ficha),
+              valores_json: (row.valores_json ?? undefined) as Record<string, unknown> | undefined,
+              fuente: String(row.fuente),
+              escala: String(row.escala),
+              estado: row.estado as OportunidadItem["estado"],
+              nota: String(row.nota),
+              dato_hasta: String(row.dato_hasta),
+              prioridad: typeof row.prioridad === "number" ? row.prioridad : undefined,
+            });
+            porParcelaMap.set(pid, list);
+          }
+          base.por_parcela = base.por_parcela.map((p) => {
+            const ops = porParcelaMap.get(p.parcela_id);
+            return ops && ops.length > 0 ? { ...p, oportunidades: ops } : p;
+          });
+          return base;
+        }
+      }
+    } catch {
+      // Conmuta a respaldo local
+    }
+  }
+
+  const raw = await fetchJsonLocal<unknown>("/data/oportunidades.json");
+  return OportunidadesContractSchema.parse(raw);
+}
+
 export async function explicarChacra(
   parcela: Parcela,
   planItem: { estrategia_elegida: string; cultivo_asignado: string } | undefined,
-  idioma: "es" | "en" | "qu"
+  idioma: "es" | "en" | "qu",
+  oportunidades: OportunidadItem[] = []
 ): Promise<ExplicacionIAResponse> {
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
   const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
@@ -381,7 +437,16 @@ export async function explicarChacra(
           Authorization: `Bearer ${supabaseAnonKey}`,
           apikey: supabaseAnonKey,
         },
-        body: JSON.stringify({ parcela_id: parcela.id, idioma }),
+        body: JSON.stringify({
+          parcela_id: parcela.id,
+          idioma,
+          oportunidades: oportunidades.map((o) => ({
+            codigo: o.codigo,
+            titulo: o.titulo,
+            accion_positiva: o.accion_positiva,
+            por_que_corto: o.por_que_corto,
+          })),
+        }),
       });
       if (resp.ok) {
         return (await resp.json()) as ExplicacionIAResponse;
@@ -394,6 +459,31 @@ export async function explicarChacra(
   const cultivo = planItem?.cultivo_asignado ?? "cultivo recomendado";
   const estrategia = (planItem?.estrategia_elegida ?? "B") as "A" | "B" | "C";
   const heladas = parcela.clima_campana_2025_2026.dias_helada;
+  const distNormMap: Record<string, string> = {
+    huanta: "Huanta",
+    quinua: "Quinua",
+    acosvinchos: "Acosvinchos",
+    pacaycasa: "Pacaycasa",
+    chiara_alta_2: "Chiara",
+    chiara_alta_1: "Chiara",
+    acocro: "Acocro",
+    vinchos_alta_1: "Vinchos",
+    cangallo: "Cangallo",
+    vilcashuaman: "Vilcashuamán",
+    "san jose de ticllas": "San José de Ticllas",
+    "carmen alto": "Carmen Alto",
+    "san juan bautista": "San Juan Bautista",
+    "jesus nazareno": "Jesús Nazareno",
+    "andres avelino caceres": "Andrés Avelino Cáceres",
+  };
+  const distRaw = parcela.distrito.trim();
+  const distKey = distRaw.toLowerCase();
+  const distBase = distKey.replace(/_alta_\d+$/i, "").replace(/_/g, " ");
+  const distNombre =
+    distNormMap[distKey] ??
+    distBase.charAt(0).toUpperCase() + distBase.slice(1);
+  const elevFmt = Math.round(parcela.elev_dem_m).toLocaleString("en-US");
+  const opPrincipal = oportunidades[0]?.accion_positiva;
   const estTextoEs: Record<"A" | "B" | "C", string> = {
     A: "la que busca mejor precio",
     B: "la que reparte el riesgo (como la quinua)",
@@ -404,34 +494,42 @@ export async function explicarChacra(
     B: "the option that spreads risk (like quinoa)",
     C: "the option that cares for the soil (like tarwi)",
   };
+  const extraOpEs = opPrincipal ? ` Oportunidad clave: ${opPrincipal}` : "";
+  const extraOpEn = opPrincipal ? ` Key opportunity: ${opPrincipal}` : "";
   const texto =
     idioma === "en"
-      ? `Plant ${cultivo} on plot ${parcela.id} (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m). ${
+      ? `Plant ${cultivo} on your plot in ${distNombre} (${elevFmt} m). ${
           heladas > 0
             ? `Since July 2025 there were ${heladas} frost nights.`
             : "Since July 2025 there were no frost nights."
-        } Follow ${estTextoEn[estrategia] ?? estTextoEn.B}.`
+        } Follow ${estTextoEn[estrategia] ?? estTextoEn.B}.${extraOpEn}`
       : idioma === "qu"
-      ? `${parcela.id} chakrapi (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m) ${cultivo} tarpuy. Julio 2025 watamanta ${heladas} tuta qasa karqan. ${estrategia} ñanta qatiy allpata yakutapas waqaychanapaq.`
-      : `Siembra ${cultivo} en tu chacra ${parcela.id} (${parcela.distrito}, ${Math.round(parcela.elev_dem_m)} m). ${
+      ? `${distNombre} llaqtapi (${elevFmt} m) chakrapi ${cultivo} tarpuy. Julio 2025 watamanta ${heladas} tuta qasa karqan. ${estrategia} ñanta qatiy allpata yakutapas waqaychanapaq.${extraOpEs}`
+      : `Siembra ${cultivo} en tu chacra de ${distNombre} (${elevFmt} m). ${
           heladas > 0
             ? `Desde julio de 2025 hubo ${heladas} noches de helada.`
             : "Desde julio de 2025 no hubo noches de helada."
-        } Sigue ${estTextoEs[estrategia] ?? estTextoEs.B}.`;
+        } Sigue ${estTextoEs[estrategia] ?? estTextoEs.B}.${extraOpEs}`;
 
   return {
     texto,
     modelo: "plantilla_fija",
     es_plantilla: true,
+    motivo_plantilla: "sin_key",
     usado_cache: false,
     etiqueta_quechua: idioma === "qu" ? "Borrador automático en quechua — debe revisarlo un hablante" : null,
     datos_usados: {
       parcela_id: parcela.id,
-      distrito: parcela.distrito,
+      distrito: distNombre,
       elev_dem_m: Math.round(parcela.elev_dem_m),
       estrategia_elegida: estrategia,
       cultivo_asignado: cultivo,
       dias_helada: heladas,
+      oportunidades: oportunidades.map((o) => ({
+        codigo: o.codigo,
+        titulo: o.titulo,
+        accion_positiva: o.accion_positiva,
+      })),
     },
   };
 }
