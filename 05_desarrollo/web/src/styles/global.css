@@ -1,0 +1,347 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background-color: var(--niebla);
+  color: var(--noche);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  color: var(--noche);
+  margin-top: 0;
+}
+
+a {
+  color: var(--quinua);
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--quinua-hover);
+}
+
+button,
+select,
+a,
+[tabindex] {
+  min-height: var(--tap-min);
+}
+
+button:focus-visible,
+select:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--quinua);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shell & Header */
+.muyu-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.muyu-topbar {
+  background-color: var(--noche);
+  color: var(--niebla);
+  padding: 12px 16px;
+  border-bottom: 3px solid var(--papa);
+}
+
+.muyu-topbar-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.muyu-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+.muyu-brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--blanco);
+}
+
+.muyu-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.muyu-nav-btn {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--hielo);
+  background-color: transparent;
+  color: var(--blanco);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.muyu-nav-btn[aria-current="page"] {
+  background-color: var(--quinua);
+  border-color: var(--quinua);
+  color: var(--blanco);
+}
+
+.muyu-topbar-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.muyu-chip-fecha {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--hielo);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.muyu-lang-btn {
+  min-height: 44px;
+  min-width: 64px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--papa);
+  background-color: transparent;
+  color: var(--blanco);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.muyu-offline-banner {
+  background-color: var(--papa);
+  color: var(--noche);
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  border-bottom: 2px solid var(--noche);
+}
+
+.muyu-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* Cards & Grids */
+.muyu-card {
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.muyu-alerts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.muyu-alert-card {
+  background-color: var(--blanco);
+  border: 2px solid var(--noche);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.muyu-alert-stat {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--noche);
+}
+
+.muyu-coop-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.muyu-btn-primary {
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--quinua);
+  background-color: var(--quinua);
+  color: var(--blanco);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.muyu-btn-primary:hover {
+  background-color: var(--quinua-hover);
+  border-color: var(--quinua-hover);
+}
+
+.muyu-btn-secondary {
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--noche);
+  background-color: var(--blanco);
+  color: var(--noche);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Skeleton */
+.muyu-skeleton {
+  background: linear-gradient(90deg, #dde5e3 25%, #eef2f1 50%, #dde5e3 75%);
+  background-size: 200% 100%;
+  animation: muyu-pulse 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes muyu-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Ficha A4 & Print */
+.muyu-ficha-card {
+  background-color: var(--blanco);
+  border: 2px solid var(--noche);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  font-size: 1.25rem; /* >= 20px */
+  line-height: 1.55;
+}
+
+.muyu-plots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.muyu-plot-card {
+  text-align: left;
+  background-color: var(--blanco);
+  border: 2px solid var(--borde);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  color: var(--noche);
+}
+
+.muyu-plot-card[aria-pressed="true"] {
+  border-color: var(--noche);
+  background-color: #f7faf9;
+  box-shadow: 0 0 0 2px var(--noche);
+}
+
+@media (max-width: 960px) {
+  body {
+    font-size: 1.125rem; /* 18 px base en celular */
+  }
+  .muyu-alerts-grid {
+    grid-template-columns: 1fr;
+  }
+  .muyu-coop-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .muyu-topbar,
+  .muyu-offline-banner,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background-color: #ffffff;
+  }
+  .muyu-main {
+    max-width: 100%;
+    padding: 0;
+  }
+  .muyu-ficha-card {
+    border: 1px solid #000000;
+    box-shadow: none;
+  }
+}

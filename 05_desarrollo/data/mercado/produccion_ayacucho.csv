@@ -1,0 +1,8 @@
+cultivo,anio,variable,valor,unidad,fuente,estado,nota
+papa,2024,produccion,716967,t,Ficha agricola Ayacucho 2024 (Agromercado MIDAGRI) citada por Jornada 11-2026,observado,
+quinua,2024,produccion,33576,t,Ficha agricola Ayacucho 2024 (Agromercado MIDAGRI) citada por Jornada 11-2026,observado,DRA Huancavelica/Rediagro reporta 33480 t (2024 preliminar)
+quinua,2022,produccion,27837,t,Rediagro DRA Huancavelica ene-2025,observado,
+quinua,2023,produccion,28222,t,Rediagro DRA Huancavelica ene-2025,observado,
+papa,2024-04,superficie,33081,ha,DRA Ayacucho nota 03-06-2024,observado,superficie al mes de abril 2024
+quinua,calendario,cosecha_mar_jun,88.4%,% de superficie,MIDAGRI Observatorio quinua,observado,mayo = mes pico de cosecha
+papa,2025,rendimiento_nacional,20.6,t/ha,Agraria.pe 26-02-2026 (MIDAGRI),observado,usar como referencia nacional; rendimiento de Ayacucho pendiente

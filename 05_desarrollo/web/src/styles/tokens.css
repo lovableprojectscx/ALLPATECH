@@ -1,0 +1,40 @@
+:root {
+  /* Capa A: Marca (Brandkit v1) */
+  --noche: #14303A;
+  --noche-suave: #2C4852;
+  --niebla: #EEF2F1;
+  --blanco: #FFFFFF;
+  --borde: #C4D1CE;
+  --borde-fuerte: #14303A;
+
+  --quinua: #A3325F;
+  --quinua-hover: #87264D;
+  /* Tarwi original solo para rellenos o texto grande (>= 24 px) */
+  --tarwi: #2F7D4F;
+  /* Tarwi texto para texto normal (>= 5.3:1 sobre niebla) */
+  --tarwi-texto: #2A7046;
+  /* Papa y Hielo: solo relleno, decoración o texto sobre Noche */
+  --papa: #D9A441;
+  --hielo: #9CC3D5;
+
+  /* Capa B: Datos (estrategias y gráficos — color + forma) */
+  --est-a: #B83A00;
+  --est-b: #003F6E;
+  --est-c: #007755;
+
+  /* Estados de procedencia */
+  --estado-observado: #007755;
+  --estado-estimado: #003F6E;
+  --estado-ilustrativo: #B83A00;
+  --estado-no-disponible: #4B5563;
+
+  /* Tipografía autohospedada */
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
+
+  /* Escala y radios */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --tap-min: 48px;
+}

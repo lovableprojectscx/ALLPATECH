@@ -1,0 +1,88 @@
+{
+  "_metadata": {
+    "prueba": "Prueba 1 - Adelanto termico de la tuna en Huanta (2026)",
+    "parcela_referencia": "P01 (huanta)",
+    "normal_climatologica": "1991-2020",
+    "serie_ranking": "1981-2026 (46 anios)",
+    "elev_dem_m": 2667.0,
+    "elev_celda_power_m": 3592.73,
+    "gradiente_usado_c_km": -4.35,
+    "ajuste_termico_parcela_c": 4.03,
+    "escala_dato_power": "regional_50km",
+    "dato_hasta": "2026-10-31",
+    "nota_semanas": "Conversion a semanas omitida: estado = no_disponible hasta contar con T_base y GDD de tuna con fuente verificada en cultivos_demo_base.json."
+  },
+  "adelanto_en_semanas": {
+    "valor": "no disponible",
+    "estado": "no_disponible",
+    "motivo": "Falta T_base y grados-dia a cosecha verificados de tuna"
+  },
+  "mensual_2026": [
+    {
+      "mes_num": 7,
+      "mes": "julio",
+      "t2m_celda_2026_c": 9.1,
+      "t2m_ajustada_parcela_2026_c": 13.13,
+      "normal_1991_2020_celda_c": 7.77,
+      "anomalia_c": 1.34,
+      "puesto_1981_2026": 3,
+      "total_anios_serie": 46,
+      "estado_celda": "observado",
+      "estado_ajustada": "estimado"
+    },
+    {
+      "mes_num": 8,
+      "mes": "agosto",
+      "t2m_celda_2026_c": 9.72,
+      "t2m_ajustada_parcela_2026_c": 13.75,
+      "normal_1991_2020_celda_c": 8.37,
+      "anomalia_c": 1.35,
+      "puesto_1981_2026": 3,
+      "total_anios_serie": 46,
+      "estado_celda": "observado",
+      "estado_ajustada": "estimado"
+    },
+    {
+      "mes_num": 9,
+      "mes": "septiembre",
+      "t2m_celda_2026_c": 10.8,
+      "t2m_ajustada_parcela_2026_c": 14.83,
+      "normal_1991_2020_celda_c": 9.22,
+      "anomalia_c": 1.58,
+      "puesto_1981_2026": 1,
+      "total_anios_serie": 46,
+      "estado_celda": "observado",
+      "estado_ajustada": "estimado"
+    },
+    {
+      "mes_num": 10,
+      "mes": "octubre",
+      "t2m_celda_2026_c": 10.96,
+      "t2m_ajustada_parcela_2026_c": 14.99,
+      "normal_1991_2020_celda_c": 9.83,
+      "anomalia_c": 1.13,
+      "puesto_1981_2026": 3,
+      "total_anios_serie": 46,
+      "estado_celda": "observado",
+      "estado_ajustada": "estimado"
+    }
+  ],
+  "periodos_acumulados_2026": {
+    "jul_sep": {
+      "t2m_celda_2026_c": 9.87,
+      "normal_1991_2020_celda_c": 8.44,
+      "anomalia_c": 1.42,
+      "puesto_1981_2026": 2,
+      "total_anios_serie": 46,
+      "estado": "observado"
+    },
+    "jul_oct": {
+      "t2m_celda_2026_c": 10.14,
+      "normal_1991_2020_celda_c": 8.79,
+      "anomalia_c": 1.35,
+      "puesto_1981_2026": 2,
+      "total_anios_serie": 46,
+      "estado": "observado"
+    }
+  }
+}

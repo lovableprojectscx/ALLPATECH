@@ -1,0 +1,10 @@
+{
+  "_metadata": {
+    "fuente": "MODIS MOD13Q1 v061 (ORNL DAAC REST API v1, 250 m, 16 dias)",
+    "fuente_id": "modis_mod13q1",
+    "escala": "250 m",
+    "estado": "no_disponible",
+    "motivo": "ORNL DAAC MODIS API no respondio (timeout / Could not resolve host: modis.ornl.gov); tabla ndvi_parcelas dejada vacia segun D3."
+  },
+  "parcelas": []
+}

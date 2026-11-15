@@ -1,0 +1,2073 @@
+{
+  "_metadata": {
+    "escenario_mas_1c": false,
+    "im_papa": "no disponible",
+    "humedad_quinua_pct": "no disponible",
+    "colores_rnf04": {
+      "A": {
+        "color": "#B83A00",
+        "forma": "▲"
+      },
+      "B": {
+        "color": "#003F6E",
+        "forma": "■"
+      },
+      "C": {
+        "color": "#007755",
+        "forma": "●"
+      }
+    },
+    "nota_honestidad": "Puntajes _interno_0_100 son solo internos (RF-16). Ejes sin fuente/modelo quedan en evidencia_insuficiente."
+  },
+  "resumen_planificador": {
+    "total_parcelas": 10,
+    "parcelas_con_leguminosa": 7,
+    "cumple_al_menos_una_leguminosa": true,
+    "familias_repetidas": 0,
+    "parcelas_elegibles_chuno_por_altitud_y_helada": [
+      "P05",
+      "P07",
+      "P08"
+    ],
+    "chuno_activado_estado": "no_disponible"
+  },
+  "plan_rotacion_10_parcelas": [
+    {
+      "parcela_id": "P01",
+      "distrito": "huanta",
+      "elev_dem_m": 2667.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "haba",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P02",
+      "distrito": "quinua",
+      "elev_dem_m": 3273.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "B",
+      "color_hex": "#003F6E",
+      "forma": "■",
+      "cultivo_asignado": "quinua",
+      "familia_asignada": "Amaranthaceae",
+      "rotacion_con_leguminosa": "✗",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P03",
+      "distrito": "acosvinchos",
+      "elev_dem_m": 2848.0,
+      "cultivo_previo": "quinua",
+      "familia_previa": "Amaranthaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "tarwi",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P04",
+      "distrito": "pacaycasa",
+      "elev_dem_m": 2588.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "haba",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P05",
+      "distrito": "chiara_alta_2",
+      "elev_dem_m": 3682.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "tarwi",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": true,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P06",
+      "distrito": "acocro",
+      "elev_dem_m": 3245.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "B",
+      "color_hex": "#003F6E",
+      "forma": "■",
+      "cultivo_asignado": "quinua",
+      "familia_asignada": "Amaranthaceae",
+      "rotacion_con_leguminosa": "✗",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P07",
+      "distrito": "chiara_alta_1",
+      "elev_dem_m": 3584.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "tarwi",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": true,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P08",
+      "distrito": "vinchos_alta_1",
+      "elev_dem_m": 3589.0,
+      "cultivo_previo": "quinua",
+      "familia_previa": "Amaranthaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "tarwi",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": true,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P09",
+      "distrito": "cangallo",
+      "elev_dem_m": 2564.0,
+      "cultivo_previo": "papa",
+      "familia_previa": "Solanaceae",
+      "estrategia_elegida": "C",
+      "color_hex": "#007755",
+      "forma": "●",
+      "cultivo_asignado": "haba",
+      "familia_asignada": "Fabaceae (Leguminosa)",
+      "rotacion_con_leguminosa": "✓",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "parcela_id": "P10",
+      "distrito": "vilcashuaman",
+      "elev_dem_m": 3419.0,
+      "cultivo_previo": "haba",
+      "familia_previa": "Fabaceae (Leguminosa)",
+      "estrategia_elegida": "A",
+      "color_hex": "#B83A00",
+      "forma": "▲",
+      "cultivo_asignado": "papa",
+      "familia_asignada": "Solanaceae",
+      "rotacion_con_leguminosa": "✗",
+      "chuno_tunta": {
+        "elegible_altitud_y_helada": false,
+        "im_papa": "no disponible",
+        "estado_regla": "no_disponible"
+      },
+      "estado": "ilustrativo",
+      "dato_hasta": "2026-10-31"
+    }
+  ],
+  "comparador_abc_por_parcela": [
+    {
+      "parcela_id": "P01",
+      "distrito": "huanta",
+      "elev_dem_m": 2667.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.17,
+                "tmin_absoluta_evaluada_c": 1.49,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.17,
+                "tmin_absoluta_evaluada_c": 1.49,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Haba",
+          "cultivo_id": "haba",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.17,
+                "tmin_absoluta_evaluada_c": 1.49,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P02",
+      "distrito": "quinua",
+      "elev_dem_m": 3273.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 40.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 10.54,
+                "tmin_absoluta_evaluada_c": -1.15,
+                "dias_helada_base": 2,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 35.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 10.54,
+                "tmin_absoluta_evaluada_c": -1.15,
+                "dias_helada_base": 2,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-06(a) quinua helada",
+              "mensaje": "Señal de RIESGO de helada en floracion (Tmin ajustada <= 0 °C, criterio SENAMHI; sin porcentaje de perdida)",
+              "estado": "estimado"
+            },
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 50.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 10.54,
+                "tmin_absoluta_evaluada_c": -1.15,
+                "dias_helada_base": 2,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P03",
+      "distrito": "acosvinchos",
+      "elev_dem_m": 2848.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "quinua",
+        "familia_botanica": "Amaranthaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 12.39,
+                "tmin_absoluta_evaluada_c": 0.7,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 12.39,
+                "tmin_absoluta_evaluada_c": 0.7,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 12.39,
+                "tmin_absoluta_evaluada_c": 0.7,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P04",
+      "distrito": "pacaycasa",
+      "elev_dem_m": 2588.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.52,
+                "tmin_absoluta_evaluada_c": 1.83,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.52,
+                "tmin_absoluta_evaluada_c": 1.83,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Haba",
+          "cultivo_id": "haba",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.52,
+                "tmin_absoluta_evaluada_c": 1.83,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 57
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P05",
+      "distrito": "chiara_alta_2",
+      "elev_dem_m": 3682.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 40.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 8.94,
+                "tmin_absoluta_evaluada_c": -2.91,
+                "dias_helada_base": 14,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no disponible (falta I_m > 1; parcela cumple altitud > 3,500 m y heladas)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 35.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 8.94,
+                "tmin_absoluta_evaluada_c": -2.91,
+                "dias_helada_base": 14,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-06(a) quinua helada",
+              "mensaje": "Señal de RIESGO de helada en floracion (Tmin ajustada <= 0 °C, criterio SENAMHI; sin porcentaje de perdida)",
+              "estado": "estimado"
+            },
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 50.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 8.94,
+                "tmin_absoluta_evaluada_c": -2.91,
+                "dias_helada_base": 14,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P06",
+      "distrito": "acocro",
+      "elev_dem_m": 3245.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 11.82,
+                "tmin_absoluta_evaluada_c": 0.83,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 11.82,
+                "tmin_absoluta_evaluada_c": 0.83,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 11.82,
+                "tmin_absoluta_evaluada_c": 0.83,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P07",
+      "distrito": "chiara_alta_1",
+      "elev_dem_m": 3584.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 40.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 9.37,
+                "tmin_absoluta_evaluada_c": -2.48,
+                "dias_helada_base": 12,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no disponible (falta I_m > 1; parcela cumple altitud > 3,500 m y heladas)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 35.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 9.37,
+                "tmin_absoluta_evaluada_c": -2.48,
+                "dias_helada_base": 12,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-06(a) quinua helada",
+              "mensaje": "Señal de RIESGO de helada en floracion (Tmin ajustada <= 0 °C, criterio SENAMHI; sin porcentaje de perdida)",
+              "estado": "estimado"
+            },
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 50.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 9.37,
+                "tmin_absoluta_evaluada_c": -2.48,
+                "dias_helada_base": 12,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P08",
+      "distrito": "vinchos_alta_1",
+      "elev_dem_m": 3589.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "quinua",
+        "familia_botanica": "Amaranthaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 40.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 9.35,
+                "tmin_absoluta_evaluada_c": -2.51,
+                "dias_helada_base": 12,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no disponible (falta I_m > 1; parcela cumple altitud > 3,500 m y heladas)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 35.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 9.35,
+                "tmin_absoluta_evaluada_c": -2.51,
+                "dias_helada_base": 12,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-06(a) quinua helada",
+              "mensaje": "Señal de RIESGO de helada en floracion (Tmin ajustada <= 0 °C, criterio SENAMHI; sin porcentaje de perdida)",
+              "estado": "estimado"
+            },
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 50.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 9.35,
+                "tmin_absoluta_evaluada_c": -2.51,
+                "dias_helada_base": 12,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P09",
+      "distrito": "cangallo",
+      "elev_dem_m": 2564.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "papa",
+        "familia_botanica": "Solanaceae",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.8,
+                "tmin_absoluta_evaluada_c": 1.95,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.8,
+                "tmin_absoluta_evaluada_c": 1.95,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Haba",
+          "cultivo_id": "haba",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 60.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 13.8,
+                "tmin_absoluta_evaluada_c": 1.95,
+                "dias_helada_base": 0,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 90.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    },
+    {
+      "parcela_id": "P10",
+      "distrito": "vilcashuaman",
+      "elev_dem_m": 3419.0,
+      "escala_visible": {
+        "clima": "~50 km (NASA POWER)",
+        "terreno": "30 m (DEM/parcela)"
+      },
+      "cultivo_previo": {
+        "id": "haba",
+        "familia_botanica": "Fabaceae (Leguminosa)",
+        "estado": "ilustrativo"
+      },
+      "estrategias": {
+        "A": {
+          "codigo": "A",
+          "nombre": "Continuar con papa (referencia)",
+          "cultivo_objetivo": "papa",
+          "color_hex": "#B83A00",
+          "forma": "▲",
+          "cultivo_asignado": "Papa (nativa / blanca)",
+          "cultivo_id": "papa",
+          "familia_botanica": "Solanaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 75.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 40.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 10.99,
+                "tmin_absoluta_evaluada_c": -0.54,
+                "dias_helada_base": 1,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-08(a) chuno/tunta",
+              "mensaje": "no aplica (altitud <= 3,500 m o sin heladas; ademas falta I_m)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "B": {
+          "codigo": "B",
+          "nombre": "Diversificar con quinua",
+          "cultivo_objetivo": "quinua",
+          "color_hex": "#003F6E",
+          "forma": "■",
+          "cultivo_asignado": "Quinua",
+          "cultivo_id": "quinua",
+          "familia_botanica": "Amaranthaceae",
+          "repite_familia_previa": false,
+          "rotacion_con_leguminosa": false,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "ilustrativo",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "bajo",
+              "_interno_0_100": 35.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 10.99,
+                "tmin_absoluta_evaluada_c": -0.54,
+                "dias_helada_base": 1,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "alto",
+              "_interno_0_100": 70.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": [
+            {
+              "regla": "RF-06(a) quinua helada",
+              "mensaje": "Señal de RIESGO de helada en floracion (Tmin ajustada <= 0 °C, criterio SENAMHI; sin porcentaje de perdida)",
+              "estado": "estimado"
+            },
+            {
+              "regla": "RF-08(b) secado quinua",
+              "mensaje": "no disponible (ingrese humedad manual del grano para evaluar > 12 %)",
+              "estado": "no_disponible"
+            }
+          ]
+        },
+        "C": {
+          "codigo": "C",
+          "nombre": "Rotacion regenerativa con leguminosa",
+          "cultivo_objetivo": "leguminosa",
+          "color_hex": "#007755",
+          "forma": "●",
+          "cultivo_asignado": "Tarwi (Chocho)",
+          "cultivo_id": "tarwi",
+          "familia_botanica": "Fabaceae (Leguminosa)",
+          "repite_familia_previa": true,
+          "rotacion_con_leguminosa": true,
+          "radar_bandas": {
+            "aptitud_termica_y_suelo": {
+              "banda": "alto",
+              "_interno_0_100": 95.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "resiliencia_climatica": {
+              "banda": "medio",
+              "_interno_0_100": 50.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31",
+              "detalle": {
+                "t2m_media_evaluada_c": 10.99,
+                "tmin_absoluta_evaluada_c": -0.54,
+                "dias_helada_base": 1,
+                "racha_seca_max_dias": 36
+              }
+            },
+            "salud_suelo_y_rotacion": {
+              "banda": "bajo",
+              "_interno_0_100": 30.0,
+              "estado": "estimado",
+              "dato_hasta": "2026-10-31"
+            },
+            "mercado_y_sobreoferta": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Indice de sobreoferta I_m no disponible aun"
+            },
+            "riesgo_plagas": {
+              "banda": "evidencia_insuficiente",
+              "estado": "no_disponible",
+              "dato_hasta": "2026-10-31",
+              "motivo": "Sin modelo fitosanitario validado en esta fase"
+            }
+          },
+          "alertas": []
+        }
+      }
+    }
+  ]
+}
