@@ -1,0 +1,11 @@
+ID,Category,Latitude,Longitude,elev_dem_m,fuente_coord,es_aproximada
+P01,huanta,-12.9333,-74.2489,2667.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true
+P02,quinua,-13.0505,-74.1393,3273.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true
+P03,acosvinchos,-13.1126,-74.0998,2848.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true
+P04,pacaycasa,-13.0650,-74.2120,2588.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true
+P05,chiara_alta_2,-13.3051,-74.2051,3682.0,verificada_imagen_satelital_google_maps_2026-11-15; DEM Open-Meteo Copernicus 90m,false
+P06,acocro,-13.2200,-74.0400,3245.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true
+P07,chiara_alta_1,-13.2965,-74.2159,3584.0,verificada_imagen_satelital_google_maps_2026-11-15; DEM Open-Meteo Copernicus 90m,false
+P08,vinchos_alta_1,-13.2847,-74.3799,3589.0,verificada_imagen_satelital_google_maps_2026-11-15; DEM Open-Meteo Copernicus 90m,false
+P09,cangallo,-13.6286,-74.1436,2564.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true
+P10,vilcashuaman,-13.6541,-73.9576,3419.0,parcelas_appeears_v0.csv (centroide distrital provisional); DEM Open-Meteo Copernicus 90m,true

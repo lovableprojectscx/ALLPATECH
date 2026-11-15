@@ -1,0 +1,69 @@
+{
+  "_metadata": {
+    "fuente": "NASA GPM IMERG Late V07 (Giovanni ArAvTs, 0.1 grados)",
+    "bbox": "-74.4,-13.3,-74.0,-12.8",
+    "nota_escala": "Promedio de area de la zona -74.4,-13.3,-74.0,-12.8 (IMERG Late V07, 0.1°), no de cada chacra.",
+    "baseline": "2001-2025 (25 anios)",
+    "ranking_criterio": "1 = mas seco, 26 = mas lluvioso (2001-2026)",
+    "estado": "observado",
+    "dato_hasta": "2026-10-31"
+  },
+  "meses_jul_oct": [
+    {
+      "mes_num": 7,
+      "mes": "julio",
+      "total_2026_mm": 24.6,
+      "media_2001_2025_mm": 14.1,
+      "mediana_2001_2025_mm": 10.5,
+      "anomalia_pct": 74.8,
+      "puesto_seco_2001_2026": 21,
+      "total_anios_serie": 26,
+      "dias_ge_1mm_2026": 3,
+      "dias_ge_1mm_media_2001_2025": 3.1,
+      "estado": "observado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "mes_num": 8,
+      "mes": "agosto",
+      "total_2026_mm": 35.3,
+      "media_2001_2025_mm": 21.5,
+      "mediana_2001_2025_mm": 20.8,
+      "anomalia_pct": 63.8,
+      "puesto_seco_2001_2026": 21,
+      "total_anios_serie": 26,
+      "dias_ge_1mm_2026": 5,
+      "dias_ge_1mm_media_2001_2025": 4.8,
+      "estado": "observado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "mes_num": 9,
+      "mes": "septiembre",
+      "total_2026_mm": 49.1,
+      "media_2001_2025_mm": 31.6,
+      "mediana_2001_2025_mm": 31.1,
+      "anomalia_pct": 55.3,
+      "puesto_seco_2001_2026": 23,
+      "total_anios_serie": 26,
+      "dias_ge_1mm_2026": 11,
+      "dias_ge_1mm_media_2001_2025": 8.6,
+      "estado": "observado",
+      "dato_hasta": "2026-10-31"
+    },
+    {
+      "mes_num": 10,
+      "mes": "octubre",
+      "total_2026_mm": 38.0,
+      "media_2001_2025_mm": 68.3,
+      "mediana_2001_2025_mm": 61.5,
+      "anomalia_pct": -44.3,
+      "puesto_seco_2001_2026": 6,
+      "total_anios_serie": 26,
+      "dias_ge_1mm_2026": 11,
+      "dias_ge_1mm_media_2001_2025": 15.0,
+      "estado": "observado",
+      "dato_hasta": "2026-10-31"
+    }
+  ]
+}

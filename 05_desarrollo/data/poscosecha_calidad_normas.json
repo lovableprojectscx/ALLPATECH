@@ -1,0 +1,395 @@
+{
+  "_metadata": {
+    "proyecto": "MUYU - Field Shift: Adapting Farms with NASA Data (NASA Space Apps 2026)",
+    "fuente_documento": "MUYU — Datos de poscosecha, calidad y normas: beneficio y uso (15/11/2026)",
+    "fecha_actualizacion": "2026-11-15",
+    "nota_honestidad": "Las cifras proceden de búsquedas web (INIA, INACAL, SENASA, artículos científicos, prensa especializada). Los elementos marcados con verificado=false o alerta_verificacion requieren abrir la fuente oficial antes del pitch. Las reglas propuestas para el motor no son estándares oficiales hasta validarlas con INIA o un técnico."
+  },
+  "almacenamiento_y_vida_util": [
+    {
+      "id": "papa_consumo",
+      "cultivo": "papa",
+      "presentacion": "consumo_fresco",
+      "condiciones_optimas": {
+        "temperatura_c": [8, 12],
+        "humedad_relativa_pct": [85, 90],
+        "luz": "Sin luz para consumo; con luz difusa para semilla"
+      },
+      "vida_util": {
+        "en_condiciones_optimas_meses": [6, 9],
+        "dormancia_sin_frio_semanas": [6, 8],
+        "nota": "Tras 6-8 semanas de dormancia empieza a brotar"
+      },
+      "uso_en_muyu": "Reloj de poscosecha: con fecha de cosecha (GDD) y temperatura de la zona (NASA POWER) estima cuándo conviene vender o procesar",
+      "fuente": "Bioagro (Vijay et al. citado); INIA Remehue vía PotatoPro",
+      "verificado": true
+    },
+    {
+      "id": "papa_sierra_tropical",
+      "cultivo": "papa",
+      "presentacion": "almacenamiento_rustico_altura",
+      "condiciones_referencia": {
+        "temperatura_c": 7.8,
+        "humedad_relativa_pct": 87,
+        "contexto": "Caso de Etiopía sin refrigeración"
+      },
+      "vida_util_sin_refrigeracion_meses": 4,
+      "uso_en_muyu": "Referencia de que el almacenamiento rústico de altura es viable",
+      "fuente": "Bioagro",
+      "verificado": true
+    },
+    {
+      "id": "quinua_grano",
+      "cultivo": "quinua",
+      "presentacion": "grano_seco",
+      "humedad_cosecha_pct": 14,
+      "humedad_trilla_pct": 12,
+      "humedad_almacenamiento_max_pct": 12,
+      "condiciones_almacenamiento": "Guardar en sacos en ambiente seco y ventilado sin pasar de 12 %",
+      "uso_en_muyu": "Alerta de poscosecha: si hay lluvia en cosecha, recomendar secado antes de guardar",
+      "fuente": "Ficha INIA 420",
+      "verificado": true
+    },
+    {
+      "id": "tarwi_grano",
+      "cultivo": "tarwi",
+      "presentacion": "grano_seco",
+      "humedad_almacenamiento_pct": 10,
+      "condiciones_almacenamiento": "Almacenar ventilado y seco a 10 % de humedad",
+      "uso_en_muyu": "Ficha del agricultor",
+      "fuente": "Ficha INIA 445",
+      "verificado": false,
+      "alerta_verificacion": "Confirmar que la ficha INIA 445 corresponde a tarwi"
+    },
+    {
+      "id": "tarwi_desamargado",
+      "cultivo": "tarwi",
+      "presentacion": "pasta_desamargada_sin_tratamiento_termico",
+      "temperatura_referencia_c": 16,
+      "vida_util_max_dias": 4,
+      "uso_en_muyu": "Mensaje claro: vender o procesar de inmediato",
+      "fuente": "UNSAAC (revista Cantu)",
+      "verificado": true
+    },
+    {
+      "id": "haba_seca",
+      "cultivo": "haba",
+      "presentacion": "grano_seco",
+      "condiciones_almacenamiento": "Recipiente cerrado, fresco y seco",
+      "vida_util_meses": null,
+      "uso_en_muyu": "Ficha del agricultor (nivel cualitativo)",
+      "fuente": "Consumer Eroski",
+      "verificado": true
+    }
+  ],
+  "transformacion_excedentes": [
+    {
+      "id": "chuno_y_tunta",
+      "cultivo_origen": "papa",
+      "entra_en_demo": true,
+      "requiere_sobreoferta_gt_1": true,
+      "requisitos_zona": {
+        "altitud_min_msnm": 3500,
+        "requiere_heladas_fuertes": true,
+        "fuente_deteccion": "NASADEM (>3,500 msnm) + días de helada NASA POWER",
+        "lixiviacion_tunta_dias": [21, 30],
+        "nota_tunta": "Requiere agua corriente 21-30 días para lixiviación"
+      },
+      "rendimiento": {
+        "nota": "Sin rendimiento fijo ni cálculo de kilos en demo; solo recomienda considerar la transformación",
+        "humedad_final_aprox_pct": 14
+      },
+      "vida_util": {
+        "prensa_anecdota_anios": 20,
+        "harina_chuno_blanco_dias_a_20c": 199,
+        "nota_anecdota": "La cifra 'hasta 20 años' proviene de prensa y debe usarse solo como anécdota, no como dato técnico"
+      },
+      "norma_tecnica": "NTP 011.401:2020",
+      "fuente": "INIA; Revista Latinoamericana de la Papa; Gestión; INACAL vía Agraria.pe",
+      "alerta_verificacion": "Confirmar con una comunidad o INIA si existe producción de chuño/tunta en zonas altas de Ayacucho y a qué altitud"
+    },
+    {
+      "id": "harina_o_papa_seca",
+      "cultivo_origen": "papa",
+      "entra_en_demo": true,
+      "requiere_sobreoferta_gt_1": true,
+      "requisitos_zona": {
+        "aplica_zonas_mas_bajas_sin_helada": true,
+        "empaque": "Empaque con barrera a la humedad"
+      },
+      "rendimiento": {
+        "kg_papa_por_kg_harina": [5.9, 6.7],
+        "rendimiento_pct": [11.0, 15.6]
+      },
+      "norma_tecnica": "NTP 011.802 (harina de papa y papa seca)",
+      "fuente": "Alan Revista; INACAL vía Andina"
+    },
+    {
+      "id": "hojuelas_de_quinua",
+      "cultivo_origen": "quinua",
+      "entra_en_demo": false,
+      "tipo": "valor_agregado_no_conservacion",
+      "especificaciones": {
+        "proteina_min_pct": 10,
+        "humedad_max_pct": 11,
+        "impurezas_max_pct": 0.25
+      },
+      "rendimiento": null,
+      "norma_tecnica": "NTP 106.109:2025",
+      "fuente": "Agraria.pe"
+    },
+    {
+      "id": "tarwi_haba_transformados",
+      "cultivo_origen": ["tarwi", "haba"],
+      "entra_en_demo": false,
+      "productos": ["tarwi desamargado", "harina de tarwi", "harina de haba"],
+      "condicion_tarwi": "Desamargado de 4-7 días y mucha agua",
+      "rendimiento": null,
+      "vida_util": null,
+      "fuente": "Varias tesis y artículos",
+      "alerta_verificacion": "Sin rendimientos ni vida útil confiables en la búsqueda; pendiente medir con INIA o laboratorio"
+    }
+  ],
+  "reglas_calidad_clima": [
+    {
+      "id": "quinua_helada_floracion",
+      "cultivo": "quinua",
+      "entra_en_demo": true,
+      "variable_clima": "tmin_ajustada_c",
+      "umbral_critico_c": 0.0,
+      "rango_optimo_c": [15, 25],
+      "etapa_sensible": "floración",
+      "efecto_calor_sequia_proteina_pct": {
+        "de": 15.34,
+        "a": 14.25,
+        "fuente": "UNALM (La Molina)"
+      },
+      "accion_motor": "Día con Tmin ajustada <= 0 °C (helada meteorológica, criterio SENAMHI) durante la floración -> señal de RIESGO de helada (sin porcentaje de pérdida)",
+      "fuente": "SENAMHI (criterio helada meteorológica <= 0 °C); UNALM"
+    },
+    {
+      "id": "papa_calor_sequia_calidad",
+      "cultivo": "papa",
+      "entra_en_demo": true,
+      "variable_clima": "anomalia_calor_y_deficit_lluvia",
+      "efecto": "Menor altitud, más calor y menos lluvia reducen materia seca/almidón y elevan fenoles y azúcares reductores (fritura oscura y acrilamida)",
+      "rango_materia_seca_ntp_011_124_pct": [20, 35],
+      "accion_motor": "Si el mes viene más cálido y seco de lo normal, alerta de menor materia seca y riesgo de fritura oscura",
+      "fuente": "Redalyc; Agraria.pe (NTP 011.124:2025)"
+    },
+    {
+      "id": "rotacion_ano_calido",
+      "cultivo": ["papa", "haba", "quinua"],
+      "entra_en_demo": true,
+      "efecto": "En ensayo climático de Puno, el calentamiento afectó negativamente a papa, haba y maíz, y positivamente a quinua y cañihua",
+      "accion_motor": "Un año cálido favorece rotar de papa o haba a quinua en parcelas aptas",
+      "fuente": "Dialnet (Cambio climático en Puno)"
+    }
+  ],
+  "alcance_honesto_calidad": {
+    "regla": "Las reglas de calidad indican riesgo según condiciones observadas; MUYU no mide sabor ni calidad química desde el satélite",
+    "casos_fuera_de_demo": [
+      "Efecto de altitud sobre saponina en quinua (sin datos sólidos encontrados)",
+      "Efecto de heladas sobre calidad de tarwi o haba (sin datos sólidos encontrados)"
+    ]
+  },
+  "valor_nutricional_y_usos": {
+    "tarwi": {
+      "proteina_semilla_seca_pct": 42,
+      "aceite_semilla_seca_pct": 20,
+      "limitantes": "Deficiente en aminoácidos azufrados; contiene alcaloides (requiere desamargado de 4-7 días con mucha agua)",
+      "adaptacion": "Suelos altos y fríos",
+      "usos": ["Harina para fideos", "Galletas", "Panes", "Mazamorras", "Hummus", "Aceite (vida útil estimada 2.7 años a 25 °C)"],
+      "restriccion_agricultor": "Disponibilidad de agua para desamargado",
+      "linea_ficha_ejemplo": "El tarwi, una vez desamargado, se muele para pan o mazamorra y deja nitrógeno en su chacra."
+    },
+    "haba": {
+      "proteina_grano_seco_pct": {
+        "tabla_espanola_g_100g": 19,
+        "haba_andina_aprox_pct": 25
+      },
+      "limitantes": "Pobre en metionina; mejora valor proteico combinada con cereales o tubérculos",
+      "usos": ["Harina precocida o tostada", "Bebidas instantáneas con cebada", "Fibra de cáscaras"],
+      "mensaje_nutricional": "Combinar con papa o quinua"
+    }
+  },
+  "normas_y_certificacion_organica": {
+    "marco_legal_peru": ["Ley 29196 y modificatoria", "DS 002-2020-MINAGRI", "SENASA (autoriza certificadoras, incluye Sistema de Garantía Participativo - SGP y monitoreo anual de residuos)"],
+    "conversion_organica": {
+      "ue_anterior_ciclo_corto_anios": 2,
+      "nop_eeuu_anios": 3,
+      "reglamento_ue_vigente": "Reglamento (UE) 2018/848",
+      "verificado": false,
+      "alerta_verificacion": "La referencia de 2 años proviene de una presentación anterior al Reglamento (UE) 2018/848: confirmar periodo de conversión vigente"
+    },
+    "normas_ntp": {
+      "quinua": [
+        {
+          "codigo": "NTP 011.462:2025",
+          "alcance": "Grano blanco como materia prima (color característico, sin olores ni impurezas, humedad máxima, proporción de granos enteros, límites de residuos)",
+          "texto_oficial_abierto": false,
+          "nota": "Una diapositiva indica humedad máx. 13.5 % y proteína mín. 10 %, pendiente abrir texto oficial en INACAL"
+        },
+        {
+          "codigo": "NTP 205.062",
+          "alcance": "Clasificación por tamaño (>2 mm a <1.4 mm) y requisitos microbiológicos",
+          "texto_oficial_abierto": false
+        },
+        {
+          "codigo": "NTP 106.109:2025",
+          "alcance": "Hojuelas de quinua (proteína mín. 10 %, humedad máx. 11 %, impurezas ≤ 0.25 %)",
+          "texto_oficial_abierto": false
+        }
+      ],
+      "papa": [
+        {
+          "codigo": "NTP 011.119:2016",
+          "alcance": "Definiciones y requisitos de papa",
+          "texto_oficial_abierto": false,
+          "alerta_verificacion": "No se pudo leer el texto oficial; consultar en Sala de Lectura Virtual de INACAL"
+        },
+        {
+          "codigo": "NTP 011.124:2025",
+          "alcance": "Papa cortada en tiras (materia seca entre 20 % y 35 %)",
+          "texto_oficial_abierto": false
+        },
+        {
+          "codigo": "NTP 011.401:2020",
+          "alcance": "Tunta / buenas prácticas",
+          "texto_oficial_abierto": false
+        },
+        {
+          "codigo": "NTP 011.801",
+          "alcance": "Hojuelas fritas de papa",
+          "texto_oficial_abierto": false
+        },
+        {
+          "codigo": "NTP 011.802",
+          "alcance": "Harina y papa seca",
+          "texto_oficial_abierto": false
+        },
+        {
+          "codigo": "NTP 011.811:2021",
+          "alcance": "Buenas prácticas para papa nativa (clasificación por calibre: extra, primera y segunda)",
+          "texto_oficial_abierto": false
+        }
+      ]
+    },
+    "bloque_panel_cooperativa": [
+      "Registro de rotación por socio (evidencia para sistema interno de control y certificadora)",
+      "Años sin sustancias prohibidas por parcela",
+      "Humedad de grano al almacenar y ausencia de impurezas",
+      "Trazabilidad por lote",
+      "Regla explícita de inclusión de leguminosa en el ciclo como requisito de venta con fuente"
+    ]
+  },
+  "reglas_motor_propuestas": [
+    {
+      "id": 1,
+      "cultivo": "quinua",
+      "condicion": "Día con Tmin ajustada <= 0 °C durante la floración",
+      "salida": "Señal de RIESGO de helada (sin porcentaje de pérdida)",
+      "fuente": "SENAMHI (helada meteorológica <= 0 °C)",
+      "estado": "regla_demo_v2"
+    },
+    {
+      "id": 2,
+      "cultivo": "quinua",
+      "condicion": "Humedad del grano > 12 % (campo manual del usuario; si no se ingresa, queda en no_disponible)",
+      "salida": "Recomendar secado antes de guardar",
+      "fuente": "Ficha INIA 420",
+      "estado": "regla_demo_v2"
+    },
+    {
+      "id": 3,
+      "cultivo": "papa",
+      "condicion": "Más de 6-8 semanas postcosecha sin condiciones frescas (8-12 °C)",
+      "salida": "Riesgo de brotamiento: vender o procesar (siguiente fase)",
+      "fuente": "Bioagro",
+      "estado": "siguiente_fase"
+    },
+    {
+      "id": 4,
+      "cultivo": "papa",
+      "condicion": "Índice de sobreoferta I_m > 1 y altitud > 3,500 msnm con días de helada",
+      "salida": "Recomendar considerar transformación a chuño o tunta (sin rendimiento fijo ni cálculo de kilos)",
+      "fuente": "INIA; NTP 011.401:2020",
+      "estado": "regla_demo_v2"
+    },
+    {
+      "id": 5,
+      "cultivo": "papa",
+      "condicion": "Índice de sobreoferta I > 1 y zona más baja (sin heladas fuertes)",
+      "salida": "Ofrecer transformación a harina de papa o papa seca",
+      "fuente": "Alan Revista; INACAL",
+      "estado": "propuesta_a_validar_con_INIA"
+    },
+    {
+      "id": 6,
+      "cultivo": "papa",
+      "condicion": "Mes más cálido y seco de lo normal",
+      "salida": "Alerta de menor materia seca y riesgo de fritura oscura (azúcares reductores)",
+      "fuente": "Redalyc",
+      "estado": "propuesta_a_validar_con_INIA"
+    },
+    {
+      "id": 7,
+      "cultivo": "tarwi",
+      "condicion": "Tarwi desamargado (sin tratamiento térmico)",
+      "salida": "Vender o procesar de inmediato (≤ 4 días a 16 °C)",
+      "fuente": "UNSAAC",
+      "estado": "propuesta_a_validar_con_INIA"
+    }
+  ],
+  "alcance_demo_vs_siguiente_fase": {
+    "entra_en_demo": [
+      "Reloj de poscosecha y salida de excedente para papa en Ayacucho",
+      "Alerta de riesgo de helada en floración (Tmin <= 0 °C, SENAMHI) y regla de humedad manual (<= 12 %) para quinua",
+      "Línea de uso nutricional de tarwi y haba en la ficha del agricultor",
+      "Mención de normas NTP como respaldo en el pitch y bloque de cumplimiento en panel de cooperativa (sin pantallas nuevas)"
+    ],
+    "queda_como_siguiente_fase": [
+      "Rendimientos de tarwi y haba transformados",
+      "Reglas de calidad de tarwi y haba por clima",
+      "Lista completa automatizada de certificación orgánica",
+      "Integración en vivo con SIEA y precios reales por comunidad"
+    ]
+  },
+  "vacios_y_verificaciones_pendientes": [
+    "Rendimientos y vida útil de productos de quinua, tarwi y haba transformados: no encontrados",
+    "Vida útil de papa de consumo en condiciones reales de Ayacucho: solo referencias de otros países",
+    "Abrir textos oficiales en INACAL de NTP 011.119, 205.062 y 011.462",
+    "Confirmar periodo de conversión vigente en Reglamento (UE) 2018/848",
+    "Confirmar Ficha INIA 445 para tarwi",
+    "Confirmar con comunidad o INIA si existe producción de chuño y tunta en zonas altas de Ayacucho y a qué altitud",
+    "Usar cifras de prensa (ej. 'hasta 20 años' del chuño) solo como anécdota, no como dato técnico"
+  ],
+  "fuentes": {
+    "bioagro_postcosecha_papa": "https://revistas.uclave.org/index.php/bioagro/article/download/5587/3609/5811",
+    "inia_remehue_potatopro": "https://www.potatopro.com/nl/news/2021/inia-remehue-da-conocer-recomendaciones-para-la-cosecha-y-almacenamiento-de-papa",
+    "ficha_inia_420_quinua": "https://pgc-snia.inia.gob.pe:8443/jspui/bitstream/inia/77/1/Trip-Quinua_INIA_420.pdf",
+    "ficha_inia_445_masacanchino": "https://core.ac.uk/download/490803615.pdf",
+    "pasta_tarwi_unsaac": "https://revistas.unsaac.edu.pe/index.php/cantu/article/download/891/1095",
+    "aceite_tarwi_unitru": "https://revistas.unitru.edu.pe/index.php/scientiaagrop/article/download/3545/4239",
+    "valor_nutricional_tarwi_unica": "https://repositorio.unica.edu.pe/server/api/core/bitstreams/ff8d86aa-ba65-483e-ab33-6d716a04eddb/content",
+    "valor_nutricional_tarwi_alan": "https://www.alanrevista.org/download/article/3589",
+    "haba_seca_consumer_eroski": "https://www.consumer.es/alimentacion/las-habas-secas.html",
+    "haba_andina_laccei": "https://laccei.org/LACCEI2025-Mexico/full-papers/Contribution_2101_final_a.pdf",
+    "calidad_papa_ambiente_redalyc": "https://www.redalyc.org/journal/6886/688672143003/688672143003.pdf",
+    "quinua_heladas_ciren": "https://www.ciren.cl/wp-content/uploads/2017/12/Qu%C3%ADnoa.pdf",
+    "quinua_heladas_fao_agris": "https://agris.fao.org/search/ru/records/6878df965d9ad5f58d604635",
+    "quinua_sequia_calor_unalm": "https://repositorio.lamolina.edu.pe/handle/20.500.12996/3966?show=full",
+    "cambio_climatico_puno_dialnet": "https://dialnet.unirioja.es/descarga/articulo/6995364.pdf",
+    "chuno_tunta_inia": "https://pgc-snia.inia.gob.pe:8443/jspui/bitstream/inia/768/1/Arcos-Variedades_papas_nativas_procesamiento_tunta.pdf",
+    "innovacion_tunta_cip_incopa": "https://dialnet.unirioja.es/descarga/articulo/5512149.pdf",
+    "ntp_011_401_tunta_agraria": "https://agraria.pe/noticias/inacal-aprobo-norma-tecnica-para-impulsar-buenas-practicas-d-23728",
+    "harina_papa_alan": "https://www.alanrevista.org/download/article/4113",
+    "ntp_papa_andina": "https://andina.pe/agencia/noticia-dia-nacional-de-papa-conoce-requisitos-calidad-su-procesamiento-895127.aspx",
+    "ntp_011_124_papa_tiras_agraria": "https://agraria.pe/index.php/noticias/inacal-fija-estandar-de-calidad-para-la-papa-cortada-destina-40493",
+    "ntp_quinua_agraria_1": "https://agraria.pe/index.php/noticias/inacal-aprueba-dos-nuevas-normas-tecnicas-para-impulsar-la-c-40285",
+    "ntp_quinua_agraria_2": "https://agraria.pe/noticias/aprueban-norma-que-garantiza-calidad-y-valor-nutricional-de--41335",
+    "trazabilidad_quinua_kiwicha_exportemos": "https://recursos.exportemos.pe/guia-practica-implementacion-sistema-trazabilidad-quinua-kiwicha-organica.pdf",
+    "monitoreo_residuos_senasa_2023": "https://cdn.www.gob.pe/uploads/document/file/4428018/Monitoreo%20oficial%20residuos%20de%20plaguicidas%20en%20productos%20org%C3%A1nicos%202023.pdf",
+    "certificacion_organica_promperu": "https://repositorio.promperu.gob.pe/bitstreams/993b3298-982e-412c-92d7-fbd25b616e55/download"
+  }
+}

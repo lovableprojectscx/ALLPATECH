@@ -1,0 +1,132 @@
+{
+  "_metadata": {
+    "proyecto": "MUYU — Anticipa el clima, decide qué rotar",
+    "fuentes_informe": [
+      "MUYU — Anticipa el clima, decide qué rotar (15/11/2026)",
+      "MUYU — Datos de poscosecha, calidad y normas: beneficio y uso (15/11/2026)"
+    ],
+    "fecha_actualizacion": "2026-11-15"
+  },
+  "definicion_proyecto": {
+    "reto": "Field Shift: Adapting Farms with NASA Data (NASA Space Apps 2026)",
+    "enfoque": "Investigación aplicada con prototipo (no startup; sin modelo de negocio comercial obligatorio)",
+    "frase_posicionamiento": "SENAMHI y MIDAGRI ya detectan la anomalía. MUYU responde la pregunta siguiente: ¿qué siembro y qué roto ahora?",
+    "canal_principal": ["Cooperativas o asociaciones de productores", "Gobierno regional (Dirección Regional Agraria Ayacucho)"],
+    "canal_capacitacion": "Técnicos y líderes comunales (ej. proyecto Vidas)",
+    "usuario_final": "Agricultor (recibe ficha en español y quechua sin instalar una app)",
+    "piloto": "Ayacucho (papa para mercado/sobreoferta y quinua para rotación orgánica)"
+  },
+  "cadena_de_calculos": [
+    {
+      "paso": 1,
+      "nombre": "Oferta esperada por zona",
+      "formula": "Oferta_z = Superficie_z^ENIS * Rendimiento_z^hist * F_z^clima",
+      "tipo": "regla_explicable"
+    },
+    {
+      "paso": 2,
+      "nombre": "Factor climático y riesgo de calidad por etapa",
+      "descripcion": "Modelo IA (regresión / random forest) entrenado con rendimiento SIEA vs anomalías NASA POWER, enriquecido con reglas explicables de riesgo de calidad (helada en floración quinua, calor/sequía en materia seca de papa)",
+      "tipo": "ia_mas_reglas_explicables"
+    },
+    {
+      "paso": 3,
+      "nombre": "Calendario de cosecha (GDD)",
+      "formula": "GDD = sum(max(0, (Tmax + Tmin)/2 - Tbase))",
+      "tipo": "regla_explicable"
+    },
+    {
+      "paso": 4,
+      "nombre": "Índice de sobreoferta o escasez por mes",
+      "formula": "I_m = sum_z(Oferta_{z,m}) / Promedio_5_anios_m",
+      "interpretacion": ">1 riesgo de precio bajo (rotar o transformar); <1 ventana de escasez (oportunidad)",
+      "tipo": "regla_explicable"
+    },
+    {
+      "paso": 5,
+      "nombre": "Recomendación de rotación óptima + ficha bilingüe",
+      "reglas_duras": [
+        "No repetir la misma familia botánica en campañas seguidas",
+        "Incluir leguminosa en el ciclo (norma orgánica Reg. UE 2018/848)",
+        "Cumplir volumen requerido por la cooperativa",
+        "Respetar restricciones del agricultor: secano/riego, mano de obra familiar, autoconsumo, agua para desamargado de tarwi"
+      ],
+      "uso_llm": "Traduce la recomendación ya calculada a lenguaje simple en español y quechua chanka (sin calcular nada)",
+      "tipo": "optimizador_mas_llm"
+    },
+    {
+      "paso": 6,
+      "nombre": "Ventana de venta, reloj de poscosecha y salida de excedente",
+      "entradas": ["fecha_cosecha_gdd", "temperatura_zona_power", "cultivo", "altitud_nasadem", "indice_sobreoferta_I"],
+      "salidas": ["semanas_almacenamiento_recomendadas", "alerta_secado_o_brotamiento", "opcion_transformacion_si_I_gt_1"],
+      "nota_diferenciadora": "Convierte la señal de helada en oportunidad (ventana de chuño/tunta sobre 3,500 msnm cuando I > 1)",
+      "tipo": "regla_explicable"
+    }
+  ],
+  "pruebas_hacia_atras_y_metas": [
+    {
+      "id": "prueba_tuna_2026",
+      "hecho_real": "Tuna en Ayacucho maduraba en enero; en 2026 empezó a fines de octubre (>2 meses antes)",
+      "calculo": "Semanas entre señal GDD (julio-septiembre 2026) y el adelanto observado a fines de octubre",
+      "meta_propuesta": "Señal visible con al menos 4 semanas de anticipación",
+      "fuente_observacion": "Contraste Ayacucho, Facebook (noviembre 2026); atribución a El Niño por confirmar con ENFEN/SENAMHI",
+      "verificado_en_campo": false
+    },
+    {
+      "id": "prueba_papa_enero_2024",
+      "hecho_real": "En enero de 2024 el ingreso de papa a Lima subió 5.3% y el precio de papa blanca cayó 48% (S/ 2.09 -> S/ 1.09/kg)",
+      "calculo": "Confirmar si índice I_m > 1 antes de la caída de precio",
+      "meta_propuesta": "Acierto en dirección (exceso o escasez)",
+      "fuente_observacion": "Boletín de volumen y precio de papa 13-02-2024 (SIEA/EMMSA)",
+      "url": "https://cdn.www.gob.pe/uploads/document/file/5853143/5140686-boletin-de-volumen-y-precio-de-papa-13-02-2024.pdf",
+      "verificado_en_campo": false
+    }
+  ],
+  "cifras_clave_a_verificar": [
+    {
+      "dato": "Ingreso papa enero 2024 +5.3% y caída -48% (S/ 2.09 -> S/ 1.09/kg)",
+      "fuente": "Boletín SIEA/EMMSA 13-02-2024",
+      "url": "https://cdn.www.gob.pe/uploads/document/file/5853143/5140686-boletin-de-volumen-y-precio-de-papa-13-02-2024.pdf",
+      "verificado": false
+    },
+    {
+      "dato": "Venta de papa a pérdida a S/ 0.50/kg en Chiara",
+      "fuente": "PotatoPro (2025)",
+      "url": "https://www.potatopro.com/es/news/2025/per%C3%BA-sobreproducci%C3%B3n-y-venta-perdida",
+      "verificado": false
+    },
+    {
+      "dato": "Quienes adelantaron siembras lograron hasta S/ 0.90/kg; buen precio previo S/ 2.00/kg",
+      "fuente": "PotatoPro",
+      "url": "https://www.potatopro.com/es/node/158291",
+      "verificado": false
+    },
+    {
+      "dato": "ENIS 2026/27 proyectó 354,448 ha de papa a nivel nacional (+3.7% sobre promedio de 5 campañas)",
+      "fuente": "ENIS / MIDAGRI / Gestión",
+      "url": "https://gestion.pe/economia/el-nino-haria-retroceder-a-diez-principales-cultivos-de-la-proxima-campana-agricola-2026-2027-noticia/",
+      "verificado": false
+    },
+    {
+      "dato": "Ayacucho primer productor de quinua orgánica del Perú y Reg. (UE) 2018/848 exige rotación con leguminosas",
+      "fuente": "Gestión / Reg. UE 2018/848",
+      "url": "https://gestion.pe/economia/quinua-peruana-con-mas-dificultades-para-ingresar-a-europa-desde-este-ano-jaque-a-puno-noticia/",
+      "verificado": false
+    }
+  ],
+  "vistas_y_recorrido_demo": {
+    "vistas": [
+      "Vista regional (sobreoferta por zona y anomalía térmica)",
+      "Panel de la cooperativa (10 parcelas, rotación por socio + bloque de cumplimiento orgánico/NTP)",
+      "Comparador A/B/C (radar 5 ejes, nivel de confianza/escala + mapa de vulnerabilidades)",
+      "Ficha del agricultor (español y quechua, con 2-3 líneas de poscosecha, excedente y uso nutricional tarwi/haba)"
+    ],
+    "recorrido_2_min": [
+      "1. Vista regional muestra papa con I > 1 y zona con calor anormal",
+      "2. Panel de cooperativa muestra 10 parcelas, entre ellas Don Santos",
+      "3. Comparador A/B/C con nivel de confianza para Don Santos + planificador asigna qué parcelas rotan a quinua/tarwi y cuáles siguen con papa",
+      "4. Don Santos recibe su ficha en español y quechua (incluyendo reloj de poscosecha, salida chuño/tunta si sobra en zona alta y uso del tarwi)",
+      "5. Cierre: 'Con los datos de julio, MUYU habría avisado el adelanto de la tuna'"
+    ]
+  }
+}

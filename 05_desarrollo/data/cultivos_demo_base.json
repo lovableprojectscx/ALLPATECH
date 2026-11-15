@@ -1,0 +1,167 @@
+{
+  "_metadata": {
+    "proyecto": "MUYU - Demo 4 Cultivos",
+    "alcance": "4 cultivos congelados para la demo en Ayacucho (papa, quinua, tarwi, haba)",
+    "fuentes_base": [
+      "04_guias_equipo/GUIA_INVESTIGACION_NAYELY_LLAMOCCA_v2.md",
+      "04_guias_equipo/GUIA_CULTIVOS_NAYELY_LLAMOCCA.md",
+      "MUYU — Datos de poscosecha, calidad y normas: beneficio y uso (15/11/2026)"
+    ],
+    "nota_honestidad": "Los campos agronómicos en null están pendientes de llenado con fuente oficial (FAO-56, INIA, CIP) por Agronomía (Nayely Llamocca). No se han inventado valores."
+  },
+  "cultivos": [
+    {
+      "id": "papa",
+      "nombre": "Papa (nativa / blanca)",
+      "nombre_quechua": "Papa",
+      "familia_botanica": "Solanaceae",
+      "rol_en_demo": "Cultivo principal de análisis de sobreoferta y mercado (EMMSA/ENIS/SIEA)",
+      "agronomia": {
+        "altitud_min_msnm": null,
+        "altitud_max_msnm": null,
+        "ventana_siembra_habitual": null,
+        "duracion_ciclo_dias": null,
+        "t_base_c": null,
+        "gdd_a_cosecha": null,
+        "kc": { "inicial": null, "medio": null, "final": null },
+        "etapa_critica_agua": null,
+        "umbral_helada_c": null,
+        "profundidad_radicular_cm": null,
+        "efecto_suelo": "Extractivo / requiere rotación con leguminosa o descanso",
+        "pendiente_agronomia": true
+      },
+      "poscosecha_y_calidad": {
+        "temperatura_almacenamiento_optima_c": [8, 12],
+        "humedad_relativa_optima_pct": [85, 90],
+        "vida_util_optima_meses": [6, 9],
+        "dormancia_sin_frio_semanas": [6, 8],
+        "almacenamiento_rustico_altura_meses": 4,
+        "regla_calidad_clima": "Mes cálido y seco reduce materia seca y aumenta azúcares reductores (riesgo de fritura oscura)",
+        "materia_seca_tiras_ntp_pct": [20, 35],
+        "opciones_excedente": [
+          {
+            "opcion": "chuño_o_tunta",
+            "condicion": "altitud > 3500 msnm, heladas y I_m > 1",
+            "nota_regla": "Solo recomienda considerar la transformación; sin rendimiento fijo ni cálculo de kilos",
+            "norma": "NTP 011.401:2020"
+          },
+          {
+            "opcion": "harina_o_papa_seca",
+            "condicion": "zonas más bajas sin heladas fuertes",
+            "rendimiento": "1 kg por 5.9-6.7 kg de papa (11-15.6%)",
+            "norma": "NTP 011.802"
+          }
+        ],
+        "normas_ntp": ["NTP 011.119:2016", "NTP 011.124:2025", "NTP 011.401:2020", "NTP 011.801", "NTP 011.802", "NTP 011.811:2021"]
+      }
+    },
+    {
+      "id": "quinua",
+      "nombre": "Quinua",
+      "nombre_quechua": "Kinwa / Kiwna",
+      "familia_botanica": "Amaranthaceae",
+      "rol_en_demo": "Cultivo de exportación orgánica con rotación plurianual obligatoria (Reg. UE 2018/848)",
+      "agronomia": {
+        "altitud_min_msnm": null,
+        "altitud_max_msnm": null,
+        "ventana_siembra_habitual": null,
+        "duracion_ciclo_dias": null,
+        "t_base_c": null,
+        "gdd_a_cosecha": null,
+        "kc": { "inicial": null, "medio": null, "final": null },
+        "etapa_critica_agua": null,
+        "umbral_helada_c": 0.0,
+        "criterio_helada": "Tmin ajustada <= 0 °C (helada meteorológica, criterio SENAMHI) durante la floración -> señal de RIESGO de helada (sin porcentaje de pérdida)",
+        "etapa_critica_helada": "floración",
+        "temperatura_optima_c": [15, 25],
+        "profundidad_radicular_cm": null,
+        "efecto_suelo": "Requiere rotación con leguminosas para certificación orgánica",
+        "pendiente_agronomia": true
+      },
+      "poscosecha_y_calidad": {
+        "humedad_cosecha_pct": 14,
+        "humedad_trilla_pct": 12,
+        "humedad_almacenamiento_max_pct": 12,
+        "ingreso_humedad": "campo manual del usuario; si no se ingresa, la regla queda en no_disponible",
+        "regla_calidad_clima": "Calor y sequía redujeron proteína de 15.34% a 14.25% en ensayo UNALM; años cálidos favorecen quinua frente a papa/haba según estudio Puno",
+        "normas_ntp": ["NTP 011.462:2025", "NTP 205.062", "NTP 106.109:2025"]
+      }
+    },
+    {
+      "id": "tarwi",
+      "nombre": "Tarwi (Chocho)",
+      "nombre_quechua": "Tarwi",
+      "familia_botanica": "Fabaceae (Leguminosa)",
+      "rol_en_demo": "Leguminosa de rotación regenerativa y fijadora de nitrógeno",
+      "agronomia": {
+        "altitud_min_msnm": 2800,
+        "altitud_max_msnm": 3850,
+        "ventana_siembra_habitual": "Octubre - Noviembre",
+        "duracion_ciclo_dias": [180, 210],
+        "t_base_c": null,
+        "gdd_a_cosecha": null,
+        "kc": { "inicial": 0.40, "medio": 1.05, "final": 0.50 },
+        "etapa_critica_agua": "Floración y llenado de vainas (Ene - Mar)",
+        "umbral_helada_c": -2.0,
+        "nota_helada": "Tolera hasta -2 °C en vegetativa; sensible en floración",
+        "profundidad_radicular_cm": ">80",
+        "efecto_suelo": "Fija nitrógeno atmosférico y rompe compactación tras papa o maíz",
+        "restriccion_agricultor": "Desamargado requiere disponibilidad de agua (4-7 días)",
+        "fuente_referencia": "GUIA_CULTIVOS_NAYELY_LLAMOCCA.md (INIA / FAO) — confirmar t_base y GDD",
+        "pendiente_agronomia": true
+      },
+      "poscosecha_y_calidad": {
+        "humedad_almacenamiento_grano_pct": 10,
+        "alerta_verificacion_humedad": "Confirmar que la Ficha INIA 445 corresponde a tarwi",
+        "vida_util_pasta_desamargada_dias_a_16c": 4,
+        "proteina_semilla_seca_pct": 42,
+        "aceite_semilla_seca_pct": 20,
+        "usos": ["Harina para fideos, galletas, panes y mazamorras", "Hummus", "Aceite"],
+        "linea_ficha_ejemplo": "El tarwi, una vez desamargado, se muele para pan o mazamorra y deja nitrógeno en su chacra."
+      }
+    },
+    {
+      "id": "haba",
+      "nombre": "Haba",
+      "nombre_quechua": "Hawas",
+      "familia_botanica": "Fabaceae (Leguminosa)",
+      "rol_en_demo": "Leguminosa de rotación alternativa",
+      "agronomia": {
+        "altitud_min_msnm": null,
+        "altitud_max_msnm": null,
+        "ventana_siembra_habitual": null,
+        "duracion_ciclo_dias": null,
+        "t_base_c": null,
+        "gdd_a_cosecha": null,
+        "kc": { "inicial": null, "medio": null, "final": null },
+        "etapa_critica_agua": null,
+        "umbral_helada_c": null,
+        "profundidad_radicular_cm": null,
+        "efecto_suelo": "Fija nitrógeno en rotación con tubérculos y cereales",
+        "pendiente_agronomia": true
+      },
+      "poscosecha_y_calidad": {
+        "almacenamiento": "Recipiente cerrado, fresco y seco (cualitativo; sin cifra de meses)",
+        "proteina_grano_seco_pct": { "referencia_espanola_g_100g": 19, "haba_andina_aprox_pct": 25 },
+        "usos": ["Harina precocida o tostada", "Bebidas instantáneas con cebada", "Fibra de cáscaras"],
+        "mensaje_nutricional": "Combinar con papa o quinua"
+      }
+    }
+  ],
+  "referencia_prueba1_tuna": {
+    "cultivo": "Tuna (Opuntia ficus-indica)",
+    "t_base_c": 0.0,
+    "metodo_gdd": "residual: GDD = (Tmax + Tmin) / 2 - T_base",
+    "evento_inicio": "brotamiento de yemas florales",
+    "gd_hasta_antesis": 889.63,
+    "gd_antesis_a_madurez": 1861.72,
+    "gdd_reproductivo_c_dia": 2751.31,
+    "duracion_reproductivo_dias": 161,
+    "estacion_referencia": "INIA Canaán, 2,730 m",
+    "altura_optima_msnm": [2600, 2800],
+    "temperatura_optima_c": [16, 28],
+    "umbral_madurez_anticipada_c": 30,
+    "estado": "estimado",
+    "fuente": "Tesis Marcaquispe Capiso (2021), UNSCH, sec. 3.3.5 (citando a Hernández 2009); Castro et al. (2009)"
+  }
+}
